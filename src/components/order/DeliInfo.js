@@ -1,0 +1,51 @@
+import Button from "../base/Button";
+const DeliInfo = () => {
+  return (
+    <div className="w-full">
+      <h3 className="mb-4 font-JUA text-2xl">배달 정보</h3>
+      <div className="px-16 pt-5 pb-16 bg-white drop-shadow">
+        <div className="py-10 flex items-center border-b border-ededed">
+          <span className="grow text-2xl">주소</span>
+          <Button />
+        </div>
+        <div className="w-full mt-8">
+          <div className="w-full flex">
+            <div className="w-3/6 h-16 flex items-center pr-32">
+              <label className="inline-block w-32 text-2xl font-black">연락처</label>
+              <input
+                className="grow text-xl h-16 bg-underline bg-no-repeat bg-bottom outline-none"
+                required
+                type="text"
+                // value="000-0000-0000"
+              />
+            </div>
+            <div className="w-3/6 h-16 flex items-center">
+              <label className="inline-block w-32 text-2xl font-black">매장</label>
+              <input
+                type="text"
+                className="grow px-4 h-16 bg-f7f7f7 text-xl text-bgwred outline-none"
+                value={"버거왕 본점"}
+                readOnly
+              />
+            </div>
+          </div>
+          <div className="w-full mt-8">
+            <div className="w-full h-16 flex items-center">
+              <label className="w-32 text-2xl font-black">요청사항</label>
+              <input
+                className="grow h-16 text-xl bg-underline bg-repeat-x bg-bottom outline-none"
+                type="text"
+                placeholder="요청사항을 입력하세요"
+              />
+            </div>
+            <div className="w-full mt-2">
+              <span className="float-right text-black/40">0/50</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default DeliInfo;
