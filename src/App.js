@@ -7,7 +7,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/base/Header';
 import Home from './pages/Home';
 import Join from './pages/Join';
 import Login from './pages/Login';
