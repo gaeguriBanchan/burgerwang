@@ -19,6 +19,7 @@ import Order from './pages/Order';
 import Cart from './pages/Cart';
 import OrderList from './pages/OrderList';
 import OrderListDetail from './pages/OrderListDetail';
+import Mypage from './pages/Mypage';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               path="/orderListDetail"
               element={<OrderListDetail />}
             ></Route>
+            <Route path="/mypage" element={<Mypage />}></Route>
           </Route>
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
