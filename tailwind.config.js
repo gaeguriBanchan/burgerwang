@@ -11,8 +11,10 @@ module.exports = {
         bgwred: "#e22219",
         ededed: "#ededed",
         "2e2e2e": "#2e2e2e",
-        d9d9d9: "#d9d9d9",
+        d9d9d9: "#d9d9d9", 
         512314: "#512314",
+        "8d8d8d": "#8d8d8d",
+        737373: "#737373",
       },
     },
     container: {
