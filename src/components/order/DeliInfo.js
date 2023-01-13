@@ -1,4 +1,4 @@
-import Button from "../base/Button";
+import ChangeButton from "../base/ChangeButton";
 const DeliInfo = () => {
   return (
     <div className="w-full">
@@ -6,7 +6,7 @@ const DeliInfo = () => {
       <div className="px-16 pt-5 pb-16 bg-white drop-shadow">
         <div className="py-10 flex items-center border-b border-ededed">
           <span className="grow text-2xl">주소</span>
-          <Button />
+          <ChangeButton name="변경" />
         </div>
         <div className="w-full mt-8">
           <div className="w-full flex">

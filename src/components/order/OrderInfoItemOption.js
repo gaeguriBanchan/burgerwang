@@ -1,4 +1,4 @@
-import Button from "../base/Button";
+import ChangeButton from "../base/ChangeButton";
 import OrderInfoItemOptionInfo from "./OrderInfoItemOptionInfo";
 const OrderInfoItemOption = () => {
   return (
@@ -9,7 +9,7 @@ const OrderInfoItemOption = () => {
           <OrderInfoItemOptionInfo />
         </ul>
       </div>
-      <Button />
+      <ChangeButton name="변경" />
     </li>
   );
 };

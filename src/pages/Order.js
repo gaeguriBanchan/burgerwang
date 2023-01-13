@@ -1,5 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import ActiveButton from "../components/base/ActiveButton";
+import DisabledButton from "../components/base/DisabledButton";
 import DeliInfo from "../components/order/DeliInfo";
 import OrderInfo from "../components/order/OrderInfo";
 import Payment from "../components/order/Payment";
@@ -19,12 +21,8 @@ const Order = () => {
           <Payment />
         </div>
         <div className="flex justify-end">
-          <button className="w-48 h-16 text-512314 text-2xl border border-512314 font-black rounded-xl">
-            결제하기
-          </button>
-          <button className="w-48 h-16 ml-1 bg-bgwred text-white text-2xl font-black rounded-xl">
-            결제하기
-          </button>
+          <DisabledButton name="취소" />
+          <ActiveButton name="결제하기" />
         </div>
       </div>
     </>

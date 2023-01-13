@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        underline: "url('/src/assets/images/underline.png')",
+        underline: "url('/src/assets/images/bg_underline.png')",
       },
       colors: {
         f7f7f7: "#f7f7f7",
