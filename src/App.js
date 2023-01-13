@@ -14,6 +14,7 @@ import Order from "./pages/Order";
 import Cart from "./pages/Cart";
 import OrderListPage from "./pages/OrderListPage";
 import OrderListDetail from "./pages/OrderListDetail";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
             <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
+            <Route path="/mypage" element={<MyPage />}></Route>
           </Route>
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>
