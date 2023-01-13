@@ -1,0 +1,12 @@
+.paymentradio::before {
+  content: "";
+  display: inline-block;
+  margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  vertical-align: -6px;
+  background: url("../../assets/images/icon_radio_off.png");
+}
+.paymentcheck:checked + .paymentradio::before {
+  background: url("../../assets//images/icon_radio_on.png");
+}

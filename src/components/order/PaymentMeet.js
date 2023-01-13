@@ -1,17 +1,34 @@
-const PaymentMeet = () => {
+import styles from "./Payment.module.css";
+const PaymentMeet = ({ payment, changePayment }) => {
   return (
     <div>
       <ul>
         <li className="mb-3">
           <label htmlFor="pay-meet-card">
-            <input type="radio" name="payment" id="pay-meet-card" className="hidden" />
-            <span className="text-xl">현장에서 신용카드 결제</span>
+            <input
+              type="radio"
+              name="pay-meet"
+              id="pay-meet-card"
+              value="pay-meet-card"
+              checked={payment === "pay-meet-card"}
+              onChange={changePayment}
+              className={"hidden " + styles.paymentcheck}
+            />
+            <span className={"text-xl " + styles.paymentradio}>현장에서 신용카드 결제</span>
           </label>
         </li>
         <li>
           <label htmlFor="pay-meet-cash">
-            <input type="radio" name="payment" id="pay-meet-cash" className="hidden" />
-            <span className="text-xl">현장에서 현금 결제</span>
+            <input
+              type="radio"
+              name="pay-meet"
+              id="pay-meet-cash"
+              value="pay-meet-cash"
+              checked={payment === "pay-meet-cash"}
+              onChange={changePayment}
+              className={"hidden " + styles.paymentcheck}
+            />
+            <span className={"text-xl " + styles.paymentradio}>현장에서 현금 결제</span>
           </label>
         </li>
       </ul>

@@ -1,6 +1,11 @@
 import OrderInfoItemOption from "./OrderInfoItemOption";
+import { useState } from "react";
 
 const OrderInfoItem = () => {
+  const [orderCount, setOrderCount] = useState(1);
+  const plusOrderCount = () => setOrderCount(orderCount + 1);
+  const minusOrderCount = () => (orderCount === 0 ? "" : setOrderCount(orderCount - 1));
+  // };
   return (
     <li className="pt-14 border-b border-ededed">
       <div className="pb-10 border-b border-ededed">
@@ -15,13 +20,24 @@ const OrderInfoItem = () => {
         <div className="w-3/6 flex items-center">
           <span className="w-32 text-xl font-black">수량</span>
           <div className="drop-shadow-md">
-            <button className="w-10 h-10 text-xl font-black bg-d9d9d9 rounded-l">-</button>
+            <button
+              onClick={() => minusOrderCount()}
+              className="w-10 h-10 text-xl font-black bg-d9d9d9 rounded-l"
+            >
+              -
+            </button>
             <input
               type="text"
               className="w-12 h-10 text-xl font-black text-center bg-white outline-none"
-              value={"1"}
+              value={orderCount}
+              readOnly
             />
-            <button className="w-10 h-10 text-xl font-black bg-d9d9d9 rounded-r">+</button>
+            <button
+              onClick={() => plusOrderCount()}
+              className="w-10 h-10 text-xl font-black bg-d9d9d9 rounded-r"
+            >
+              +
+            </button>
           </div>
         </div>
         <div className="w-3/6 flex justify-between items-center">
