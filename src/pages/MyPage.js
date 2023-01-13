@@ -1,4 +1,6 @@
-import React from "react";
+/** @format */
+
+import React from 'react';
 
 const MyPage = () => {
   return (
@@ -16,15 +18,15 @@ const MyPage = () => {
             <li>정보변경</li>
             <li>MY 배달지</li>
             <li>
-              <span></span>
+              <span>★</span>
               <span>멤버십</span>
             </li>
             <li>
-              <span></span>
+              <span>★</span>
               <span>나의쿠폰</span>
             </li>
             <li>
-              <span></span>
+              <span>★</span>
               <span>주문이력</span>
             </li>
           </ul>
