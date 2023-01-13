@@ -1,6 +1,9 @@
-/** @type {import('tailwindcss').Config} */
+/**
+ * @type {import('tailwindcss').Config}
+ */
+
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ['./src/**/*.{html,js}'],
   theme: {
     extend: {
       backgroundImage: {
@@ -21,7 +24,7 @@ module.exports = {
       center: true,
     },
     fontFamily: {
-      JUA: ["BMJUA", "san-serif"],
+      JUA: ['BMJUA', 'san-serif'],
     },
   },
   plugins: [],

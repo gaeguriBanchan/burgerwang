@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
+/** @format */
 
+import React from 'react';
+import { Link } from 'react-router-dom';
 const DropOut = () => {
   return (
     <div className="container max-w-6xl px-5">
