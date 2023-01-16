@@ -2,7 +2,7 @@
 
 import { Outlet } from 'react-router';
 import logo from '../../assets/logo.png';
-import ninggen from '../../assets/ninggen.jpg';
+import man from '../../assets/ninggen.jpg';
 
 const Header = () => {
   return (
@@ -18,13 +18,13 @@ const Header = () => {
         </span> */}
           <div className='flex justify-between gap-5 self-center'>
             <img
-              src={ninggen}
-              alt='ninggen'
+              src={man}
+              alt='man'
               className='w-16 h-16 rounded-full'
             />
             <div>
               <p className='text-2xl'>김그린 님 안녕하세요</p>
-              <span className='text-2xl'>MY왕 바로가기 ></span>
+              <span className='text-2xl'>MY왕 바로가기 {'>'}</span>
             </div>
           </div>
         </div>
