@@ -3,10 +3,35 @@
 import React from 'react';
 
 const JoinOptional = () => {
-  const day = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
-    22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
-  ];
+  // const day = [
+  //   1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+  //   22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
+  // ];
+
+  const day = () => {
+    let day = [];
+    for (let i = 1; i < 32; i += 1) {
+      day.push(<option value={i}>{i}</option>);
+    }
+    return day;
+  };
+
+  const month = () => {
+    let month = [];
+    for (let i = 1; i < 13; i += 1) {
+      month.push(<option value={i}>{i}</option>);
+    }
+    return month;
+  };
+
+  const year = () => {
+    let year = [];
+    for (let i = 1920; i < 2023; i += 1) {
+      year.push(i);
+    }
+    return year;
+  };
+  console.log(year());
 
   return (
     <div className="mb-10">
@@ -43,7 +68,8 @@ const JoinOptional = () => {
                   <option value="" selected>
                     선택
                   </option>
-                  <option value="2023">2023</option>
+                  {year.map}
+                  {year()}
                 </select>
 
                 <select
@@ -53,6 +79,7 @@ const JoinOptional = () => {
                   <option value="" selected>
                     선택
                   </option>
+                  {month()}
                 </select>
 
                 <select
@@ -62,13 +89,15 @@ const JoinOptional = () => {
                   <option value="" selected>
                     선택
                   </option>
-                  {day.map((item, index) => {
+                  {day()}
+                  {/*    {day.map((item, index) => {
                     return (
                       <option key={index} value={item}>
                         {item}
                       </option>
                     );
                   })}
+ */}
                 </select>
               </label>
             </div>
