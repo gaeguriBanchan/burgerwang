@@ -3,10 +3,20 @@ import React, { useState } from 'react';
 import BlindEyesButton from '../base/BlindEyesButton';
 
 const JoinPw = () => {
+  //분리예정
   const [pwType, setPwType] = useState({
     type: 'password',
     visible: false,
   });
+  const handlePwType = (e) => {
+    setPwType(() => {
+      if (!pwType.visible) {
+        return { type: 'text', visible: true };
+      }
+      return { type: 'password', visible: false };
+    });
+  };
+  //
 
   return (
     <div className="pb-10">
@@ -25,11 +35,24 @@ const JoinPw = () => {
                   placeholder="비밀번호"
                   required
                 />
-                <BlindEyesButton pwType={pwType} setPwType={setPwType} />
+                <BlindEyesButton
+                  pwType={pwType}
+                  setPwType={setPwType}
+                  handlePwType={handlePwType}
+                />
               </li>
               <li className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
-                <input type="password" placeholder="비밀번호 확인" required />
-                <button>버튼</button>
+                <input
+                  className="outline-none"
+                  type={pwType.type}
+                  placeholder="비밀번호 확인"
+                  required
+                />
+                <BlindEyesButton
+                  pwType={pwType}
+                  setPwType={setPwType}
+                  handlePwType={handlePwType}
+                />
               </li>
             </ul>
           </div>

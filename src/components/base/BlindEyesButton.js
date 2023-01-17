@@ -2,16 +2,7 @@
 
 import style from '../join/Join.module.css';
 
-const BlindEyesButton = ({ pwType, setPwType }) => {
-  const handlePwType = (e) => {
-    setPwType(() => {
-      if (!pwType.visible) {
-        return { type: 'text', visible: true };
-      }
-      return { type: 'password', visible: false };
-    });
-  };
-
+const BlindEyesButton = ({ pwType, handlePwType }) => {
   return (
     <>
       {pwType.visible ? (

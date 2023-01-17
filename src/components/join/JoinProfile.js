@@ -20,6 +20,7 @@ const JoinProfile = () => {
               type="email"
               placeholder="아이디 (이메일)"
               required
+
             />
           </li>
           <li className="flex pb-10">
