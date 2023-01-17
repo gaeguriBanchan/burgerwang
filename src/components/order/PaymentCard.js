@@ -1,5 +1,5 @@
 import styles from "./Payment.module.css";
-export const PaymentCard = ({ payment, changePayment }) => {
+export const PaymentCard = ({ payment, setPayment }) => {
   return (
     <div>
       <ul>
@@ -11,7 +11,7 @@ export const PaymentCard = ({ payment, changePayment }) => {
               id="pay-card"
               value="pay-card"
               checked={payment === "pay-card"}
-              onChange={changePayment}
+              onChange={(e) => setPayment(e.target.value)}
               className={"hidden " + styles.paymentcheck}
             />
             <span className={"text-xl " + styles.paymentradio}>신용카드 결제</span>
