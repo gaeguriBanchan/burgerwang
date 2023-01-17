@@ -26,7 +26,7 @@ const Login = () => {
         <title>로그인</title>
       </Helmet>
       <div className="container max-w-6xl px-5 py-12">
-        <div className="container w-1/2 ">
+        <div className="container w-2/3">
           <h2 className="flex flex-col font-JUA pb-12 text-4xl ">
             <em className="not-italic text-bgwred">YOUR WAY</em>
             <span className="font-[BMJUA]">어서오세요! 버거왕입니다.</span>

@@ -1,8 +1,11 @@
 /** @format */
 
-import React from 'react';
+import React from "react";
+import UserEmailId from "../base/UserEmailId";
+import UserName from "../base/UserName";
+import UserPhon from "../base/UserPhon";
 
-const JoinProfile = () => {
+const JoinProfile = ({ userEmail, userName, userPhon }) => {
   return (
     <div className="mb-10">
       <h3 className="mb-4 pl-12 flex items-center bg-icon-person bg-no-repeat bg-left">
@@ -12,36 +15,11 @@ const JoinProfile = () => {
         <p className="w-full bg-ededed px-16 py-6 text-xl">
           회원정보를 입력해주세요
         </p>
-        <ul className="flex flex-col px-16 py-6 text-2xl">
-          <li className="flex pb-10">
-            <label className="w-1/3 py-4 font-black">이메일 아이디</label>
-            <input
-              className="w-full bg-underline bg-repeat-x bg-bottom outline-none"
-              type="email"
-              placeholder="아이디 (이메일)"
-              required
-
-            />
-          </li>
-          <li className="flex pb-10">
-            <label className="w-1/3 py-4 font-black">이름</label>
-            <input
-              className="w-full bg-underline bg-repeat-x bg-bottom outline-none"
-              type="text"
-              placeholder="이름"
-              required
-            />
-          </li>
-          <li className="flex pb-10">
-            <label className="w-1/3 py-4 font-black">휴대폰 번호</label>
-            <input
-              className="w-full bg-underline bg-repeat-x bg-bottom outline-none"
-              type="email"
-              placeholder="아이디 (이메일)"
-              required
-            />
-          </li>
-        </ul>
+        <div className="flex flex-col px-16 py-6 text-2xl">
+          <UserEmailId email={userEmail} emailId={"이메일 아이디"} />
+          <UserName name={userName} />
+          <UserPhon phon={userPhon} />
+        </div>
       </div>
     </div>
   );
