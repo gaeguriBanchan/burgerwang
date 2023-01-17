@@ -8,10 +8,10 @@ const JoinOptional = () => {
   //   22, 23, 24, 25, 26, 27, 28, 29, 30, 31,
   // ];
 
-  const day = () => {
+  const days = () => {
     let day = [];
     for (let i = 1; i < 32; i += 1) {
-      day.push(<option value={i}>{i}</option>);
+      day.push(i);
     }
     return day;
   };
@@ -27,7 +27,7 @@ const JoinOptional = () => {
   const year = () => {
     let year = [];
     for (let i = 1920; i < 2023; i += 1) {
-      year.push(i);
+      year.push(<option value={i}>{i}</option>);
     }
     return year;
   };
@@ -89,7 +89,7 @@ const JoinOptional = () => {
                   <option value="" selected>
                     선택
                   </option>
-                  {day()}
+                  {days()}
                   {/*    {day.map((item, index) => {
                     return (
                       <option key={index} value={item}>

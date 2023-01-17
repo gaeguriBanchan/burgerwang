@@ -1,22 +1,12 @@
 /** @format */
-
 import React, { useState } from 'react';
+import BlindEyesButton from '../base/BlindEyesButton';
 
 const JoinPw = () => {
   const [pwType, setPwType] = useState({
     type: 'password',
     visible: false,
   });
-
-  //password type 변경하는 함수
-  const handlePwType = (e) => {
-    setPwType(() => {
-      if (!pwType.visible) {
-        return { type: 'text', visible: true };
-      }
-      return { type: 'password', visible: false };
-    });
-  };
 
   return (
     <div className="pb-10">
@@ -30,21 +20,15 @@ const JoinPw = () => {
             <ul className="w-full">
               <li className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
                 <input
-                className='outline-none'
+                  className="outline-none"
                   type={pwType.type}
                   placeholder="비밀번호"
                   required
                 />
-                <button onClick={handlePwType}>
-                {  pwType.visible ? <span>숨기기</span> : <span>보이기</span>  }
-                </button>
+                <BlindEyesButton pwType={pwType} setPwType={setPwType} />
               </li>
               <li className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
-                <input
-                  type="password"
-                  placeholder="비밀번호 확인"
-                  required
-                />
+                <input type="password" placeholder="비밀번호 확인" required />
                 <button>버튼</button>
               </li>
             </ul>
