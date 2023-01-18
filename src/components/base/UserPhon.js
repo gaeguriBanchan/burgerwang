@@ -9,8 +9,7 @@ const UserPhon = ({ userPhon }) => {
         type="tel"
         placeholder="휴대폰 번호"
         required
-        value={userPhon}
-        onChange={userPhon}
+        onChange={(e) => userPhon(e)}
       />
     </form>
   );

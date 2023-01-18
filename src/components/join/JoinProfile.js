@@ -16,7 +16,7 @@ const JoinProfile = ({ userEmail, userName, userPhon }) => {
           회원정보를 입력해주세요
         </p>
         <div className="flex flex-col px-16 py-6 text-2xl">
-          <UserEmailId email={userEmail} emailId={"이메일 아이디"} />
+          <UserEmailId userEmail={userEmail} emailId={"이메일 아이디"} />
           <UserName name={userName} />
           <UserPhon phon={userPhon} />
         </div>

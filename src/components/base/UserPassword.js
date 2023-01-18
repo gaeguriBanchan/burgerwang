@@ -2,11 +2,18 @@ import React, { useState } from "react";
 import BlindEyesButton from "./BlindEyesButton";
 
 const UserPassword = ({ pw }) => {
+  const [password, setPassword] = useState();
+  const userPassword = (e) => {
+    setPassword(e.target.value);
+    console.log(password);
+  };
+
   const [pwType, setPwType] = useState({
     type: "password",
     visible: false,
   });
   const handlePwType = (e) => {
+    e.preventDefault();
     setPwType(() => {
       if (!pwType.visible) {
         return { type: "text", visible: true };
@@ -14,7 +21,6 @@ const UserPassword = ({ pw }) => {
       return { type: "password", visible: false };
     });
   };
-  //
 
   return (
     <div className="pb-10 w-full">
@@ -24,6 +30,7 @@ const UserPassword = ({ pw }) => {
           type={pwType.type}
           placeholder={pw}
           required
+          onChange={(e) => userPassword(e)}
         />
         <BlindEyesButton
           pwType={pwType}

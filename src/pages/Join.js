@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const Join = () => {
   const [joinEmail, setJoinEmail] = useState("");
   const [joinName, steJoinName] = useState("");
-  const [joinPhon, setJoinPhon] = useState();
+  const [joinPhon, setJoinPhon] = useState("");
 
   const userEmail = (e) => {
     setJoinEmail(e.target.value);
@@ -32,7 +32,13 @@ const Join = () => {
 
       <div className="container max-w-6xl px-5 py-12">
         <h2 className=" font-JUA pb-12 text-4xl">회원가입</h2>
-        <JoinProfile userEmail={userEmail} userName={userName} userPhon={userPhon} />
+
+        <JoinProfile
+          userEmail={userEmail}
+          userName={userName}
+          userPhon={userPhon}
+          joinPhon={joinPhon}
+        />
         <JoinOptional />
         <JoinPw />
         <center>

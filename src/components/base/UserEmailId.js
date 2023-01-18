@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserEmailId = ({ usdrEmail, emailId }) => {
+const UserEmailId = ({ emailId, userEmail }) => {
   return (
     <form className="flex pb-10">
       <label className="w-1/3 py-4 font-black">{emailId}</label>
@@ -9,8 +9,7 @@ const UserEmailId = ({ usdrEmail, emailId }) => {
         type="email"
         placeholder={emailId}
         required
-        value={usdrEmail}
-        onChange={usdrEmail}
+        onChange={(e) => userEmail(e)}
       />
     </form>
   );

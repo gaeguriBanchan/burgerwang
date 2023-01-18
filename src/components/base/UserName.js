@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserName = ({userNname}) => {
+const UserName = ({ userName }) => {
   return (
     <form className="flex pb-10">
       <label className="w-1/3 py-4 font-black">이름</label>
@@ -9,8 +9,7 @@ const UserName = ({userNname}) => {
         type="text"
         placeholder="이름"
         required
-        value={userNname}
-        onChange={userNname}
+        onChange={(e) => userName(e)}
       />
     </form>
   );
