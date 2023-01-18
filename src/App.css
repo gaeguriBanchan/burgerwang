@@ -1,11 +1,13 @@
-#app { height: 100% }
+#app {
+  height: 100%;
+}
 html,
 /* body {
   position: relative;
   height: 100%;
 }
 
-body {
+/* body {
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 14px;

@@ -2,7 +2,8 @@ import PaymentMeet from "./PaymentMeet";
 import PaymentCard from "./PaymentCard";
 import { useState } from "react";
 import PaymentSelect from "./PaymentSelect";
-const Payment = () => {
+const Payment = ({ paymentData }) => {
+  const { totalPrice } = paymentData;
   const [paymentTab, setPaymentTab] = useState("card");
   const [payment, setPayment] = useState("pay-card");
   const changePayTab = (tabName) => {
@@ -39,7 +40,7 @@ const Payment = () => {
         )}
         <p className="pt-6 mt-8 flex justify-between border-t-2 border-ededed border-dashed">
           <span className="text-3xl font-black">총 결제금액</span>
-          <span className="text-3xl text-bgwred font-black">결제금액</span>
+          <span className="text-3xl text-bgwred font-black">{totalPrice}</span>
         </p>
       </div>
     </div>

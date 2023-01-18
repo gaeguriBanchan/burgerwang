@@ -1,0 +1,37 @@
+{
+  "status": true,
+  "message": "주문 내역을 조회했습니다.",
+  "code": "ACCEPTED",
+  "list": [
+    {
+      "orderSeq": 204,
+      "memberName": "김민아",
+      "orderDate": "2023.01.11 15:45",
+      "storeName": "경대병원역sk점",
+      "orderStatus": "접수",
+      "pay": "만나서",
+      "couponName": "웰컴쿠폰",
+      "discountPrice": 1000,
+      "totalPrice": 13200,
+      "cancellable": true,
+      "request": "조심히와주세요",
+      "menuList": "블랙어니언와퍼 라지세트",
+      "address": "대구광역시 중구 109-2 그린컴퓨터학원"
+    },
+    {
+      "orderSeq": 195,
+      "memberName": "김민아",
+      "orderDate": "2023.01.11 13:01",
+      "storeName": "경대병원역sk점",
+      "orderStatus": "접수",
+      "pay": "만나서",
+      "couponName": null,
+      "discountPrice": null,
+      "totalPrice": 26000,
+      "cancellable": false,
+      "request": "조심히와주세요",
+      "menuList": "블랙어니언와퍼세트+블랙어니언와퍼 라지세트",
+      "address": "대구광역시 중구 109-2 그린컴퓨터학원"
+    }
+  ]
+}

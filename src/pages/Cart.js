@@ -3,7 +3,10 @@ import ActiveButton from "../components/base/ActiveButton";
 import ActiveBlackButton from "../components/base/ActiveBlackButton";
 import CartList from "../components/cart/CartList";
 import { Link } from "react-router-dom";
+import CartPrice from "../components/cart/CartPrice";
+import useGetCart from "../components/cart/hooks/useGetCart";
 const Cart = () => {
+  const cartList = useGetCart();
   return (
     <>
       <Helmet>
@@ -12,13 +15,8 @@ const Cart = () => {
       </Helmet>
       <div className="container max-w-6xl px-5 py-12">
         <h2 className="pb-4 font-JUA text-4xl">딜리버리 카트</h2>
-        <CartList />
-        <div className="px-16 py-8 bg-white drop-shadow">
-          <p className="flex justify-between">
-            <span className="text-3xl font-black">총 주문금액</span>
-            <span className="text-3xl text-bgwred font-black">결제금액</span>
-          </p>
-        </div>
+        <CartList cartList={cartList} />
+        <CartPrice />
         <div className="flex justify-between items-center mt-8">
           <ul className="list-disc ml-4">
             <li>주문서를 작성하기 전에 선택하신 상품명, 수량 및 가격이 정확한지 확인해주세요.</li>

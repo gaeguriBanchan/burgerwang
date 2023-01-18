@@ -1,0 +1,47 @@
+{
+  "status": true,
+  "message": "해당주문을 상세조회했습니다.",
+  "code": "ACCEPTED",
+  "order": {
+    "memberName": "김민아",
+    "orderDate": "2023-01-10T15:15:55",
+    "storeName": "경대병원역sk점",
+    "orderStatus": "주문취소",
+    "pay": {
+      "payMethod": "만나서",
+      "payType": "카드 결제"
+    },
+    "couponName": null,
+    "discountPrice": null,
+    "totalPrice": 116400,
+    "orderDetail": [
+      {
+        "orderMenuName": "블랙어니언와퍼 라지세트",
+        "eventMenuName": null,
+        "price": 38800,
+        "menuEx": null,
+        "count": 1,
+        "composition": "프렌치 프라이L교환, 콜라 L교환"
+      },
+      {
+        "orderMenuName": "블랙어니언와퍼 라지세트",
+        "eventMenuName": null,
+        "price": 38800,
+        "menuEx": null,
+        "count": 1,
+        "composition": "프렌치 프라이L교환, 콜라 L교환"
+      },
+      {
+        "orderMenuName": "블랙어니언와퍼 라지세트",
+        "eventMenuName": null,
+        "price": 38800,
+        "menuEx": null,
+        "count": 1,
+        "composition": "프렌치 프라이L교환, 콜라 L교환"
+      }
+    ],
+    "cancellable": false,
+    "request": "조심히와주세요",
+    "address": "대구광역시 중구 109-2 그린컴퓨터학원"
+  }
+}
