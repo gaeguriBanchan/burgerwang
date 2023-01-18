@@ -1,9 +1,12 @@
 import ChangeButton from "../base/ChangeButton";
-import { useState } from "react";
-const DeliInfo = () => {
-  const [deliPhone, setDeliPhone] = useState("000-0000-0000");
+import { useEffect, useState } from "react";
+const DeliInfo = ({ deliData }) => {
+  const { address, userPhone, storeName } = deliData;
+  const [deliPhone, setDeliPhone] = useState("");
   const [deliMessage, setDeliMessage] = useState("");
-
+  useEffect(() => {
+    setDeliPhone(userPhone);
+  }, [userPhone]);
   return (
     <div className="w-full">
       <h3 className="mb-4 pl-12 flex items-center bg-icon-deli bg-no-repeat bg-left">
@@ -12,7 +15,7 @@ const DeliInfo = () => {
 
       <div className="px-16 pt-5 pb-16 bg-white drop-shadow">
         <div className="py-10 flex items-center border-b border-ededed">
-          <span className="grow text-2xl">주소</span>
+          <span className="grow text-2xl">{address}</span>
           <ChangeButton name="변경" />
         </div>
         <div className="w-full mt-8">
@@ -23,8 +26,8 @@ const DeliInfo = () => {
                 className="grow text-xl h-16 bg-underline bg-no-repeat bg-bottom outline-none"
                 required
                 type="text"
-                value={deliPhone}
-                onChange={() => setDeliPhone}
+                value={deliPhone || ""}
+                onChange={(e) => setDeliPhone(e.target.value)}
               />
             </div>
             <div className="w-3/6 h-16 flex items-center">
@@ -32,7 +35,7 @@ const DeliInfo = () => {
               <input
                 type="text"
                 className="grow px-4 h-16 bg-f7f7f7 text-xl text-bgwred outline-none"
-                value={"버거왕 본점"}
+                value={storeName || ""}
                 readOnly
               />
             </div>
@@ -44,8 +47,8 @@ const DeliInfo = () => {
                 className="grow h-16 text-xl bg-underline bg-repeat-x bg-bottom outline-none"
                 type="text"
                 placeholder="요청사항을 입력하세요"
-                value={deliMessage}
-                onChange={() => setDeliMessage}
+                value={deliMessage || ""}
+                onChange={(e) => setDeliMessage(e.target.value)}
               />
             </div>
             <div className="w-full mt-2">

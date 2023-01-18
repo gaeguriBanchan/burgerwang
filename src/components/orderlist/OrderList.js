@@ -1,8 +1,13 @@
 import OrderListItem from "./OrderListItem";
+import useGetOrderList from "./hooks/useGetOrderList";
 const OrderList = () => {
+  const orderList = useGetOrderList();
   return (
     <ul className="pt-5">
-      <OrderListItem />
+      {orderList &&
+        orderList.map((order) => {
+          return <OrderListItem key={order.orderSeq} order={order} />;
+        })}
     </ul>
   );
 };

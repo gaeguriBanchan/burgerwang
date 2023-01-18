@@ -1,34 +1,45 @@
 import React, { useState } from "react";
-import CartListItemOption from "./CartListItemOption";
-import styles from "./Cart.module.css";
+import CartListItemOption from "./CartListItemOptions";
 import DefaultImage from "../../assets/images/logo.png";
+import CartListItemOptionOne from "./CartListItemOptionOne";
 
-const CartListItem = ({ id, price, checked, changeChecked }) => {
-  const [orderCount, setOrderCount] = useState(1);
+const CartListItem = ({ cart }) => {
+  const { drink, drink2, event, ingredient, menu, menuCount, price, side } = cart;
+  const [orderCount, setOrderCount] = useState(menuCount);
   const plusOrderCount = () => setOrderCount(orderCount + 1);
-  const minusOrderCount = () => (orderCount === 1 ? "" : setOrderCount(orderCount - 1));
+  const minusOrderCount = () => orderCount > 1 && setOrderCount(orderCount - 1);
   return (
     <li className="my-6 px-16 pt-14 pb-8 bg-white drop-shadow ">
       <div className="pb-10 flex justify-between items-center border-b border-ededed">
-        <label htmlFor={id}>
-          <input
-            type="checkbox"
-            name={id}
-            id={id}
-            checked={checked}
-            className={"hidden " + styles.cartcheck}
-            onChange={(e) => changeChecked(e.target.id)}
-          />
-          <div className={"relative grow mr-12 pl-12 " + styles.cartcheckbox}>
-            <p className="text-4xl font-black">햄버거명</p>
-            <p className="text-xl mt-3 text-8d8d8d font-black">구성품 리스트 없으면 안 보임</p>
+        <label>
+          <div className="relative grow mr-12">
+            <p className="text-4xl font-black">{menu}</p>
+            {/* <p className="text-xl mt-3 text-8d8d8d font-black">구성품 리스트 없으면 안 보임</p> */}
             <p className="text-3xl mt-3 font-black">{price}</p>
           </div>
         </label>
         <img src={DefaultImage} alt="상품 이미지" className="h-28" />
       </div>
       <ul className="py-8 border-b border-ededed border-dashed">
-        <CartListItemOption />
+        {ingredient && ingredient.length > 0 && (
+          <CartListItemOption kind="재료추가" option={ingredient} />
+        )}
+        {side && (
+          <CartListItemOptionOne kind="사이드" name={side.sideName} price={side.sidePrice} />
+        )}
+        {drink && (
+          <CartListItemOptionOne
+            kind={drink ? "음료1" : "음료"}
+            name={drink.drinkName}
+            price={drink.drinkPrice}
+          />
+        )}
+        {drink2 && (
+          <CartListItemOptionOne kind="음료2" name={drink2.drinkName} price={drink2.drink2Price} />
+        )}
+        {event && (
+          <CartListItemOptionOne kind="이벤트" name={event.eventName} price={event.eventPrice} />
+        )}
       </ul>
       <div className="py-8 flex items-center">
         <div className="w-3/6 flex items-center">

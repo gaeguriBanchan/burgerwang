@@ -5,8 +5,10 @@ import DisabledButton from "../components/base/DisabledButton";
 import DeliInfo from "../components/order/DeliInfo";
 import OrderInfo from "../components/order/OrderInfo";
 import Payment from "../components/order/Payment";
+import useGetOrder from "../components/order/hooks/useGetOrder";
 
 const Order = () => {
+  const { deliData, orderData, couponData, paymentData } = useGetOrder();
   return (
     <>
       <Helmet>
@@ -16,9 +18,9 @@ const Order = () => {
       <div className="container max-w-6xl px-5 py-12">
         <h2 className="pb-4 font-JUA text-4xl">주문하기</h2>
         <div className="py-4">
-          <DeliInfo />
-          <OrderInfo />
-          <Payment />
+          <DeliInfo deliData={deliData} />
+          <OrderInfo orderData={orderData} />
+          <Payment paymentData={paymentData} />
         </div>
         <div className="flex justify-end">
           <DisabledButton name="취소" />
