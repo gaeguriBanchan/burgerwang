@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Food from '../components/base/Food';
-
 const Menu = () => {
   return (
-    <Fragment className=''>
+    <>
       <div className='container max-w-6xl px-5 m-auto '>
         <div className='flex justify-between mb-14 mt-9'>
           <span className='text-4xl font-black'>메뉴</span>
@@ -46,7 +45,7 @@ const Menu = () => {
           <Food></Food>
         </div>
       </div>
-    </Fragment>
+    </>
   );
 };
 

@@ -1,6 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Count from '../menu/Count';
+import Drink from '../menu/Drink';
+import Ingredients from '../menu/Ingredients';
+import Modal from '../menu/Modal';
+import Side from '../menu/Side';
 
 const Food = () => {
+  // const [modalOpen, setModalOpen] = useState(false);
+
+  // const openModal = () => {
+  //   setModalOpen(true);
+  // };
+  // const closeModal = () => {
+  //   setModalOpen(false);
+  // };
+
+  // 재료
+  // const [ingredientsOpen, setIngredientsOpen] = useState(false);
+
+  // const openIngredients = () => {
+  //   setIngredientsOpen(true);
+  // };
+  // const closeIngredients = () => {
+  //   setIngredientsOpen(false);
+  // };
+
+  // 사이드
+  // const [sideOpen, setSideOpen] = useState(false);
+
+  // const openSide = () => {
+  //   setSideOpen(true);
+  // };
+  // const closeSide = () => {
+  //   setSideOpen(false);
+  // };
+
+  // 음료
+  // const [drinkOpen, setDrinkOpen] = useState(false);
+
+  // const openDrink = () => {
+  //   setDrinkOpen(true);
+  // };
+  // const closeDrink = () => {
+  //   setDrinkOpen(false);
+  // };
+
+  // 카운트
+  const [countOpen, setCountOpen] = useState(false);
+
+  const openCount = () => {
+    setCountOpen(true);
+  };
+  const closeCount = () => {
+    setCountOpen(false);
+  };
   return (
     <>
       <div className='grid grid-rows-none'>
@@ -16,6 +69,13 @@ const Food = () => {
         />
         <div className='flex justify-center'>블랙어니언팩</div>
         <div className='flex justify-center'>￦23700</div>
+        <button onClick={openCount}>선택</button>
+        {/* header 부분에 텍스트를 입력한다. */}
+        <Count
+          open={countOpen}
+          close={closeCount}
+          // header='Modal heading'
+        ></Count>
       </div>
     </>
   );

@@ -22,8 +22,8 @@ const Home = () => {
   return (
     <div>
       <div className='w-full flex justify-between items-start absolute z-50'>
-        {/* <HomeLogin/> */}
-        <HomeLogout/>
+        <HomeLogin/>
+        {/* <HomeLogout/> */}
       </div>
       <Swiper
         slidesPerView={1}
