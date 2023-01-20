@@ -1,9 +1,9 @@
 import apiClient from "./apiClient";
 
-export const getOrder = async () => {
+export const getOrder = async (data) => {
   try {
     // const res = await apiClient.get("/cart/info");
-    const res = await apiClient.get("/apidummy/order.json");
+    const res = await apiClient.get("/apidummy/order.json", data);
     return res.data;
   } catch (err) {
     return err;

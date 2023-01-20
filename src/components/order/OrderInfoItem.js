@@ -1,6 +1,6 @@
 import OrderInfoItemOptions from "./OrderInfoItemOptions";
 import { useState } from "react";
-import CartListItemOptionOne from "../cart/CartListItemOptionOne";
+import OrderInfoItemOptionOne from "./OrderInfoItemOptionOne";
 
 const OrderInfoItem = ({ order }) => {
   const { drink, drink2, eventName, ingredient, menuName, odCount, price, side } = order;
@@ -20,24 +20,17 @@ const OrderInfoItem = ({ order }) => {
           <OrderInfoItemOptions kind="재료추가" option={ingredient} />
         )}
         {side && (
-          <CartListItemOptionOne kind="사이드" name={side.sideName} price={side.sidePrice} />
+          <OrderInfoItemOptionOne kind="사이드" name={side.sideName} price={side.sidePrice} />
         )}
         {drink && (
-          <CartListItemOptionOne
-            kind={drink ? "음료1" : "음료"}
+          <OrderInfoItemOptionOne
+            kind={drink2.length > 0 ? "음료1" : "음료"}
             name={drink.drinkName}
             price={drink.drinkPrice}
           />
         )}
         {drink2 && (
-          <CartListItemOptionOne kind="음료2" name={drink2.drinkName} price={drink2.drink2Price} />
-        )}
-        {eventName && (
-          <CartListItemOptionOne
-            kind="이벤트"
-            name={eventName.eventName}
-            price={eventName.eventPrice}
-          />
+          <OrderInfoItemOptionOne kind="음료2" name={drink2.drinkName} price={drink2.drink2Price} />
         )}
       </ul>
       <div className="py-8 flex items-center">

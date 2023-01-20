@@ -9,7 +9,7 @@ const useGetOrderListDetail = (id) => {
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [id]);
 
   const { orderDetail } = orderListDetail;
 
