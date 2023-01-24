@@ -13,9 +13,9 @@ const UserPhon = () => {
   }, [joinPhon, setJoinPhon]);
 
   return (
-    <div className="flex text-2xl w-full pb-6">
+    <div className="flex text-2xl w-full">
       <input
-        className="w-full bg-underline bg-repeat-x bg-bottom outline-none"
+        className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
         type="tel"
         placeholder="000-0000-0000"
         required

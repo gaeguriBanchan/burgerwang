@@ -29,7 +29,7 @@ const UserPassword = ({ pw }) => {
 
   return (
     <div
-      className="w-full pb-6
+      className="w-full
     "
     >
       <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">

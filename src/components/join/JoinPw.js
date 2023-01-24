@@ -1,7 +1,7 @@
 /** @format */
-import React from 'react';
-import UserInfoType from '../base/UserInfoType';
-import UserPassword from '../base/UserPassword';
+import React from "react";
+import UserInfoType from "../base/UserInfoType";
+import UserPassword from "../base/UserPassword";
 
 const JoinPw = () => {
   return (
@@ -11,12 +11,12 @@ const JoinPw = () => {
       </h3>
       <div className="bg-white drop-shadow  px-16 py-6 text-2xl">
         <div className="flex py-6">
-          <div className="w-1/4 py-4 font-black">
-            <UserInfoType type={'비밀번호'} />
+          <div className="w-1/3 py-4 font-black">
+            <UserInfoType type={"비밀번호"} />
           </div>
           <div className="w-full">
-            <UserPassword pw={'비밀번호'} />
-            <UserPassword pw={'비밀번호 확인'} />
+            <UserPassword pw={"비밀번호"} />
+            <UserPassword pw={"비밀번호 확인"} />
           </div>
         </div>
       </div>
