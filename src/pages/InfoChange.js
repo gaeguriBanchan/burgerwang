@@ -5,7 +5,6 @@ import PageName from "../components/base/PageName";
 import UserInfoType from "../components/base/UserInfoType";
 import UserEmailId from "../components/base/UserEmailId";
 import UserPassword from "../components/base/UserPassword";
-import ActiveButton from "../components/base/ActiveButton";
 import ActiveBlackButton from "../components/base/ActiveBlackButton";
 import DisabledButton from "../components/base/DisabledButton";
 

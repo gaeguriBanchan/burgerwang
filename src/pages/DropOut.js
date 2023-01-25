@@ -1,51 +1,61 @@
 /** @format */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
+import ActiveBlackButton from '../components/base/ActiveBlackButton';
+import ActiveButton from '../components/base/ActiveButton';
+import UserInfoType from '../components/base/UserInfoType';
+import UserPassword from '../components/base/UserPassword';
 const DropOut = () => {
+  const list = ['개인정보보호', '아이디변경', '사이트이용불만', '직접입력'];
   return (
-    <div className="container max-w-6xl px-5">
-      <h2>회원탈퇴</h2>
-      <ul>
-        <li>
-          <span>
-            <span>■</span>
-            <span>탈퇴사유</span>
-          </span>
-          <div>
-            <select name="drop-out">
-              <option value="" selected>
-                탈퇴 사유를 선택해주세요
+    <div>
+      <Helmet>
+        <title>회원 탈퇴</title>
+        <style>{'body {background:#f2ebe6;'}</style>
+      </Helmet>
+      <div className="container max-w-6xl px-5">
+        <div className="container w-9/12 pt-12">
+          <h3 className="mb-4 pl-12 flex items-center bg-icon-out bg-no-repeat bg-left">
+            <span className="font-JUA text-2xl">탈퇴 사유</span>
+          </h3>
+          <div className="bg-white drop-shadow px-16 py-10 text-2xl mb-10">
+            <select className="w-full bg-underline bg-repeat-x bg-bottom outline-none pb-5">
+              <option value="" select="true">
+                탈퇴사유를 선택해주세요
               </option>
-              <option value="개인정보보호">개인정보보호</option>
-              <option value="아이디변경">아이디변경</option>
-              <option value="사이트이용불만">사이트이용불만</option>
-              <option value="직접입력">직접입력</option>
+              {list.map((item) => (
+                <option value={item} key={item}>
+                  {item}
+                </option>
+              ))}
             </select>
           </div>
-        </li>
-        <li>
-          <span>
-            <span>■</span>
-            <span>계정확인</span>
-          </span>
-          <div>
-            <div>
-              <span>이메일</span>
-              <span>이메일@email.com</span>
+
+          <h3 className="mb-4 pl-12 flex items-center bg-icon-person bg-no-repeat bg-left">
+            <span className="font-JUA text-2xl">기본정보</span>
+          </h3>
+          <div className="bg-white drop-shadow mb-6">
+            <div className="px-16 py-6 text-2xl">
+              <div className=" flex items-center pb-6">
+                <UserInfoType type={'이메일'} />
+                <p className="w-full  font-black mr-2">User@email.com</p>
+              </div>
+              <div className="flex  items-center text-2xl pb-6">
+                <UserInfoType type={'이름'} />
+                <UserPassword />
+              </div>
             </div>
           </div>
-        </li>
-      </ul>
-      <p>
-        <label>
-          <input type="checkbox" />
-          <span>위 내용을 확인하였으며, 버거킹 탈퇴를 합니다.</span>
-        </label>
-      </p>
-      <div>
-        <Link to="/mypage">취소</Link>
-        <button>회원탈퇴</button>
+          <label className="flex justify-end mb-12" id="out">
+            <input className="mr-2" htmlFor="out" type="checkbox" />위 내용을
+            확인하였으며, 버거킹 탈퇴를 합니다.
+          </label>
+        </div>
+        <center>
+          <ActiveButton name={'취소'} />
+          <ActiveBlackButton name={'변경'} />
+        </center>
       </div>
     </div>
   );

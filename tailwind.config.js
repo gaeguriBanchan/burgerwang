@@ -23,6 +23,7 @@ module.exports = {
         'icon-person': "url('/src/assets/images/icon_person.png')",
         'icon-eye': "url('/src/assets/images/icon_eye.png')",
         'icon-eye-blind': "url('/src/assets/images/icon_eye_blind.png')",
+        'icon-out': "url('/src/assets/images/icon_out.png')",
       },
       colors: {
         f7f7f7: '#f7f7f7',

@@ -14,7 +14,7 @@ const UserPassword = ({ pw }) => {
   };
 
   useEffect(() => {
-    console.log('비밀번호', password);
+    // console.log('비밀번호', password);
   }, [password, setPassword]);
 
   const handlePwType = (e) => {
@@ -28,10 +28,7 @@ const UserPassword = ({ pw }) => {
   };
 
   return (
-    <div
-      className="w-full
-    "
-    >
+    <div className="w-full">
       <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
         <input
           className="w-full outline-none"

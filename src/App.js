@@ -21,6 +21,7 @@ import OrderListPage from "./pages/OrderListPage";
 import OrderListDetail from "./pages/OrderListDetail";
 import MyPage from "./pages/MyPage";
 import FindInfo from "./pages/FindInfo";
+import InfoChangeUpdate from "./pages/InfoChangeUpdate";
 function App() {
   return (
     <>
@@ -32,6 +33,7 @@ function App() {
             <Route path="/join" element={<Join />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/infoChange" element={<InfoChange />}></Route>
+            <Route path="/infoChangeUpdate" element={<InfoChangeUpdate />}></Route>
             <Route path="/pwChange" element={<PwChange />}></Route>
             <Route path="/dropOut" element={<DropOut />}></Route>
             <Route path="/menu" element={<Menu />}></Route>
