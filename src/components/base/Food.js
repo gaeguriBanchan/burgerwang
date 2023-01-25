@@ -6,14 +6,14 @@ import Modal from '../menu/Modal';
 import Side from '../menu/Side';
 
 const Food = () => {
-  // const [modalOpen, setModalOpen] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
 
-  // const openModal = () => {
-  //   setModalOpen(true);
-  // };
-  // const closeModal = () => {
-  //   setModalOpen(false);
-  // };
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
 
   // 재료
   // const [ingredientsOpen, setIngredientsOpen] = useState(false);
@@ -46,14 +46,14 @@ const Food = () => {
   // };
 
   // 카운트
-  const [countOpen, setCountOpen] = useState(false);
+  // const [countOpen, setCountOpen] = useState(false);
 
-  const openCount = () => {
-    setCountOpen(true);
-  };
-  const closeCount = () => {
-    setCountOpen(false);
-  };
+  // const openCount = () => {
+  //   setCountOpen(true);
+  // };
+  // const closeCount = () => {
+  //   setCountOpen(false);
+  // };
   return (
     <>
       <div className='grid grid-rows-none'>
@@ -69,13 +69,17 @@ const Food = () => {
         />
         <div className='flex justify-center'>블랙어니언팩</div>
         <div className='flex justify-center'>￦23700</div>
-        <button onClick={openCount}>선택</button>
+        <button onClick={openModal}>선택</button>
         {/* header 부분에 텍스트를 입력한다. */}
-        <Count
-          open={countOpen}
-          close={closeCount}
+        <Modal
+          open={modalOpen}
+          close={closeModal}
           // header='Modal heading'
-        ></Count>
+        ></Modal>
+        {/* <Ingredients
+          open={ingredientsOpen}
+          close={closeIngredients}
+        ></Ingredients> */}
       </div>
     </>
   );

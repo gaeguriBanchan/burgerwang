@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Side from './Side';
 
 const Ingredients = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
+  // 사이드
+  const [sideOpen, setSideOpen] = useState(false);
+
+  const openSide = () => {
+    setSideOpen(true);
+  };
+  const closeSide = () => {
+    setSideOpen(false);
+  };
 
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -22,10 +32,12 @@ const Ingredients = (props) => {
           </div>
           <main style={{ backgroundColor: '#f2ebe6' }} className='#f2ebe6'>
             <div className='h-16 mb-3 grid grid-cols-10 gap-1'>
-              <input className='h-6 col-span-1 self-center' type='checkbox'/>
+              <input className='h-6 col-span-1 self-center' type='checkbox' />
               <div className='h-16 col-span-6 self-center grid grid-rows-2'>
                 <span className='text-lg ml-5 self-center'>재료</span>
-                <span className='text-sm ml-5 self-center text-slate-400'>가격</span>
+                <span className='text-sm ml-5 self-center text-slate-400'>
+                  가격
+                </span>
               </div>
               <div className='h-16 col-span-3 self-center grid justify-items-center'>
                 <img
@@ -35,15 +47,15 @@ const Ingredients = (props) => {
                 />
               </div>
             </div>
-            
           </main>
           <footer className='flex justify-center bg-red-600'>
-            <button className=''>
+            <button onClick={openSide} className=''>
               확인
             </button>
           </footer>
         </section>
       ) : null}
+      <Side open={sideOpen} close={closeSide}></Side>
     </div>
   );
 };

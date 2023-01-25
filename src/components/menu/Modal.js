@@ -4,14 +4,15 @@ import Ingredients from './Ingredients';
 const Modal = (props) => {
   // 열기, 닫기, 모달 헤더 텍스트를 부모로부터 받아옴
   const { open, close, header } = props;
-  const [ingredientOpen, setIngredientOpen] = useState(false);
+  const [ingredientsOpen, setIngredientsOpen] = useState(false);
 
-  const openIngredient = () => {
-    setIngredientOpen(true);
+  const openIngredients = () => {
+    setIngredientsOpen(true);
   };
-  const closeIngredient = () => {
-    setIngredientOpen(false);
+  const closeIngredients = () => {
+    setIngredientsOpen(false);
   };
+  
   // const bg = {background: '#f2ebe6'}
   return (
     // 모달이 열릴때 openModal 클래스가 생성된다.
@@ -31,13 +32,23 @@ const Modal = (props) => {
             <span className='text-white self-center ml-4'>메뉴 설명</span>
           </div>
           <main style={{ backgroundColor: '#f2ebe6' }} className='#f2ebe6'>
-            <button onClick={openIngredient} className='h-28 mb-3 bg-white grid grid-cols-10 gap-1'>
-              <div className='bg-slate-400 h-24 col-span-6 self-center grid grid-rows-3'>
-                <span className='text-3xl ml-5'>와퍼</span>
-                <span className='text-1xl ml-5 self-center'>설명</span>
-                <span className='text-2xl ml-5 text-red-700'>가격</span>
+            <button
+              onClick={() => {
+                openIngredients();
+                
+              }}
+              className='h-28 w-full mb-3 bg-white grid grid-cols-10 gap-1'
+            >
+              <div className='h-24 col-span-6 self-center grid grid-rows-3'>
+                <span className='text-3xl text-left ml-5'>와퍼</span>
+                <span className='text-1xl text-left ml-5 self-center'>
+                  설명
+                </span>
+                <span className='text-2xl text-left ml-5 text-red-700'>
+                  가격
+                </span>
               </div>
-              <div className='bg-slate-400 h-24 col-span-4 self-center grid justify-items-center'>
+              <div className='h-24 col-span-4 self-center grid justify-items-center'>
                 <img
                   className='h-24'
                   src='https://d1cua0vf0mkpiy.cloudfront.net/images/menu/normal/20d51953-6bca-47a1-a9cf-7ff9f299380c.png'
@@ -45,34 +56,48 @@ const Modal = (props) => {
                 />
               </div>
             </button>
-            <div className='h-28 mb-3 bg-white grid grid-cols-10 gap-1'>
-              <div className='bg-slate-400 h-24 col-span-6 self-center grid grid-rows-3'>
-                <span className='text-3xl ml-5'>와퍼</span>
-                <span className='text-1xl ml-5 self-center'>설명</span>
-                <span className='text-2xl ml-5 text-red-700'>가격</span>
+            <button
+              onClick={openIngredients}
+              className='h-28 w-full mb-3 bg-white grid grid-cols-10 gap-1'
+            >
+              <div className='h-24 col-span-6 self-center grid grid-rows-3'>
+                <span className='text-3xl text-left ml-5'>와퍼</span>
+                <span className='text-1xl text-left ml-5 self-center'>
+                  설명
+                </span>
+                <span className='text-2xl text-left ml-5 text-red-700'>
+                  가격
+                </span>
               </div>
-              <div className='bg-slate-400 h-24 col-span-4 self-center grid justify-items-center'>
+              <div className='h-24 col-span-4 self-center grid justify-items-center'>
                 <img
                   className='h-24'
                   src='https://d1cua0vf0mkpiy.cloudfront.net/images/menu/normal/20d51953-6bca-47a1-a9cf-7ff9f299380c.png'
                   alt='이미지'
                 />
               </div>
-            </div>
-            <div className='h-28 mb-3 bg-white grid grid-cols-10 gap-1'>
-              <div className='bg-slate-400 h-24 col-span-6 self-center grid grid-rows-3'>
-                <span className='text-3xl ml-5'>와퍼</span>
-                <span className='text-1xl ml-5 self-center'>설명</span>
-                <span className='text-2xl ml-5 text-red-700'>가격</span>
+            </button>
+            <button
+              onClick={openIngredients}
+              className='h-28 w-full mb-3 bg-white grid grid-cols-10 gap-1'
+            >
+              <div className='h-24 col-span-6 self-center grid grid-rows-3'>
+                <span className='text-3xl text-left ml-5'>와퍼</span>
+                <span className='text-1xl text-left ml-5 self-center'>
+                  설명
+                </span>
+                <span className='text-2xl text-left ml-5 text-red-700'>
+                  가격
+                </span>
               </div>
-              <div className='bg-slate-400 h-24 col-span-4 self-center grid justify-items-center'>
+              <div className='h-24 col-span-4 self-center grid justify-items-center'>
                 <img
                   className='h-24'
                   src='https://d1cua0vf0mkpiy.cloudfront.net/images/menu/normal/20d51953-6bca-47a1-a9cf-7ff9f299380c.png'
                   alt='이미지'
                 />
               </div>
-            </div>
+            </button>
           </main>
           {/* <footer>
             <button className='close' onClick={close}>
@@ -81,10 +106,7 @@ const Modal = (props) => {
           </footer> */}
         </section>
       ) : null}
-      <Ingredients
-        open={ingredientOpen}
-        close={closeIngredient}
-      ></Ingredients>
+      <Ingredients open={ingredientsOpen} close={closeIngredients}></Ingredients>
     </div>
   );
 };

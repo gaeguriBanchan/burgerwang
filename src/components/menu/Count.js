@@ -18,7 +18,9 @@ const Count = (props) => {
             <div className='mb-3 grid grid-rows-4'>
               <div className='text-2xl m-auto self-center'>메뉴 이름</div>
               <span className='text-lg m-auto self-center'>개</span>
-              <span className='text-sm m-auto self-center'>를 카트에 담으시겠습니까?</span>
+              <span className='text-sm m-auto self-center'>
+                를 카트에 담으시겠습니까?
+              </span>
               <div>
                 <button></button>
                 <button></button>
@@ -26,7 +28,9 @@ const Count = (props) => {
             </div>
           </main>
           <footer className='flex justify-center bg-red-600'>
-            <button className=''>확인</button>
+            <button className=''>
+              확인
+            </button>
           </footer>
         </section>
       ) : null}
