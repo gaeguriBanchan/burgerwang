@@ -1,0 +1,66 @@
+{
+  "status": true,
+  "message": "카트를 조회했습니다.",
+  "code": "ACCEPTED",
+  "cart": [
+    {
+      "cartSeq": 1,
+      "menuCount": 20,
+      "menu": "블랙어니언와퍼 라지세트",
+      "event": null,
+      "side": {
+        "sideSeq": 1,
+        "sideName": "프렌치 프라이L",
+        "sidePrice": "+0원"
+      },
+      "drink": {
+        "drinkSeq": 1,
+        "drinkName": "콜라 L",
+        "drinkPrice": "+0원"
+      },
+      "drink2": null,
+      "ingredient": [
+        {
+          "ingredientSeq": 44,
+          "ingredientName": "SPICY 토마토 소스",
+          "ingredientPrice": "+0원"
+        },
+        {
+          "ingredientSeq": 45,
+          "ingredientName": "불고기 소스",
+          "ingredientPrice": "+0원"
+        },
+        {
+          "ingredientSeq": null,
+          "ingredientName": "재료 추가",
+          "ingredientPrice": "+400원"
+        },
+        {
+          "ingredientSeq": 46,
+          "ingredientName": "디아블로 소스",
+          "ingredientPrice": "+0원"
+        }
+      ],
+      "price": 15000
+    },
+    {
+      "cartSeq": 2,
+      "menuCount": 5,
+      "menu": "블랙어니언와퍼세트",
+      "event": null,
+      "side": {
+        "sideSeq": 1,
+        "sideName": "프렌치 프라이L",
+        "sidePrice": "+500원"
+      },
+      "drink": {
+        "drinkSeq": 1,
+        "drinkName": "콜라 L",
+        "drinkPrice": "+200원"
+      },
+      "drink2": null,
+      "ingredient": [],
+      "price": 13000
+    }
+  ]
+}

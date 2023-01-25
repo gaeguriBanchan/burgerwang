@@ -1,7 +1,8 @@
 import React from "react";
 import OrderInfoItem from "./OrderInfoItem";
 
-const OrderInfo = () => {
+const OrderInfo = ({ orderData }) => {
+  const { orderMenus } = orderData;
   return (
     <div className="w-full my-10">
       <h3 className="mb-4 pl-12 flex items-center bg-icon-menu bg-no-repeat bg-left">
@@ -9,7 +10,10 @@ const OrderInfo = () => {
       </h3>
       <div className="px-16 pb-16 bg-white drop-shadow">
         <ul>
-          <OrderInfoItem />
+          {orderMenus &&
+            orderMenus.map((order) => {
+              return <OrderInfoItem key={order.seq} order={order} />;
+            })}
         </ul>
       </div>
     </div>
