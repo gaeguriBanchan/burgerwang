@@ -1,4 +1,5 @@
-const OrderInfoItemOptionInfo = ({ name, price }) => {
+const OrderInfoItemOptionInfo = ({ optioninfo }) => {
+  const { name, price } = optioninfo;
   return (
     <li className="flex mb-1 justify-between">
       <span className="text-xl">{name}</span>

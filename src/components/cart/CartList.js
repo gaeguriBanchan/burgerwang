@@ -1,46 +1,50 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CartListItem from "./CartListItem";
 import ChangeButton from "../base/ChangeButton";
 import styles from "./Cart.module.css";
 import { useDispatch } from "react-redux";
 import { removeCart } from "../../reducer/cartReducer";
-const CartList = ({ cartList, setCheckList, checkedItem }) => {
+const CartList = ({ cartList, checkList, setCheckList }) => {
   const dispatch = useDispatch();
   const [isCheckAll, setIsCheckAll] = useState(true);
-  const changeCheckAll = () => {
-    const updateList =
-      checkedItem().length === cartList.length
-        ? cartList.map((item) => {
-            item.checked = false;
-            return item;
-          })
-        : cartList.map((item) => {
-            item.checked = true;
-            return item;
-          });
-    setCheckList(updateList);
-    checkCheckAll();
-  };
-  const changeChecked = (checkId) => {
-    const updateList = cartList.map((item) => {
-      if (item.cartSeq === parseInt(checkId)) {
-        item.checked = !item.checked;
-      }
-      return item;
-    });
-    setCheckList(updateList);
-    checkCheckAll();
-  };
   const checkCheckAll = () => {
-    checkedItem().length === cartList.length ? setIsCheckAll(true) : setIsCheckAll(false);
+    const checkAllBool = cartList.length === checkList.length;
+    setIsCheckAll(checkAllBool);
+  };
+  const changeCheckAll = () => {
+    let updateList = [];
+    if (cartList.length > checkList.length) {
+      updateList = cartList.map((item) => item.cartSeq);
+    }
+    setCheckList(updateList);
+  };
+
+  const changeChecked = (checkId) => {
+    let updateList = [];
+    if (checkList.includes(checkId)) {
+      updateList = checkList.filter((id) => id !== checkId);
+    } else {
+      updateList = [...checkList].concat(checkId);
+    }
+    setCheckList(updateList);
+  };
+  const checkId = () => {
+    const newCheckList = cartList.map((item) => item.cartSeq);
+    setCheckList(newCheckList);
+  };
+  const isChecked = (id) => {
+    const checkBool = checkList.includes(id);
+    return checkBool;
   };
   const deleteCart = () => {
-    const key = checkedItem().map((item) => item.cartSeq);
-    // const updateList = cartList.filter((item) => !key.includes(item.cartSeq));
-    // setCheckList(updateList);
-    dispatch(removeCart(key));
-    changeCheckAll();
+    dispatch(removeCart(checkList));
   };
+  useEffect(() => {
+    checkId();
+  }, [cartList]);
+  useEffect(() => {
+    checkCheckAll();
+  }, [checkList]);
   return (
     <div className="mt-4">
       <div className="flex justify-between items-center">
@@ -57,11 +61,16 @@ const CartList = ({ cartList, setCheckList, checkedItem }) => {
             전체선택
           </span>
         </label>
-        <ChangeButton name={"삭제 (" + checkedItem().length + ")"} event={deleteCart} />
+        <ChangeButton name={"삭제 (" + checkList.length + ")"} event={deleteCart} />
       </div>
       <ul>
         {cartList.map((item) => (
-          <CartListItem key={item.cartSeq} cartinfo={item} changeChecked={changeChecked} />
+          <CartListItem
+            key={item.cartSeq}
+            cartinfo={item}
+            changeChecked={changeChecked}
+            isChecked={isChecked}
+          />
         ))}
       </ul>
     </div>

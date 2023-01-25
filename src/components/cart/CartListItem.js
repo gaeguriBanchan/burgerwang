@@ -5,10 +5,9 @@ import DefaultImage from "../../assets/images/logo.png";
 import { useDispatch } from "react-redux";
 import { changeCount } from "../../reducer/cartReducer";
 
-const CartListItem = ({ cartinfo, changeChecked }) => {
+const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
   const dispatch = useDispatch();
-  const { cartSeq, count, name, event, side, drink, drink2, ingredient, totalprice, checked } =
-    cartinfo;
+  const { cartSeq, count, name, event, side, drink, drink2, ingredient, totalprice } = cartinfo;
   const [orderCount, setOrderCount] = useState(count);
   const plusOrderCount = () => {
     setOrderCount(orderCount + 1);
@@ -29,9 +28,9 @@ const CartListItem = ({ cartinfo, changeChecked }) => {
             type="checkbox"
             name={cartSeq}
             id={cartSeq}
-            checked={checked}
+            checked={isChecked(cartSeq)}
             className={"hidden " + styles.cartcheck}
-            onChange={(e) => changeChecked(e.target.id)}
+            onChange={() => changeChecked(cartSeq)}
           />
           <div className={"relative grow mr-12 pl-12 " + styles.cartcheckbox}>
             <p className="text-4xl font-black">{name}</p>
