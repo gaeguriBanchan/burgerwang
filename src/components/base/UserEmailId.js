@@ -1,18 +1,31 @@
-import React from "react";
+/** @format */
 
-const UserEmailId = ({ usdrEmail, emailId }) => {
+// import React, { useEffect } from 'react';
+// import { useState } from 'react';
+const UserEmailId = ({ emailId, register }) => {
+  // const [joinEmail, setJoinEmail] = useState('');
+
+  // const userEmail = (e) => {
+  //   setJoinEmail(e.target.value);
+  //   console.log(joinEmail);
+  // };
+
+  // useEffect(() => {
+  //   console.log('이메일', joinEmail);
+  // }, [joinEmail, setJoinEmail]);
+
   return (
-    <form className="flex pb-10">
-      <label className="w-1/3 py-4 font-black">{emailId}</label>
+    <div className="flex text-2xl w-full ">
       <input
-        className="w-full bg-underline bg-repeat-x bg-bottom outline-none"
+        className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
         type="email"
         placeholder={emailId}
+        {...register('email', { required: '이메일을 입력해주세요' })}
         required
-        value={usdrEmail}
-        onChange={usdrEmail}
+        // value={joinEmail}
+        // onChange={(e) => userEmail(e)}
       />
-    </form>
+    </div>
   );
 };
 
