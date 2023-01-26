@@ -20,8 +20,8 @@ const Join = () => {
         <div className="container max-w-6xl px-5 py-12">
           <PageName pagename={'회원가입'} />
           <JoinProfile register={register} />
-          <JoinOptional />
-          <JoinPw />
+          <JoinOptional register={register} />
+          <JoinPw register={register} />
         </div>
         <center>
           <button

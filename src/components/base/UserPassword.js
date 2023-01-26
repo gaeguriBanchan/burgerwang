@@ -26,6 +26,11 @@ const UserPassword = ({ pw }) => {
       return { type: 'password', visible: false };
     });
   };
+  console.log(pw);
+
+  const pwChack = ()=>{
+
+  }
 
   return (
     <div className="w-full">

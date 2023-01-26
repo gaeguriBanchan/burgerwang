@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const UserGender = () => {
+const UserGender = ({ register }) => {
   return (
     <div className="flex text-2xl w-full">
       <div className="flex w-full ">
@@ -10,12 +10,12 @@ const UserGender = () => {
         <label htmlFor="g-n" className="w-1/4 py-4  ml-5 mr-12">
           선택안함
         </label>
-        <input id="g-m" type="radio" name="gender" />
+        <input id="g-m" type="radio" name="gender" {...register('남')} />
         <label htmlFor="g-m" className="w-1/4 py-4  ml-5 mr-12">
           남
         </label>
 
-        <input id="g-w" type="radio" name="gender" />
+        <input id="g-w" type="radio" name="gender" {...register('여')} />
         <label htmlFor="g-w" className="w-1/4 py-4  ml-5 mr-12">
           여
         </label>
