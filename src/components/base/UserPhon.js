@@ -1,16 +1,16 @@
 /** @format */
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import React from 'react';
 
-const UserPhon = () => {
-  const [joinPhon, setJoinPhon] = useState('');
-  const userPhon = (e) => {
-    setJoinPhon(e.target.value);
-    console.log(joinPhon);
-  };
-  useEffect(() => {
-    console.log('핸드폰', joinPhon);
-  }, [joinPhon, setJoinPhon]);
+const UserPhon = ({ register }) => {
+  // const [joinPhon, setJoinPhon] = useState('');
+  // const userPhon = (e) => {
+  //   setJoinPhon(e.target.value);
+  //   console.log(joinPhon);
+  // };
+  // useEffect(() => {
+  //   console.log('핸드폰', joinPhon);
+  // }, [joinPhon, setJoinPhon]);
 
   return (
     <div className="flex text-2xl w-full">
@@ -19,7 +19,8 @@ const UserPhon = () => {
         type="tel"
         placeholder="000-0000-0000"
         required
-        onChange={(e) => userPhon(e)}
+        // onChange={(e) => userPhon(e)}
+        {...register('phon')}
       />
     </div>
   );

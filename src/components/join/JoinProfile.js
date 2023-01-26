@@ -1,12 +1,12 @@
 /** @format */
 
-import React, { useEffect } from "react";
-import UserEmailId from "../base/UserEmailId";
-import UserInfoType from "../base/UserInfoType";
-import UserName from "../base/UserName";
-import UserPhon from "../base/UserPhon";
+import React, { useEffect } from 'react';
+import UserEmailId from '../base/UserEmailId';
+import UserInfoType from '../base/UserInfoType';
+import UserName from '../base/UserName';
+import UserPhon from '../base/UserPhon';
 
-const JoinProfile = () => {
+const JoinProfile = ({ register }) => {
   useEffect(() => {}, []);
   return (
     <div className="mb-10">
@@ -18,16 +18,16 @@ const JoinProfile = () => {
       </p>
       <div className="bg-white drop-shadow  px-16 py-6 text-2xl">
         <div className="flex  py-6">
-          <UserInfoType type={"이메일 아이디"} />
-          <UserEmailId emailId={"이메일 아이디"} />
+          <UserInfoType type={'이메일 아이디'} />
+          <UserEmailId register={register} emailId={'이메일 아이디'} />
         </div>
         <div className="flex ">
-          <UserInfoType type={"이름"} />
-          <UserName />
+          <UserInfoType type={'이름'} />
+          <UserName register={register} />
         </div>
         <div className="flex  py-6">
-          <UserInfoType type={"휴대폰 번호"} />
-          <UserPhon />
+          <UserInfoType type={'휴대폰 번호'} />
+          <UserPhon register={register} />
         </div>
       </div>
     </div>
