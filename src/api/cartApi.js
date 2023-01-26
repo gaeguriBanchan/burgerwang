@@ -1,14 +1,7 @@
 import apiClient from "./apiClient";
 
 export const addCart = async () => {
-  const data = {
-    // 예시 데이터
-    // menu: "2",
-    // drink: "1",
-    // side: "1",
-    // ingredients: ["44", "45", "46"],
-    // count: 5,
-  };
+  const data = {};
   try {
     const res = await apiClient.put("/cart", data);
     return res;

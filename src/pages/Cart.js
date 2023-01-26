@@ -13,48 +13,38 @@ const Cart = () => {
   const addProduct = () => {
     const newCart = {
       cartSeq: Date.now(),
-      count: 1,
-      menuName: "블랙어니언와퍼 라지세트",
-      menuSeq: 1,
-      event: "이벤트 설명",
-      side: [
-        {
-          seq: 1,
-          name: "프렌치 프라이L",
-          price: 200,
-        },
-      ],
+      menuSeq: 19,
+      menuName: "킹치킨 라지세트",
+      menuPrice: 6800,
+      menuFile: "킹치킨라지세트",
+      menuUri: "uri8",
+      menuEx: "부드러운 에그번과 킹치킨패티의 만남! 풍부한 마요 소스로 고소하게!",
+      menuSize: 2,
+      menuSelect: true,
       drink: [
         {
-          seq: 1,
-          name: "콜라 L",
-          price: 0,
+          drinkOptSeq: 6,
+          drinkOptName: "스프라이트 R",
+          drinkOptPrice: 2600,
+          drinkOptSize: 1,
         },
       ],
-      drink2: [],
-      ingredient: [
+      drink2: [
         {
-          seq: 44,
-          name: "SPICY 토마토 소스",
-          price: 0,
-        },
-        {
-          seq: 45,
-          name: "불고기 소스",
-          price: 0,
-        },
-        {
-          seq: null,
-          name: "재료 추가",
-          price: 400,
-        },
-        {
-          seq: 46,
-          name: "디아블로 소스",
-          price: 0,
+          drinkOptSeq: 6,
+          drinkOptName: "스프라이트 R",
+          drinkOptPrice: 2600,
+          drinkOptSize: 1,
         },
       ],
-      totalprice: 15000,
+      side: [
+        {
+          sideOptSeq: 1,
+          sideOptName: "프렌치 프라이L",
+          sideOptPrice: 3200,
+          sideOptSize: 2,
+        },
+      ],
     };
     dispatch(addCartList(newCart));
   };

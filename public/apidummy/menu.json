@@ -1,0 +1,64 @@
+{
+  "list": {
+    "burger": [
+      {
+        "name": "블랙어니언와퍼",
+        "count": 3,
+        "uri": "adadadada1",
+        "detail": "200분의 기다림으로 만든 블랙어니언",
+        "price": 10200,
+        "best": true,
+        "new": true,
+        "seq": 1,
+        "soldout": false
+      }
+    ],
+    "side": [
+      {
+        "name": "앵그리 너겟킹",
+        "count": 3,
+        "uri": "uri1",
+        "detail": "바삭한 너겟킹에 청양고추가 콕콕!",
+        "price": 3500,
+        "seq": 3,
+        "soldout": false
+      }
+    ],
+    "drink": [
+      {
+        "name": "아메리카노",
+        "count": 2,
+        "uri": "drink1",
+        "detail": "RA인증커피",
+        "price": 2200,
+        "seq": 10,
+        "soldout": false
+      }
+    ],
+    "dog": [
+      {
+        "name": "리얼 독퍼",
+        "count": 1,
+        "uri": "dog",
+        "detail": "반려견에게 Real Dogpper를 선물하세요!",
+        "price": 2900,
+        "seq": 545,
+        "soldout": false
+      }
+    ],
+    "event": [
+      {
+        "name": "블랙어니언팩1",
+        "count": 1,
+        "uri": "adadadsadadsadsad1",
+        "detail": null,
+        "price": 15000,
+        "seq": 2,
+        "soldout": false
+      }
+    ]
+  },
+  "status": true,
+  "message": "조회하였습니다.",
+  "code": "ACCEPTED"
+}

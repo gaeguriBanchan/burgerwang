@@ -24,7 +24,9 @@ const MyPage = () => {
               className="
             flex font-JUA text-base"
             >
-              <Link to="/infoChange" className="mr-5">정보변경 &#62;</Link>
+              <Link to="/infoChange" className="mr-5">
+                정보변경 &#62;
+              </Link>
               <Link>MY 배달지 &#62;</Link>
             </ul>
           </div>
