@@ -1,11 +1,13 @@
 import ChangeButton from "../base/ChangeButton";
 import { useEffect, useState } from "react";
-const DeliInfo = ({ deliData }) => {
-  const { address, userPhone, storeName } = deliData;
+const DeliInfo = ({ deliMessage, setDeliMessage }) => {
   const [deliPhone, setDeliPhone] = useState("");
-  const [deliMessage, setDeliMessage] = useState("");
+  const address = "주소 정보";
+  const userPhone = "";
+  const storeName = "매장이름";
   useEffect(() => {
-    setDeliPhone(userPhone);
+    // setDeliPhone(userPhone);
+    setDeliPhone("000-0000-0000");
   }, [userPhone]);
   return (
     <div className="w-full">

@@ -2,10 +2,8 @@ import PaymentMeet from "./PaymentMeet";
 import PaymentCard from "./PaymentCard";
 import { useState } from "react";
 import PaymentSelect from "./PaymentSelect";
-const Payment = ({ paymentData }) => {
-  const { totalPrice } = paymentData;
+const Payment = ({ totalPrice, payment, setPayment }) => {
   const [paymentTab, setPaymentTab] = useState("card");
-  const [payment, setPayment] = useState("pay-card");
   const changePayTab = (tabName) => {
     tabName === "card" && setPayment("pay-card");
     tabName === "meet" && setPayment("pay-meet-card");

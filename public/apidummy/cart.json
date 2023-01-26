@@ -5,20 +5,22 @@
   "cart": [
     {
       "cartSeq": 1,
-      "menuCount": 20,
+      "menuCount": 1,
       "menu": "블랙어니언와퍼 라지세트",
       "event": null,
-      "side": {
-        "sideSeq": 1,
-        "sideName": "프렌치 프라이L",
-        "sidePrice": "+0원"
-      },
+      "side": [
+        {
+          "sideSeq": 1,
+          "sideName": "프렌치 프라이L",
+          "sidePrice": "+0원"
+        }
+      ],
       "drink": {
         "drinkSeq": 1,
         "drinkName": "콜라 L",
         "drinkPrice": "+0원"
       },
-      "drink2": null,
+      "drink2": [],
       "ingredient": [
         {
           "ingredientSeq": 44,
@@ -48,17 +50,21 @@
       "menuCount": 5,
       "menu": "블랙어니언와퍼세트",
       "event": null,
-      "side": {
-        "sideSeq": 1,
-        "sideName": "프렌치 프라이L",
-        "sidePrice": "+500원"
-      },
-      "drink": {
-        "drinkSeq": 1,
-        "drinkName": "콜라 L",
-        "drinkPrice": "+200원"
-      },
-      "drink2": null,
+      "side": [
+        {
+          "sideSeq": 1,
+          "sideName": "프렌치 프라이L",
+          "sidePrice": "+500원"
+        }
+      ],
+      "drink": [
+        {
+          "drinkSeq": 1,
+          "drinkName": "콜라 L",
+          "drinkPrice": "+200원"
+        }
+      ],
+      "drink2": [],
       "ingredient": [],
       "price": 13000
     }
