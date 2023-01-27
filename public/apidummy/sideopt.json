@@ -1,0 +1,38 @@
+{
+  "message": "사이드 옵션을 조회하였습니다.",
+  "code": "ACCEPTED",
+  "list": [
+    {
+      "sideOptSeq": 1,
+      "sideOptName": "프렌치 프라이L",
+      "sideOptPrice": 3200,
+      "sideOptSize": 2,
+      "sideOptFile": "ffL.jpg",
+      "sideOptUri": "ffL"
+    },
+    {
+      "sideOptSeq": 2,
+      "sideOptName": "앵그리 너겟킹 4조각 교환",
+      "sideOptPrice": 3500,
+      "sideOptSize": 2,
+      "sideOptFile": "ank.jpg",
+      "sideOptUri": "ank"
+    },
+    {
+      "sideOptSeq": 3,
+      "sideOptName": "너겟킹 4조각 교환",
+      "sideOptPrice": 3500,
+      "sideOptSize": 2,
+      "sideOptFile": "nk.jpg",
+      "sideOptUri": "nk"
+    },
+    {
+      "sideOptSeq": 4,
+      "sideOptName": "너겟킹 8조각 교환",
+      "sideOptPrice": 6500,
+      "sideOptSize": 2,
+      "sideOptFile": "nk.jpg",
+      "sideOptUri": "nk"
+    }
+  ]
+}

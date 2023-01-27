@@ -2,59 +2,37 @@
   "list": {
     "burger": [
       {
-        "name": "블랙어니언와퍼",
-        "count": 3,
-        "uri": "adadadada1",
-        "detail": "200분의 기다림으로 만든 블랙어니언",
-        "price": 10200,
+        "name": "와퍼",
+        "count": 8,
+        "detail": "불에 직접 구운 순 쇠고기 패티에 싱싱한 야채가 가득",
+        "price": 8600,
+        "new": false,
         "best": true,
-        "new": true,
-        "seq": 1,
-        "soldout": false
-      }
-    ],
-    "side": [
+        "soldout": true,
+        "seq": 7,
+        "uri": "adadadada7"
+      },
       {
-        "name": "앵그리 너겟킹",
+        "name": "스태커2와퍼",
         "count": 3,
-        "uri": "uri1",
-        "detail": "바삭한 너겟킹에 청양고추가 콕콕!",
-        "price": 3500,
-        "seq": 3,
-        "soldout": false
-      }
-    ],
-    "drink": [
+        "detail": "믿고 먹을 수 있는 와퍼",
+        "price": 10800,
+        "new": false,
+        "best": true,
+        "soldout": false,
+        "seq": 6,
+        "uri": "adadadada6"
+      },
       {
-        "name": "아메리카노",
-        "count": 2,
-        "uri": "drink1",
-        "detail": "RA인증커피",
-        "price": 2200,
-        "seq": 10,
-        "soldout": false
-      }
-    ],
-    "dog": [
-      {
-        "name": "리얼 독퍼",
+        "name": "치즈와퍼주니어",
         "count": 1,
-        "uri": "dog",
-        "detail": "반려견에게 Real Dogpper를 선물하세요!",
-        "price": 2900,
-        "seq": 545,
-        "soldout": false
-      }
-    ],
-    "event": [
-      {
-        "name": "블랙어니언팩1",
-        "count": 1,
-        "uri": "adadadsadadsadsad1",
-        "detail": null,
-        "price": 15000,
-        "seq": 2,
-        "soldout": false
+        "detail": "불에 직접 구운 순 쇠고기 패티가 들어간 와퍼주니어에 고소한 치즈 추가",
+        "price": 9100,
+        "new": false,
+        "best": true,
+        "soldout": false,
+        "seq": 8,
+        "uri": "adadadada8"
       }
     ]
   },

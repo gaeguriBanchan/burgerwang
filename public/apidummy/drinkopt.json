@@ -1,0 +1,30 @@
+{
+  "message": "음료 옵션을 조회하였습니다",
+  "code": "ACCEPTED",
+  "list": [
+    {
+      "drinkOptSeq": 1,
+      "drinkOptName": "콜라 L",
+      "drinkOptPrice": 2800,
+      "drinkOptSize": 2,
+      "drinkOptFile": "drinkoption1.jpg",
+      "drinkOptUri": "drinkoption1"
+    },
+    {
+      "drinkOptSeq": 2,
+      "drinkOptName": "코카콜라 제로 L 교환",
+      "drinkOptPrice": 2800,
+      "drinkOptSize": 2,
+      "drinkOptFile": "drinkoption2.jpg",
+      "drinkOptUri": "drinkoption2"
+    },
+    {
+      "drinkOptSeq": 3,
+      "drinkOptName": "스프라이트 L 교환",
+      "drinkOptPrice": 2800,
+      "drinkOptSize": 2,
+      "drinkOptFile": "drinkoption3.jpg",
+      "drinkOptUri": "drinkoption3"
+    }
+  ]
+}

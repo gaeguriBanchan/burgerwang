@@ -4,27 +4,32 @@ import Food from "../components/menu/Food";
 import { getMenu } from "../api/menuApi";
 const Menu = () => {
   const [menuList, setMenuList] = useState([]);
-  const [selectedMenu, changeSelectedMenu] = useState("1");
+  const [selectedMenu, changeSelectedMenu] = useState("4");
+  // const [selectedMenu, changeSelectedMenu] = useState("1");
   const setMenu = async () => {
     const res = await getMenu(selectedMenu);
     const { event, burger, side, drink, dog } = res.list;
     const updateList = [];
     if (event !== undefined) {
-      updateList.push(...event);
+      const updateData = event.map((item) => ({ ...item, cate: "event" }));
+      updateList.push(...updateData);
     }
     if (burger !== undefined) {
-      updateList.push(...burger);
+      const updateData = burger.map((item) => ({ ...item, cate: "burger" }));
+      updateList.push(...updateData);
     }
     if (side !== undefined) {
-      updateList.push(...side);
+      const updateData = side.map((item) => ({ ...item, cate: "side" }));
+      updateList.push(...updateData);
     }
     if (drink !== undefined) {
-      updateList.push(...drink);
+      const updateData = drink.map((item) => ({ ...item, cate: "drink" }));
+      updateList.push(...updateData);
     }
     if (dog !== undefined) {
-      updateList.push(...dog);
+      const updateData = dog.map((item) => ({ ...item, cate: "dog" }));
+      updateList.push(...updateData);
     }
-    console.log(updateList);
     setMenuList(updateList);
   };
   useEffect(() => {

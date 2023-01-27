@@ -1,0 +1,34 @@
+.ingredient {
+  color: #b8b8b8;
+}
+.ingredient::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 32px;
+  height: 32px;
+  transform: translateY(-50%);
+  background: url("../../assets/images/icon_checkbox_off.png");
+}
+.ingredientcheck:checked + .ingredient {
+  color: #000;
+}
+.ingredientcheck:checked + .ingredient::before {
+  background: url("../../assets//images/icon_checkbox_on.png");
+}
+
+.sidecheck {
+  visibility: hidden;
+}
+.sideradio:checked + .sidecheck {
+  visibility: visible;
+}
+
+.drinkcheck {
+  visibility: hidden;
+}
+.drinkradio:checked + .drinkcheck {
+  visibility: visible;
+}
