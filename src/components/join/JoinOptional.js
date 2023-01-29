@@ -13,11 +13,11 @@ const JoinOptional = ({register}) => {
       </h3>
       <div className="bg-white drop-shadow  px-16 py-6 text-2xl">
         <div className="flex   pt-6">
-          <UserInfoType type={'성별'} />
+          <UserInfoType name={'성별'} />
           <UserGender register={register} />
         </div>
         <div className="flex  pb-6">
-          <UserInfoType type={'생년월일'} />
+          <UserInfoType name={'생년월일'} />
           <UserBirthDate register={register} />
         </div>
       </div>

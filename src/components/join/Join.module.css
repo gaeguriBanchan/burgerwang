@@ -1,16 +1,29 @@
-/** @format */
-
 .blindbt {
   display: block;
   width: 30px;
   height: 30px;
   padding-left: 20px;
-  background: url('../../assets/images/icon_eye.png') no-repeat;
+  background: url("../../assets/images/icon_eye.png") no-repeat;
 }
 .showbt {
   display: block;
   width: 30px;
   height: 30px;
   padding-left: 20px;
-  background: url('../../assets/images/icon_eye_blind.png') no-repeat;
+  background: url("../../assets/images/icon_eye_blind.png") no-repeat;
+}
+
+.radiooff::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../assets/images/icon_radio_off.png");
+}
+.radioon:checked + .paymentradio::before {
+  content: "";
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../../assets/images/icon_radio_on.png");
 }
