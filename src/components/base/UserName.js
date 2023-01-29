@@ -1,30 +1,28 @@
 /** @format */
 
-import React from 'react';
-// import { useState, useEffect } from "react";
+import React from "react";
+import { useEffect } from "react";
 
-const UserName = ({ register }) => {
-  // const [joinName, steJoinName] = useState("");
-  // const userName = (e) => {
-  //   steJoinName(e.target.value);
-  //   console.log(joinName);
-  // };
-  // useEffect(() => {
-  //   console.log("이름", joinName);
-  // }, [joinName, steJoinName]);
+const UserName = ({ joinName, userName }) => {
+  useEffect(() => {
+    console.log("비밀번호", joinName);
+  }, [joinName]);
 
   return (
-    <div className="flex text-2xl w-full">
+    <div className="text-2xl w-full">
       <input
         className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
         type="text"
         name="name"
         placeholder="이름"
-        required
-        {...register('name')}
-        // value={joinName}
-        // onChange={(e) => userName(e)}
+        value={joinName}
+        onChange={(e) => userName(e)}
       />
+      {joinName === "" ? (
+        <p className="text-base text-bgwred pt-2">이름을 입력해 주세요</p>
+      ) : (
+        <p className="text-base text-bgwred pt-2">&nbsp;</p>
+      )}
     </div>
   );
 };
