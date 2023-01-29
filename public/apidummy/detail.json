@@ -1,0 +1,85 @@
+{
+  "status": true,
+  "message": "판매 메뉴를 조회했습니다.",
+  "code": "OK",
+  "list": {
+    "seq": 7,
+    "name": "와퍼",
+    "detail": "불에 직접 구운 순 쇠고기 패티에 싱싱한 야채가 가득",
+    "uri": "adadadada7",
+    "seller": [
+      {
+        "seq": 5,
+        "name": "기네스와퍼 라지세트",
+        "price": 12200,
+        "uri": "menu5",
+        "explain": "기네스와퍼+사이드+콜라",
+        "ingredientSelect": true,
+        "menuKind": "SET"
+      },
+      {
+        "seq": 6,
+        "name": "기네스와퍼 세트",
+        "price": 11500,
+        "uri": "menu6",
+        "explain": null,
+        "ingredientSelect": true,
+        "menuKind": "SET"
+      },
+      {
+        "seq": 7,
+        "name": "기네스와퍼",
+        "price": 10200,
+        "uri": "menu7",
+        "explain": null,
+        "ingredientSelect": true,
+        "menuKind": "SINGLE"
+      },
+      {
+        "seq": 35,
+        "name": "갈릭불고기와퍼라지세트",
+        "price": 11500,
+        "uri": "gbL",
+        "explain": "갈릭불고기와퍼",
+        "ingredientSelect": false,
+        "menuKind": "SET"
+      },
+      {
+        "seq": 36,
+        "name": "베이컨치즈와퍼",
+        "price": 9600,
+        "uri": "bcw",
+        "explain": "풍미 가득한 아메리칸 클래식의 완벽한 조화!",
+        "ingredientSelect": false,
+        "menuKind": "SINGLE"
+      },
+      {
+        "seq": 37,
+        "name": "할라피뇨와퍼",
+        "price": 8600,
+        "uri": "jal",
+        "explain": "할라피뇨와퍼",
+        "ingredientSelect": false,
+        "menuKind": "SINGLE"
+      },
+      {
+        "seq": 38,
+        "name": "치즈와퍼라지세트",
+        "price": 12000,
+        "uri": "cwL",
+        "explain": "불에 직접 구운 순 쇠고기 패티가 들어간 와퍼에 고소한 치즈까지!",
+        "ingredientSelect": false,
+        "menuKind": "SET"
+      },
+      {
+        "seq": 39,
+        "name": "와퍼 세트",
+        "price": 10400,
+        "uri": "ws",
+        "explain": "불에 직접 구운 순 쇠고기 패티에 싱싱한 야채가 한가득~ 버거킹의 대표 메뉴!",
+        "ingredientSelect": false,
+        "menuKind": "SET"
+      }
+    ]
+  }
+}

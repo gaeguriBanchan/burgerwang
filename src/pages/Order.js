@@ -7,8 +7,6 @@ import OrderInfo from "../components/order/OrderInfo";
 import Payment from "../components/order/Payment";
 import { useLocation, useNavigate } from "react-router";
 import { useSelector } from "react-redux";
-import usePutOrder from "../components/order/hooks/usePutOrder";
-import { putOrder } from "../api/orderApi";
 
 const Order = () => {
   const location = useLocation();

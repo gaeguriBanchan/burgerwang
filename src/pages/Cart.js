@@ -1,70 +1,20 @@
 import { Helmet } from "react-helmet-async";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import ActiveButton from "../components/base/ActiveButton";
 import ActiveBlackButton from "../components/base/ActiveBlackButton";
-import CartPrice from "../components/cart/CartPrice";
 import CartList from "../components/cart/CartList";
-import { useDispatch, useSelector } from "react-redux";
-import { addCartList } from "../reducer/cartReducer";
-import { useEffect, useState } from "react";
+import CartPrice from "../components/cart/CartPrice";
 
 const Cart = () => {
-  const dispatch = useDispatch();
-  const addProduct = () => {
-    const newCart = {
-      cartSeq: Date.now(),
-      count: 1,
-      menuName: "블랙어니언와퍼 라지세트",
-      menuSeq: 1,
-      event: "이벤트 설명",
-      side: [
-        {
-          seq: 1,
-          name: "프렌치 프라이L",
-          price: 200,
-        },
-      ],
-      drink: [
-        {
-          seq: 1,
-          name: "콜라 L",
-          price: 0,
-        },
-      ],
-      drink2: [],
-      ingredient: [
-        {
-          seq: 44,
-          name: "SPICY 토마토 소스",
-          price: 0,
-        },
-        {
-          seq: 45,
-          name: "불고기 소스",
-          price: 0,
-        },
-        {
-          seq: null,
-          name: "재료 추가",
-          price: 400,
-        },
-        {
-          seq: 46,
-          name: "디아블로 소스",
-          price: 0,
-        },
-      ],
-      totalprice: 15000,
-    };
-    dispatch(addCartList(newCart));
-  };
   const { cartList } = useSelector((state) => state.cart);
   const [checkList, setCheckList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const updateTotalPrice = () => {
     let totalPrice = 0;
     cartList.forEach((item) =>
-      checkList.includes(item.cartSeq) ? (totalPrice += item.totalprice * item.count) : ""
+      checkList.includes(item.date) ? (totalPrice += item.totalPrice * item.count) : ""
     );
     setTotalPrice(totalPrice);
   };
@@ -77,10 +27,6 @@ const Cart = () => {
         <title>카트</title>
         <style>{"body {background:#f2ebe6;"}</style>
       </Helmet>
-      {/* test 버튼 */}
-      <button className="bg-white" onClick={() => addProduct()}>
-        상품 추가
-      </button>
       <div className="container max-w-6xl px-5 py-12">
         <h2 className="pb-4 font-JUA text-4xl">딜리버리 카트</h2>
         <CartList cartList={cartList} checkList={checkList} setCheckList={setCheckList} />
@@ -91,7 +37,7 @@ const Cart = () => {
             <li> 해당매장의 주문배달 최소금액은 13,000원 입니다.</li>
           </ul>
           <div>
-            <Link to="menu">
+            <Link to="/menu">
               <ActiveBlackButton name="메뉴 추가" />
             </Link>
             <Link to="/order" state={{ orderList: checkList }}>

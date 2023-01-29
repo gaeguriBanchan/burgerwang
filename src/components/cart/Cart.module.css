@@ -7,6 +7,10 @@
   vertical-align: -10px;
   background: url("../../assets/images/icon_checkbox_off.png");
 }
+.cartcheckall:checked + .cartcheckallbox::before {
+  background: url("../../assets//images/icon_checkbox_on.png");
+}
+
 .cartcheckbox::before {
   content: "";
   display: block;
@@ -18,9 +22,5 @@
   background: url("../../assets/images/icon_checkbox_off.png");
 }
 .cartcheck:checked + .cartcheckbox::before {
-  background: url("../../assets//images/icon_checkbox_on.png");
-}
-
-.cartcheckall:checked + .cartcheckallbox::before {
   background: url("../../assets//images/icon_checkbox_on.png");
 }

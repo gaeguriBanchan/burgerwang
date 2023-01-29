@@ -1,0 +1,42 @@
+{
+  "list": {
+    "burger": [
+      {
+        "name": "와퍼",
+        "count": 8,
+        "detail": "불에 직접 구운 순 쇠고기 패티에 싱싱한 야채가 가득",
+        "price": 8600,
+        "new": false,
+        "best": true,
+        "soldout": true,
+        "seq": 7,
+        "uri": "adadadada7"
+      },
+      {
+        "name": "스태커2와퍼",
+        "count": 3,
+        "detail": "믿고 먹을 수 있는 와퍼",
+        "price": 10800,
+        "new": false,
+        "best": true,
+        "soldout": false,
+        "seq": 6,
+        "uri": "adadadada6"
+      },
+      {
+        "name": "치즈와퍼주니어",
+        "count": 1,
+        "detail": "불에 직접 구운 순 쇠고기 패티가 들어간 와퍼주니어에 고소한 치즈 추가",
+        "price": 9100,
+        "new": false,
+        "best": true,
+        "soldout": false,
+        "seq": 8,
+        "uri": "adadadada8"
+      }
+    ]
+  },
+  "status": true,
+  "message": "조회하였습니다.",
+  "code": "ACCEPTED"
+}
