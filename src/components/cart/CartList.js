@@ -14,7 +14,7 @@ const CartList = ({ cartList, checkList, setCheckList }) => {
   const changeCheckAll = () => {
     let updateList = [];
     if (cartList.length > checkList.length) {
-      updateList = cartList.map((item) => item.cartSeq);
+      updateList = cartList.map((item) => item.date);
     }
     setCheckList(updateList);
   };
@@ -29,7 +29,7 @@ const CartList = ({ cartList, checkList, setCheckList }) => {
     setCheckList(updateList);
   };
   const checkId = () => {
-    const newCheckList = cartList.map((item) => item.cartSeq);
+    const newCheckList = cartList.map((item) => item.date);
     setCheckList(newCheckList);
   };
   const isChecked = (id) => {
@@ -66,7 +66,7 @@ const CartList = ({ cartList, checkList, setCheckList }) => {
       <ul>
         {cartList.map((item) => (
           <CartListItem
-            key={item.cartSeq}
+            key={item.date}
             cartinfo={item}
             changeChecked={changeChecked}
             isChecked={isChecked}

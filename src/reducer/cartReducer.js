@@ -12,10 +12,10 @@ const cartReducer = createSlice({
       state.cartList = [...state.cartList.concat(action.payload)];
     },
     removeCart: (state, action) => {
-      state.cartList = state.cartList.filter((item) => !action.payload.includes(item.cartSeq));
+      state.cartList = state.cartList.filter((item) => !action.payload.includes(item.date));
     },
     changeCount: (state, action) => {
-      const num = state.cartList.findIndex((item) => item.cartSeq === action.payload.cartSeq);
+      const num = state.cartList.findIndex((item) => item.date === action.payload.date);
       state.cartList[num].count = action.payload.orderCount;
     },
   },

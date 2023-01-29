@@ -1,28 +1,75 @@
-import styles from "./Menu.module.css";
-const ModalMenuIngredient = ({ ingredientData }) => {
-  const { ingredientSeq, ingredientName, ingredientPrice, ingredientFile } = ingredientData;
+import { useContext, useEffect } from "react";
+import { useState } from "react";
+import { getMenuIngredient } from "../../api/menuApi";
+import { MenuContext } from "./context/MenuContext";
+import ModalMenuIngredientItem from "./ModalMenuIngredientItem";
+const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
+  const [ingredientList, setIngeidientList] = useState([]);
+  const [checkList, setCheckList] = useState([]);
+  const [
+    { selectedMenu, selectedMenuCate },
+    setSelectedMenu,
+    setSelectedMenuCate,
+    addCartInfo,
+    addToCart,
+  ] = useContext(MenuContext);
+  const getIngredient = async () => {
+    const res = await getMenuIngredient(selectedMenu);
+    setIngeidientList(res.list);
+  };
+  const getSelectedList = () => {
+    const selectedList = ingredientList.filter(
+      (item) => checkList.includes(item.ingredirentSeq) && item
+    );
+    return selectedList;
+  };
+  const addIngredient = () => {
+    const res = getSelectedList();
+    addCartInfo("ingredient", res);
+    setModalKind("side");
+  };
+  const cancelIngredient = () => {
+    setModalKind("side");
+  };
+  useEffect(() => {
+    modalKind === "ingredient" && getIngredient();
+  }, [modalKind]);
+  const changeChecked = (checkId) => {
+    let updateList = [];
+    if (checkList.includes(checkId)) {
+      updateList = checkList.filter((id) => id !== checkId);
+    } else {
+      updateList = [...checkList].concat(checkId);
+    }
+    setCheckList(updateList);
+  };
+  const isChecked = (id) => {
+    const checkBool = checkList.includes(id);
+    return checkBool;
+  };
   return (
-    <li className="w-full">
-      <div className={"relative w-full flex items-center " + styles.ingredient}>
-        <label htmlFor={ingredientSeq} className={"w-full relative flex justify-between xd"}>
-          <input
-            type="checkbox"
-            name={ingredientSeq}
-            id={ingredientSeq}
-            className={"hidden " + styles.ingredientcheck}
-            checked={true}
-            readOnly
-          />
-          <div className="absolute left-12 top-[50%] w-24 h-12 translate-y-[-50%] bg-black">
-            <img className="w-full h-full" src="" alt="" />
-          </div>
-          <div className="pl-40 min-h-[100px] grow flex justify-between items-center ml-4">
-            <span className="mr-8 text-2xl">{ingredientName}</span>
-            <span className="text-2xl whitespace-nowrap">+{ingredientPrice}원</span>
-          </div>
-        </label>
+    <>
+      <div className="max-h-[530px] overflow-auto">
+        <ul className="bg-background p-8">
+          {ingredientList.map((item) => (
+            <ModalMenuIngredientItem
+              key={item.ingredirentSeq}
+              ingredientData={item}
+              changeChecked={changeChecked}
+              isChecked={isChecked}
+            />
+          ))}
+        </ul>
       </div>
-    </li>
+      <div className="flex w-full">
+        <button onClick={() => cancelIngredient()} className="w-3/6 px-4 py-4 bg-2e2e2e">
+          <span className="text-white font-black text-3xl">추가안함</span>
+        </button>
+        <button onClick={() => addIngredient()} className="w-3/6 px-4 py-4 bg-bgwred">
+          <span className="text-white font-black text-3xl">추가하기</span>
+        </button>
+      </div>
+    </>
   );
 };
 

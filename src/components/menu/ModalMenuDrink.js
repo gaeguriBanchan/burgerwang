@@ -1,30 +1,55 @@
-import styles from "./Menu.module.css";
-const ModalMenuDrink = ({ drinkData }) => {
-  const { drinkOptSeq, drinkOptName, drinkOptPrice, drinkOptFile } = drinkData;
+import { useContext, useEffect, useState } from "react";
+import { getMenuDrink } from "../../api/menuApi";
+import { MenuContext } from "./context/MenuContext";
+import ModalMenuDrinkItem from "./ModalMenuDrinkItem";
+
+const ModalMenuDrink = ({ modalKind }) => {
+  const [drinkList, setDrinkList] = useState([]);
+  const [selectItem, setSelectItem] = useState(0);
+  const [
+    { selectedMenu, selectedMenuCate },
+    setSelectedMenu,
+    setSelectedMenuCate,
+    addCartInfo,
+    addToCart,
+  ] = useContext(MenuContext);
+  const getDrink = async () => {
+    const res = await getMenuDrink(selectedMenu);
+    setDrinkList(res.list);
+  };
+  const getSelectedItem = () => {
+    for (let i = 0; i < drinkList.length; i++) {
+      if (drinkList[i].drinkOptSeq === selectItem) {
+        return drinkList[i];
+      }
+    }
+  };
+  const selectDrink = () => {
+    const res = getSelectedItem();
+    addCartInfo("drink", res);
+    addToCart();
+  };
+  useEffect(() => {
+    modalKind === "drink" && getDrink();
+  }, [modalKind]);
   return (
-    <li className="relative w-1/3 h-[185px]">
-      <label htmlFor={drinkOptSeq} className="w-full h-full">
-        <input
-          type="radio"
-          name="drinkoption"
-          id={drinkOptSeq}
-          className={"hidden " + styles.sideradio}
-        />
-        <div className="px-2 h-[100px]">
-          <img src="" alt={drinkOptName} className="w-full h-full" />
-        </div>
-        <div className="px-2 mt-4">
-          <p className="text-center text-l">{drinkOptName}</p>
-          <p className="text-center text-l">+{drinkOptPrice}원</p>
-        </div>
-        <div
-          className={
-            "absolute left top-0 w-full h-full bg-icon-check-red bg-top bg-no-repeat " +
-            styles.sidecheck
-          }
-        ></div>
-      </label>
-    </li>
+    <>
+      <div className="max-h-[530px] overflow-auto">
+        <ul className="bg-background p-8 flex justify-between flex-wrap">
+          {drinkList.map((item) => (
+            <ModalMenuDrinkItem
+              key={item.drinkOptSeq}
+              drinkData={item}
+              selectItem={selectItem}
+              setSelectItem={setSelectItem}
+            />
+          ))}
+        </ul>
+      </div>
+      <button onClick={() => selectDrink()} className="w-full px-4 py-5 bg-bgwred">
+        <span className="text-white font-black text-3xl">선택</span>
+      </button>
+    </>
   );
 };
 

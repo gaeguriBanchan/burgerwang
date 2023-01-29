@@ -1,29 +1,9 @@
-import { useState } from "react";
-import Modal from "./Modal";
-import ModalMenu from "./ModalMenu";
-import { useNavigate } from "react-router";
-
-const Food = ({ menu }) => {
+import convertPrice from "../../utils/convertPrice";
+const Food = ({ menu, selectMenuHandler }) => {
   const { cate, seq, name, count, uri, detail, price, soldout } = menu;
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  //menu,side,drink
-  const navigate = useNavigate();
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
-  const closeModal = () => {
-    setModalIsOpen(false);
-  };
-  const selectMenuHandler = () => {
-    if (count > 1) {
-      openModal();
-    } else {
-      navigate("/cart");
-    }
-  };
   return (
     <>
-      <div className="grid grid-rows-none" onClick={() => selectMenuHandler()}>
+      <div className="grid grid-rows-none" onClick={() => selectMenuHandler(menu, cate, seq)}>
         <div className="relative">
           <img
             className="flex justify-center"
@@ -44,17 +24,10 @@ const Food = ({ menu }) => {
           </span>
         )}
         <span className="flex justify-center font-JUA text-xl font-black text-bgwred">
-          \{price}
+          \{convertPrice(price)}
           {count > 1 && "~"}
         </span>
       </div>
-      <Modal modalIsOpen={modalIsOpen}>
-        <ModalMenu
-          closeModal={closeModal}
-          menuCate={cate === "event" ? "burger" : cate}
-          menuSeq={seq}
-        />
-      </Modal>
     </>
   );
 };
