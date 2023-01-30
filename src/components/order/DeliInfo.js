@@ -15,7 +15,7 @@ const DeliInfo = ({ deliMessage, setDeliMessage }) => {
         <span className="font-JUA text-2xl">배달정보</span>
       </h3>
 
-      <div className="px-16 pt-5 pb-16 bg-white drop-shadow">
+      <div className="px-16 pt-5 pb-16 bg-white">
         <div className="py-10 flex items-center border-b border-ededed">
           <span className="grow text-2xl">{address}</span>
           <ChangeButton name="변경" />

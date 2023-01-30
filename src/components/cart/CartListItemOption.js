@@ -1,6 +1,6 @@
 import ChangeButton from "../base/ChangeButton";
 import CartListItemOptionInfo from "./CartListItemOptionInfo";
-const CartListItemOption = ({ optionname, optiontype, optioninfo }) => {
+const CartListItemOption = ({ optionname, optiontype, optioninfo, changeOptionHandler }) => {
   return (
     <li className="flex justify-between items-center mb-4">
       <div className="grow flex justify-between mr-28">
@@ -40,7 +40,7 @@ const CartListItemOption = ({ optionname, optiontype, optioninfo }) => {
             ))}
         </ul>
       </div>
-      <ChangeButton name="변경" />
+      <ChangeButton name="변경" event={() => changeOptionHandler({ optiontype, optioninfo })} />
     </li>
   );
 };

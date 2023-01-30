@@ -1,18 +1,22 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useState } from "react";
 import { getMenuIngredient } from "../../api/menuApi";
-import { MenuContext } from "./context/MenuContext";
-import ModalMenuIngredientItem from "./ModalMenuIngredientItem";
-import styles from "./Menu.module.css";
-const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
+import ModalCartIngredientItem from "./ModalCartIngredientItem";
+import styles from "./Cart.module.css";
+import { useDispatch } from "react-redux";
+import { changeOption } from "../../reducer/cartReducer";
+const ModalCartIngredient = ({ menuSeq, optiontype, optioninfo, date, closeModal }) => {
+  const dispatch = useDispatch();
   const [ingredientList, setIngeidientList] = useState([]);
   const [checkList, setCheckList] = useState([]);
-  const { manageValue, manageCart } = useContext(MenuContext);
-  const { selectedMenu } = manageValue;
-  const { addCartInfo } = manageCart;
   const getIngredient = async () => {
-    const res = await getMenuIngredient(selectedMenu);
+    const res = await getMenuIngredient(menuSeq);
     setIngeidientList(res.list);
+    getCurrentSelectedList();
+  };
+  const getCurrentSelectedList = () => {
+    const currentSelectedList = optioninfo.map((item) => item.ingredirentSeq);
+    setCheckList(currentSelectedList);
   };
   const getSelectedList = () => {
     const selectedList = ingredientList.filter(
@@ -22,15 +26,9 @@ const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
   };
   const addIngredient = () => {
     const res = getSelectedList();
-    addCartInfo("ingredient", res);
-    setModalKind("side");
+    dispatch(changeOption({ optiontype, date, res }));
+    closeModal();
   };
-  const cancelIngredient = () => {
-    setModalKind("side");
-  };
-  useEffect(() => {
-    modalKind === "ingredient" && getIngredient();
-  }, [modalKind]);
   const changeChecked = (checkId) => {
     let updateList = [];
     if (checkList.includes(checkId)) {
@@ -47,6 +45,9 @@ const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
   const resetCheckList = () => {
     setCheckList([]);
   };
+  useEffect(() => {
+    getIngredient();
+  }, []);
   return (
     <>
       <div className="max-h-[530px] overflow-auto">
@@ -57,7 +58,7 @@ const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
         </button>
         <ul className="bg-background px-8 py-4">
           {ingredientList.map((item) => (
-            <ModalMenuIngredientItem
+            <ModalCartIngredientItem
               key={item.ingredirentSeq}
               ingredientData={item}
               changeChecked={changeChecked}
@@ -67,15 +68,12 @@ const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
         </ul>
       </div>
       <div className="flex w-full">
-        <button onClick={() => cancelIngredient()} className="w-3/6 px-4 py-4 bg-2e2e2e">
-          <span className="text-white font-black text-3xl">추가안함</span>
-        </button>
-        <button onClick={() => addIngredient()} className="w-3/6 px-4 py-4 bg-bgwred">
-          <span className="text-white font-black text-3xl">추가하기</span>
+        <button onClick={() => addIngredient()} className="w-full px-4 py-5 bg-bgwred">
+          <span className="text-white font-black text-3xl">재료 추가</span>
         </button>
       </div>
     </>
   );
 };
 
-export default ModalMenuIngredient;
+export default ModalCartIngredient;

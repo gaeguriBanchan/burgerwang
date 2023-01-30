@@ -7,11 +7,11 @@ const OrderInfo = ({ orderData }) => {
       <h3 className="mb-4 pl-12 flex items-center bg-icon-menu bg-no-repeat bg-left">
         <span className="font-JUA text-2xl">주문정보</span>
       </h3>
-      <div className="px-16 pb-16 bg-white drop-shadow">
+      <div className="px-16 pb-16 bg-white">
         <ul>
           {orderData &&
             orderData.map((order) => {
-              return <OrderInfoItem key={order.cartSeq} order={order} />;
+              return <OrderInfoItem key={order.date} order={order} />;
             })}
         </ul>
       </div>

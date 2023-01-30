@@ -1,9 +1,9 @@
 import { useState } from "react";
-import ModalHeader from "./ModalHeader";
 import ModalMenuList from "./ModalMenuList";
 import ModalMenuIngredient from "./ModalMenuIngredient";
 import ModalMenuSide from "./ModalMenuSide";
 import ModalMenuDrink from "./ModalMenuDrink";
+import ModalHeader from "../base/ModalHeader";
 
 const ModalMenu = ({ closeModal }) => {
   const [modalKind, setModalKind] = useState("menu");

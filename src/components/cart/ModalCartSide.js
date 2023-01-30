@@ -1,16 +1,14 @@
 import { useEffect, useState } from "react";
 import { getMenuSide } from "../../api/menuApi";
-import ModalMenuSideItem from "./ModalMenuSideItem";
-import { MenuContext } from "./context/MenuContext";
-import { useContext } from "react";
-const ModalMenuSide = ({ modalKind, setModalKind }) => {
+import ModalCartSideItem from "./ModalCartSideItem";
+import { useDispatch } from "react-redux";
+import { changeOption } from "../../reducer/cartReducer";
+const ModalCartSide = ({ menuSeq, optiontype, optioninfo, date, closeModal }) => {
+  const dispatch = useDispatch();
   const [sideList, setSideList] = useState([]);
-  const [selectItem, setSelectItem] = useState(0);
-  const { manageValue, manageCart } = useContext(MenuContext);
-  const { selectedMenu } = manageValue;
-  const { addCartInfo } = manageCart;
+  const [selectItem, setSelectItem] = useState(optioninfo[0].sideOptSeq);
   const getSide = async () => {
-    const res = await getMenuSide(selectedMenu);
+    const res = await getMenuSide(menuSeq);
     setSideList(res.list);
   };
   const getSelectedItem = () => {
@@ -22,18 +20,18 @@ const ModalMenuSide = ({ modalKind, setModalKind }) => {
   };
   const selectSide = () => {
     const res = getSelectedItem();
-    addCartInfo("side", res);
-    setModalKind("drink");
+    dispatch(changeOption({ optiontype, date, res }));
+    closeModal();
   };
   useEffect(() => {
-    modalKind === "side" && getSide();
-  }, [modalKind]);
+    getSide();
+  }, []);
   return (
     <>
       <div className="max-h-[530px] overflow-auto">
         <ul className="bg-background p-8 flex justify-between flex-wrap">
           {sideList.map((item) => (
-            <ModalMenuSideItem
+            <ModalCartSideItem
               key={item.sideOptSeq}
               sideData={item}
               selectItem={selectItem}
@@ -43,10 +41,10 @@ const ModalMenuSide = ({ modalKind, setModalKind }) => {
         </ul>
       </div>
       <button onClick={() => selectSide()} className="w-full px-4 py-5 bg-bgwred">
-        <span className="text-white font-black text-3xl">선택</span>
+        <span className="text-white font-black text-3xl">확인</span>
       </button>
     </>
   );
 };
 
-export default ModalMenuSide;
+export default ModalCartSide;

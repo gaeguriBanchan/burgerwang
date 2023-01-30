@@ -6,13 +6,9 @@ import { MenuContext } from "./context/MenuContext";
 const ModalMenuList = ({ setModalKind }) => {
   const [menuInfo, setMenuInfo] = useState({});
   const [menuList, setMenuList] = useState([]);
-  const [
-    { selectedMenu, selectedMenuCate },
-    setSelectedMenu,
-    setSelectedMenuCate,
-    addCartInfo,
-    addToCart,
-  ] = useContext(MenuContext);
+  const { manageValue, manageCart } = useContext(MenuContext);
+  const { selectedMenu, setSelectedMenu, selectedMenuCate } = manageValue;
+  const { addCartInfo, addToCart } = manageCart;
   const getDetailMenu = async () => {
     const res = await getMenuDetail(selectedMenuCate, selectedMenu);
     const { seq, name, detail, uri, seller } = res.list;

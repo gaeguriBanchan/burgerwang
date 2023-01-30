@@ -14,37 +14,38 @@ const Order = () => {
   const navigate = useNavigate();
   !location.state && navigate("/menu");
   const { cartList } = useSelector((state) => state.cart);
-  const checkedCart = cartList.filter((item) => checkedId.includes(item.cartSeq));
+  const checkedCart = cartList.filter((item) => checkedId.includes(item.date));
+  console.log(checkedCart);
   // window.history.replaceState({}, document.title);
   const [payment, setPayment] = useState("pay-card");
   const [deliMessage, setDeliMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const updateTotalPrice = () => {
     let totalPrice = 0;
-    checkedCart.forEach((item) => (totalPrice += item.totalprice * item.count));
+    checkedCart.forEach((item) => (totalPrice += item.totalPrice * item.count));
     setTotalPrice(totalPrice);
   };
   console.log(checkedCart);
   useEffect(() => {
     updateTotalPrice();
   }, [checkedCart]);
-  const putOrder = () => {
-    const cart = checkedCart.map((item) => {
-      return {
-        count: item.count,
-        menu: item.menuSeq,
-        ...(item.side.length > 0 && { sideOpt: item.side[0].seq }),
-        ...(item.drink.length > 0 && { drinkOpt: item.drink[0].seq }),
-        ...(item.drink2.length > 0 && { drink2Opt: item.drink2[0].seq }),
-        ...(item.ingredient.length > 0 && {
-          ingredient: item.ingredient.map((item) => item.seq !== null && item.seq),
-        }),
-      };
-    });
-    const data = { pay: payment, cart: cart, message: deliMessage, couponSeq: "" };
-    console.log(data);
-    // putOrder(data);
-  };
+  // const putOrder = () => {
+  //   const cart = checkedCart.map((item) => {
+  //     return {
+  //       count: item.count,
+  //       menu: item.menuSeq,
+  //       ...(item.side.length > 0 && { sideOpt: item.side[0].seq }),
+  //       ...(item.drink.length > 0 && { drinkOpt: item.drink[0].seq }),
+  //       ...(item.drink2.length > 0 && { drink2Opt: item.drink2[0].seq }),
+  //       ...(item.ingredient.length > 0 && {
+  //         ingredient: item.ingredient.map((item) => item.seq !== null && item.seq),
+  //       }),
+  //     };
+  //   });
+  //   const data = { pay: payment, cart: cart, message: deliMessage, couponSeq: "" };
+  //   console.log(data);
+  //   // putOrder(data);
+  // };
   return (
     <>
       <Helmet>
@@ -60,7 +61,7 @@ const Order = () => {
         </div>
         <div className="flex justify-end">
           <DisabledButton name="취소" />
-          <ActiveButton event={putOrder}>결제하기</ActiveButton>
+          <ActiveButton>결제하기</ActiveButton>
         </div>
       </div>
     </>

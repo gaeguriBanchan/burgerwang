@@ -29,6 +29,8 @@ module.exports = {
         "icon-close": "url('/src/assets/images/icon_close.png')",
         "icon-new": "url('/src/assets/images/icon_new.png')",
         "icon-best": "url('/src/assets/images/icon_best.png')",
+        "icon-soldout": "url('/src/assets/images/icon_soldout.png')",
+        "icon-refresh": "url('/src/assets/images/icon_refresh.png')",
       },
       colors: {
         background: "#f2ebe6",
