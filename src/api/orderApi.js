@@ -9,6 +9,15 @@ export const putOrder = async (data) => {
   }
 };
 
+export const getPayment = async (data) => {
+  try {
+    const res = await apiClient.get(`/order/payment/${data}`);
+    return res.data;
+  } catch (err) {
+    return err;
+  }
+};
+
 export const getOrderList = async () => {
   try {
     // const res = await apiClient.get("/order/list");

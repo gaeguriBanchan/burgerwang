@@ -15,9 +15,8 @@ const Order = () => {
   !location.state && navigate("/menu");
   const { cartList } = useSelector((state) => state.cart);
   const checkedCart = cartList.filter((item) => checkedId.includes(item.date));
-  console.log(checkedCart);
   // window.history.replaceState({}, document.title);
-  const [payment, setPayment] = useState("pay-card");
+  const [payment, setPayment] = useState(0);
   const [deliMessage, setDeliMessage] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
   const updateTotalPrice = () => {
@@ -25,7 +24,7 @@ const Order = () => {
     checkedCart.forEach((item) => (totalPrice += item.totalPrice * item.count));
     setTotalPrice(totalPrice);
   };
-  console.log(checkedCart);
+  // console.log(checkedCart);
   useEffect(() => {
     updateTotalPrice();
   }, [checkedCart]);
