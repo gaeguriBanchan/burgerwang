@@ -14,6 +14,12 @@ const JoinProfile = ({
   joinName,
   userName,
 }) => {
+
+
+
+
+
+
   return (
     <div className="mb-10">
       <h3 className="mb-4 pl-12 flex items-center bg-icon-person bg-no-repeat bg-left">
@@ -30,6 +36,7 @@ const JoinProfile = ({
               userEmail={userEmail}
               joinEmail={joinEmail}
               emailId={"이메일 아이디"}
+              JoinProfile={JoinProfile}
             />
           </div>
           <div className="flex ">

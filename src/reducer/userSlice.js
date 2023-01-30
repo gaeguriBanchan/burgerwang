@@ -25,7 +25,7 @@ const userSlice = createSlice({
       state.status = action.payload.status;
       state.pwd = action.payload.pwd;
     },
-    loginUser: (state, action) => {
+    clearUser: (state, action) => {
       state.email = "";
       state.name = "";
       state.phon = "";

@@ -1,10 +1,10 @@
 /** @format */
-import { useEffect } from "react";
-import React from "react";
+import { useEffect } from 'react';
+import React from 'react';
 
 const UserPhon = ({ userPhon, joinPhon }) => {
   useEffect(() => {
-    console.log("회원정보", joinPhon);
+    console.log('회원정보', joinPhon);
   }, [joinPhon]);
 
   return (
@@ -17,7 +17,7 @@ const UserPhon = ({ userPhon, joinPhon }) => {
         value={joinPhon}
         onChange={(e) => userPhon(e)}
       />
-      {joinPhon === "" ? (
+      {joinPhon === '' ? (
         <p className="text-base text-bgwred pt-2">
           휴대폰 번호를 입력해 주세요
         </p>

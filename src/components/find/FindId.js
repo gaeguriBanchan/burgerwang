@@ -1,8 +1,9 @@
-import React from "react";
-import UserInfoType from "../base/UserInfoType";
-import UserName from "../base/UserName";
-import UserPhon from "../base/UserPhon";
+/** @format */
 
+import React from 'react';
+import UserInfoType from '../base/UserInfoType';
+import UserName from '../base/UserName';
+import UserPhon from '../base/UserPhon';
 
 const FindId = () => {
   return (
@@ -12,14 +13,14 @@ const FindId = () => {
       </p>
       <div className="px-16 py-6 text-2xl pl-14">
         <div className="flex">
-          <UserInfoType type={"이름"} />
+          <UserInfoType name={'이름'} />
           <UserName />
         </div>
         <div className="flex">
-          <UserInfoType type={"휴대폰 번호"} />
+          <UserInfoType name={'휴대폰 번호'} />
           <UserPhon />
         </div>
-        <ul className="text-lg pt-20 pl-6" style={{ listStyle: "disc" }}>
+        <ul className="text-lg pt-10 pl-6" style={{ listStyle: 'disc' }}>
           <li>
             가입 시 입력한 이름과 휴대폰번호로 아이디 정보를 찾을 수 있습니다.
           </li>

@@ -1,26 +1,14 @@
 /** @format */
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
-import BlindEyesButton from '../components/base/BlindEyesButton';
 import ActiveButton from '../components/base/ActiveButton';
 import ActiveBlackButton from '../components/base/ActiveBlackButton';
 import { Link } from 'react-router-dom';
 import UserEmailId from '../components/base/UserEmailId';
 import UserPassword from '../components/base/UserPassword';
+import useInput from '../components/join/hook/useInput';
+
 const Login = () => {
-  //임시로 넣어둠 나중에 분리 예정
-  const [pwType, setPwType] = useState({
-    type: 'password',
-    visible: false,
-  });
-  const handlePwType = (e) => {
-    setPwType(() => {
-      if (!pwType.visible) {
-        return { type: 'text', visible: true };
-      }
-      return { type: 'password', visible: false };
-    });
-  };
+  const [joinEmail, userEmail, joinPw, userPw] = useInput('');
 
   return (
     <div>
@@ -39,21 +27,29 @@ const Login = () => {
 
           <div className=" px-16 py-6 text-2xl pl-14">
             <div className="pb-10">
-              <UserEmailId emailId={'이메일아이디'} />
-              <UserPassword />
+              <UserEmailId
+                emailId={'이메일 아이디'}
+                joinEmail={joinEmail}
+                userEmail={userEmail}
+              />
+              <UserPassword name={'비밀번호'} joinPw={joinPw} userPw={userPw} />
             </div>
             <div className="pb-6">
               <Link to="menu">
-                <ActiveButton name={'로그인'} />
+                <ActiveButton children={'로그인'} />
               </Link>
               <Link to="/join">
                 <ActiveBlackButton name={'회원가입'} />
               </Link>
             </div>
-            <ul className="flex font-JUA">
-              <li className="mr-4">아이디 찾기</li>
-              <li className="ml-4">비밀번호 찾기</li>
-            </ul>
+            <div className="flex font-JUA">
+              <Link to="/findinfoId" className="mr-4">
+                아이디 찾기
+              </Link>
+              <Link to="/findinfoPw" className="ml-4">
+                비밀번호 찾기
+              </Link>
+            </div>
           </div>
         </div>
       </div>
