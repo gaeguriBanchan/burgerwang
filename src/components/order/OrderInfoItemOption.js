@@ -1,17 +1,46 @@
 import ChangeButton from "../base/ChangeButton";
 import OrderInfoItemOptionInfo from "./OrderInfoItemOptionInfo";
-const OrderInfoItemOption = ({ optionname, optioninfo }) => {
+const OrderInfoItemOption = ({ optionname, optiontype, optioninfo, changeOptionHandler }) => {
   return (
     <li className="flex justify-between items-center mb-4">
       <div className="grow flex justify-between mr-28">
         <span className="w-32 text-xl text-737373">{optionname}</span>
         <ul className="grow">
-          {optioninfo.map((item) => {
-            return <OrderInfoItemOptionInfo key={item.seq} optioninfo={item} />;
-          })}
+          {optiontype === "ingredient" &&
+            optioninfo.map((item) => (
+              <OrderInfoItemOptionInfo
+                key={item.ingredirentSeq}
+                name={item.ingredientName}
+                price={item.ingredientPrice}
+              />
+            ))}
+          {optiontype === "side" &&
+            optioninfo.map((item) => (
+              <OrderInfoItemOptionInfo
+                key={item.sideOptSeq}
+                name={item.sideOptName}
+                price={item.sideOptPrice}
+              />
+            ))}
+          {optiontype === "drink1" &&
+            optioninfo.map((item) => (
+              <OrderInfoItemOptionInfo
+                key={item.drinkOptSeq}
+                name={item.drinkOptName}
+                price={item.drinkOptPrice}
+              />
+            ))}
+          {optiontype === "drink2" &&
+            optioninfo.map((item) => (
+              <OrderInfoItemOptionInfo
+                key={item.drinkOptSeq}
+                name={item.drinkOptName}
+                price={item.drinkOptPrice}
+              />
+            ))}
         </ul>
       </div>
-      <ChangeButton name="변경" />
+      <ChangeButton name="변경" event={() => changeOptionHandler({ optiontype, optioninfo })} />
     </li>
   );
 };

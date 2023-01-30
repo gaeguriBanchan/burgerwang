@@ -2,6 +2,7 @@ import PaymentMeet from "./PaymentMeet";
 import PaymentCard from "./PaymentCard";
 import { useState } from "react";
 import PaymentSelect from "./PaymentSelect";
+import convertPrice from "../../utils/convertPrice";
 const Payment = ({ totalPrice, payment, setPayment }) => {
   const [paymentTab, setPaymentTab] = useState("card");
   const changePayTab = (tabName) => {
@@ -30,7 +31,7 @@ const Payment = ({ totalPrice, payment, setPayment }) => {
           />
         </ul>
       </div>
-      <div className="px-16 pt-16 pb-12 bg-white drop-shadow">
+      <div className="px-16 pt-16 pb-12 bg-white">
         {paymentTab === "card" ? (
           <PaymentCard payment={payment} setPayment={setPayment} />
         ) : (
@@ -38,7 +39,7 @@ const Payment = ({ totalPrice, payment, setPayment }) => {
         )}
         <p className="pt-6 mt-8 flex justify-between border-t-2 border-ededed border-dashed">
           <span className="text-3xl font-black">총 결제금액</span>
-          <span className="text-3xl text-bgwred font-black">{totalPrice}</span>
+          <span className="text-3xl text-bgwred font-black">{convertPrice(totalPrice)}원</span>
         </p>
       </div>
     </div>

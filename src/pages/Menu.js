@@ -2,17 +2,16 @@ import React, { useEffect, useState } from "react";
 import TabButton from "../components/base/TabButton";
 import Food from "../components/menu/Food";
 import { getMenu } from "../api/menuApi";
-import { useNavigate } from "react-router";
-import Modal from "../components/menu/Modal";
+import Modal from "../components/base/Modal";
 import ModalMenu from "../components/menu/ModalMenu";
 import { useContext } from "react";
 import { MenuContext } from "../components/menu/context/MenuContext";
 const Menu = () => {
-  const navigate = useNavigate();
   const [menuList, setMenuList] = useState([]);
-  const [selectedCategory, changeSelectedCategory] = useState("4");
-  const [{ selectedMenuCate }, setSelectedMenu, setSelectedMenuCate, addCartInfo, addToCart] =
-    useContext(MenuContext);
+  const [selectedCategory, changeSelectedCategory] = useState("1");
+  const { manageValue, manageCart } = useContext(MenuContext);
+  const { selectedMenu, setSelectedMenu, selectedMenuCate, setSelectedMenuCate } = manageValue;
+  const { addCartInfo, addToCart } = manageCart;
   const setMenu = async () => {
     const res = await getMenu(selectedCategory);
     const { event, burger, side, drink, dog } = res.list;

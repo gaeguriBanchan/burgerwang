@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { createContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCartList } from "../../../reducer/cartReducer";
@@ -34,10 +34,16 @@ export const MenuContextProvider = (props) => {
     const updatePrice = cart.totalPrice + drinkOptPrice;
     cart = { ...cart, drinkInfo: [data], totalPrice: updatePrice };
   };
-  //   useEffect(() => {
-  //     console.log(selectedMenu, selectedMenuCate);
-  //   }, [selectedMenu, selectedMenuCate]);
-  const value = useMemo(() => {
+  const manageValue = useMemo(() => {
+    return {
+      selectedMenu,
+      selectedMenuCate,
+      setSelectedMenu,
+      setSelectedMenuCate,
+    };
+  }, [selectedMenu, selectedMenuCate]);
+
+  const manageCart = useMemo(() => {
     const addCartInfo = (type, data) => {
       type === "menu" && addMenu(data);
       type === "event" && addEventMenu(data);
@@ -50,14 +56,10 @@ export const MenuContextProvider = (props) => {
       dispatch(addCartList(cart));
       navigate("/cart");
     };
-    return [
-      { selectedMenu, selectedMenuCate },
-      setSelectedMenu,
-      setSelectedMenuCate,
-      addCartInfo,
-      addToCart,
-    ];
+    return { addCartInfo, addToCart };
   }, []);
+
+  const value = { manageValue, manageCart };
 
   return <MenuContext.Provider value={value} {...props} />;
 };
