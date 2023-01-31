@@ -6,8 +6,10 @@ import ActiveButton from "../components/base/ActiveButton";
 import ActiveBlackButton from "../components/base/ActiveBlackButton";
 import CartList from "../components/cart/CartList";
 import CartPrice from "../components/cart/CartPrice";
+import { useNavigate } from "react-router";
 
 const Cart = () => {
+  const navigate = useNavigate();
   const { cartList } = useSelector((state) => state.cart);
   const [checkList, setCheckList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -21,6 +23,13 @@ const Cart = () => {
   useEffect(() => {
     updateTotalPrice();
   }, [checkList]);
+  const navigateToOrder = () => {
+    if (totalPrice < 15000) {
+      alert("15000원 이상이면 주문이 가능해요!");
+      return;
+    }
+    navigate("/order", { state: checkList });
+  };
   return (
     <>
       <Helmet>
@@ -40,9 +49,7 @@ const Cart = () => {
             <Link to="/menu">
               <ActiveBlackButton name="메뉴 추가" />
             </Link>
-            <Link to="/order" state={{ orderList: checkList }}>
-              <ActiveButton>주문하기</ActiveButton>
-            </Link>
+            <ActiveButton event={navigateToOrder}>주문하기</ActiveButton>
           </div>
         </div>
       </div>

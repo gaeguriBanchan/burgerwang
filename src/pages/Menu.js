@@ -10,7 +10,7 @@ const Menu = () => {
   const [menuList, setMenuList] = useState([]);
   const [selectedCategory, changeSelectedCategory] = useState("1");
   const { manageValue, manageCart } = useContext(MenuContext);
-  const { selectedMenu, setSelectedMenu, selectedMenuCate, setSelectedMenuCate } = manageValue;
+  const { setSelectedMenu, selectedMenuCate, setSelectedMenuCate } = manageValue;
   const { addCartInfo, addToCart } = manageCart;
   const setMenu = async () => {
     const res = await getMenu(selectedCategory);
@@ -131,7 +131,7 @@ const Menu = () => {
             </TabButton>
           </ul>
         </div>
-        <div className="grid grid-cols-4 gap-x-9 gap-y-28 mt-20">{list}</div>
+        <div className="grid grid-cols-4 gap-x-9 gap-y-28 my-20">{list}</div>
       </div>
       <Modal modalIsOpen={modalIsOpen}>
         <ModalMenu

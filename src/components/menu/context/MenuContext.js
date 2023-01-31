@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCartList } from "../../../reducer/cartReducer";
 import { useNavigate } from "react-router";
+import { getMenuDrink } from "../../../api/menuApi";
 
 export const MenuContext = createContext();
 export const MenuContextProvider = (props) => {
@@ -11,13 +12,47 @@ export const MenuContextProvider = (props) => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [selectedMenuCate, setSelectedMenuCate] = useState("");
   let cart = {};
+  const eventDrink = async (seq) => {
+    const { list } = await getMenuDrink(seq);
+    const defaultDrink = list.filter((item) => item.drinkOptSeq === 42);
+    return defaultDrink;
+  };
   const addMenu = (data) => {
     const { price } = data;
     cart = { date: Date.now(), menuInfo: data, count: 1, totalPrice: price };
   };
   const addEventMenu = (data) => {
-    const { price } = data;
-    cart = { date: Date.now(), menuInfo: data, count: 1, drink: [], drink2: [], totalPrice: price };
+    const { seq, price } = data;
+    // const defaultDrink = eventDrink(seq).then((res) => {
+    //   return res;
+    // });
+    // console.log(defaultDrink);
+    cart = {
+      date: Date.now(),
+      menuInfo: data,
+      count: 1,
+      drinkInfo: [
+        {
+          drinkOptSeq: 42,
+          drinkOptName: "콜라R",
+          drinkOptPrice: 0,
+          drinkOptSize: 1,
+          drinkOptFile: "drinkOpt_1675065950591.png",
+          drinkOptUri: "콜라R",
+        },
+      ],
+      drink2Info: [
+        {
+          drinkOptSeq: 42,
+          drinkOptName: "콜라R",
+          drinkOptPrice: 0,
+          drinkOptSize: 1,
+          drinkOptFile: "drinkOpt_1675065950591.png",
+          drinkOptUri: "콜라R",
+        },
+      ],
+      totalPrice: price,
+    };
   };
   const addIngredient = (data) => {
     let updatePrice = cart.totalPrice;
@@ -52,7 +87,6 @@ export const MenuContextProvider = (props) => {
       type === "drink" && addDrink(data);
     };
     const addToCart = () => {
-      console.log("move", cart);
       dispatch(addCartList(cart));
       navigate("/cart");
     };
