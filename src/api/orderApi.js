@@ -1,9 +1,19 @@
 import apiClient from "./apiClient";
 
 export const putOrder = async (data) => {
+  console.log(data);
   try {
     const res = await apiClient.put("/order", data);
     return res;
+  } catch (err) {
+    return err;
+  }
+};
+
+export const getPayment = async (data) => {
+  try {
+    const res = await apiClient.get(`/order/payment/${data}`);
+    return res.data;
   } catch (err) {
     return err;
   }

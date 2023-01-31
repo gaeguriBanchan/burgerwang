@@ -12,6 +12,7 @@ const ModalMenuList = ({ setModalKind }) => {
   const getDetailMenu = async () => {
     const res = await getMenuDetail(selectedMenuCate, selectedMenu);
     const { seq, name, detail, uri, seller } = res.list;
+    console.log(res.list);
     setMenuInfo({ seq, name, detail, uri });
     setMenuList(seller);
   };
@@ -34,12 +35,18 @@ const ModalMenuList = ({ setModalKind }) => {
   }, [selectedMenu, selectedMenu]);
   return (
     <div className="max-h-[600px] overflow-auto">
-      <div className="flex items-center h-80 bg-menuselect bg-cover">
-        <div className="ml-8">
-          <p className="text-white text-4xl font-black">{menuInfo.name}</p>
+      <div className="relative flex items-center h-80 bg-menuselect bg-cover">
+        <div className="mx-8 pr-56">
+          <p className="text-white text-4xl font-black whitespace-nowrap">{menuInfo.name}</p>
           <p className="mt-2 text-white text-xl">{menuInfo.detail}</p>
         </div>
-        <img src="" alt="" className="" />
+        <div className="absolute right-[-40px] top-[50%] translate-y-[-50%] h-60">
+          <img
+            src={`${process.env.REACT_APP_IMAGE_URL}/${selectedMenuCate}/${menuInfo.uri}`}
+            alt={menuInfo.name}
+            className="h-full"
+          />
+        </div>
       </div>
       <ul className="bg-background p-8">
         {menuList.map((item) => (

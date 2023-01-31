@@ -14,8 +14,12 @@ const ModalMenuIngredientItem = ({ ingredientData, changeChecked, isChecked }) =
           onChange={() => changeChecked(ingredirentSeq)}
         />
         <div className={"relative w-full flex justify-end " + styles.ingredient}>
-          <div className="absolute left-12 top-[50%] w-24 h-12 translate-y-[-50%] bg-black">
-            <img className="w-full h-full" src="" alt="" />
+          <div className="absolute left-12 top-[50%] w-24 h-12 translate-y-[-50%]">
+            <img
+              className="w-full h-full"
+              src={`${process.env.REACT_APP_IMAGE_URL}/ingredients/${ingredientFile}`}
+              alt=""
+            />
           </div>
           <div className="w-full min-h-[100px] ml-40 flex items-center">
             <span className="block grow ml-4 mr-8 text-2xl">{ingredientName}</span>

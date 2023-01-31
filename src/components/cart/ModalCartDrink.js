@@ -6,10 +6,16 @@ import { changeOption } from "../../reducer/cartReducer";
 const ModalCartDrink = ({ menuSeq, optiontype, optioninfo, date, closeModal }) => {
   const dispatch = useDispatch();
   const [drinkList, setDrinkList] = useState([]);
-  const [selectItem, setSelectItem] = useState(optioninfo[0].drinkOptSeq);
+  const [selectItem, setSelectItem] = useState();
   const getDrink = async () => {
     const res = await getMenuDrink(menuSeq);
     setDrinkList(res.list);
+    getCurrentSelectedItem();
+  };
+  const getCurrentSelectedItem = () => {
+    if (optioninfo[0].drinkOptSeq !== undefined) {
+      setSelectItem(optioninfo[0].drinkOptSeq);
+    }
   };
   const getSelectedItem = () => {
     for (let i = 0; i < drinkList.length; i++) {

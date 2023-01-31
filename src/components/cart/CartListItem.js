@@ -66,11 +66,9 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
           </label>
           <img src={DefaultImage} alt="상품 이미지" className="h-28" />
         </div>
-        {!ingredientInfo && !sideInfo && !drinkInfo && !drink2Info ? (
-          ""
-        ) : (
+        {(menuInfo.menuKind === "SET" || menuInfo.type === "SET") && (
           <ul className="py-8 border-b border-ededed border-dashed">
-            {ingredientInfo && ingredientInfo.length > 0 && (
+            {ingredientInfo && (
               <CartListItemOption
                 optionname="재료추가"
                 optiontype="ingredient"
@@ -78,7 +76,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {sideInfo && sideInfo.length > 0 && (
+            {sideInfo && (
               <CartListItemOption
                 optionname="사이드"
                 optiontype="side"
@@ -86,7 +84,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {drinkInfo && drinkInfo.length > 0 && (
+            {drinkInfo && (
               <CartListItemOption
                 optionname={drink2Info ? "음료1" : "음료"}
                 optiontype="drink1"
@@ -94,7 +92,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {drink2Info && drink2Info.length > 0 && (
+            {drink2Info && (
               <CartListItemOption
                 optionname="음료2"
                 optiontype="drink2"
