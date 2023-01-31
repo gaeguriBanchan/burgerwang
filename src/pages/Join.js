@@ -3,23 +3,15 @@ import { Helmet } from 'react-helmet-async';
 import JoinProfile from '../components/join/JoinProfile';
 import JoinOptional from '../components/join/JoinOptional';
 import JoinPw from '../components/join/JoinPw';
-
 import PageName from '../components/base/PageName';
 import useInput from '../components/join/hook/useInput';
 
 const Join = () => {
-  const [
-    joinEmail,
-    userEmail,
-    joinName,
-    userName,
-    joinPhon,
-    userPhon,
-    joinPw,
-    userPw,
-    joinPwCheck,
-    userPwCheck,
-  ] = useInput('');
+  const [joinEmail, userEmail] = useInput('');
+  const [joinName, userName] = useInput('');
+  const [joinPhon, userPhon] = useInput('');
+  const [joinPw, userPw] = useInput('');
+  const [joinPwCheck, userPwCheck] = useInput('');
 
   // 회원가입
   const registFunc = (e) => {
@@ -47,7 +39,18 @@ const Join = () => {
     }
   };
 
-  
+  console.log(
+    '이메일',
+    joinEmail,
+    '이름',
+    joinName,
+    '폰',
+    joinPhon,
+    '비번',
+    joinPw,
+    '비번확인',
+    joinPwCheck
+  );
 
 
   return (
@@ -69,6 +72,7 @@ const Join = () => {
           />
           <JoinOptional />
           <JoinPw
+            JoinPw={JoinPw}
             joinPw={joinPw}
             userPw={userPw}
             joinPwCheck={joinPwCheck}

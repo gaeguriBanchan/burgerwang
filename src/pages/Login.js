@@ -8,7 +8,20 @@ import UserPassword from '../components/base/UserPassword';
 import useInput from '../components/join/hook/useInput';
 
 const Login = () => {
-  const [joinEmail, userEmail, joinPw, userPw] = useInput('');
+  const [loginEmail, userLoginEmail, loginPw, userloginPw] = useInput('');
+
+  const registFunc = (e) => {
+    e.preventDefault();
+    if (!loginEmail) {
+      return alert('이메일을 입력하세요.');
+    }
+    if (!loginPw) {
+      return alert('비밀번호를 입력하세요.');
+    }
+    // if (joinPw !== joinPwCheck) {
+    //   return alert('비밀번호가 일치하지 않습니다.');
+    // }
+  };
 
   return (
     <div>
@@ -29,15 +42,19 @@ const Login = () => {
             <div className="pb-10">
               <UserEmailId
                 emailId={'이메일 아이디'}
-                joinEmail={joinEmail}
-                userEmail={userEmail}
+                loginEmail={loginEmail}
+                userLoginEmail={userLoginEmail}
               />
-              <UserPassword name={'비밀번호'} joinPw={joinPw} userPw={userPw} />
+              <UserPassword
+                name={'비밀번호'}
+                joinPw={loginPw}
+                userloginPw={userloginPw}
+              />
             </div>
             <div className="pb-6">
-              <Link to="menu">
+              <button onClick={(e) => registFunc(e)}>
                 <ActiveButton children={'로그인'} />
-              </Link>
+              </button>
               <Link to="/join">
                 <ActiveBlackButton name={'회원가입'} />
               </Link>

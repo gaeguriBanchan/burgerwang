@@ -3,8 +3,26 @@ import React from 'react';
 import UserInfoType from '../base/UserInfoType';
 import UserPassword from '../base/UserPassword';
 
-const JoinPw = ({ joinPw, userPw, joinPwCheck, userPwCheck }) => {
-
+const JoinPw = ({ joinPw, userPw, joinPwCheck, userPwCheck, JoinPw, name }) => {
+  const checkpw = () => {
+    console.log(joinPw, joinPwCheck);
+    if (joinPw !== joinPwCheck) {
+      return (
+        <p className="text-base text-bgwred pt-2">
+          비밀번호가 일치하지 않습니다.
+        </p>
+      );
+    }
+    if (!joinPwCheck) {
+      return (
+        <p className="text-base text-bgwred pt-2">
+          비밀번호 확인을 입력해 주세요
+        </p>
+      );
+    } else {
+      return <p>&nbsp;</p>;
+    }
+  };
 
   return (
     <div className="pb-10">
@@ -17,13 +35,18 @@ const JoinPw = ({ joinPw, userPw, joinPwCheck, userPwCheck }) => {
             <UserInfoType name={'비밀번호'} />
           </div>
           <div className="w-full">
-            <UserPassword name={'비밀번호'} 
-            joinPw={joinPw} 
-            userPw={userPw} />
+            <UserPassword
+              name={'비밀번호'}
+              JoinPw={JoinPw}
+              joinPw={joinPw}
+              userPw={userPw}
+            />
             <UserPassword
               name={'비밀번호 확인'}
+              JoinPw={JoinPw}
               joinPwCheck={joinPwCheck}
               userPwCheck={userPwCheck}
+              checkpw={checkpw}
             />
           </div>
         </div>

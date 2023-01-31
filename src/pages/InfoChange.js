@@ -10,7 +10,7 @@ import DisabledButton from '../components/base/DisabledButton';
 import useInput from '../components/join/hook/useInput';
 
 const InfoChange = () => {
-  const [joinEmail, userEmail, joinPw, userPw] = useInput('');
+  const [loginEmail, userLoginEmail, loginPw, userloginPw] = useInput('');
 
   return (
     <div>
@@ -34,16 +34,16 @@ const InfoChange = () => {
                 <UserInfoType name={'이메일 아이디'} />
                 <UserEmailId
                   emailId={'이메일 아이디'}
-                  joinEmail={joinEmail}
-                  userEmail={userEmail}
+                  loginEmail={loginEmail}
+                  userLoginEmail={userLoginEmail}
                 />
               </div>
               <div className="flex text-2xl pb-6">
                 <UserInfoType name={'현재 비밀번호'} />
                 <UserPassword
                   name={'현재 비밀번호'}
-                  joinPw={joinPw}
-                  userPw={userPw}
+                  loginPw={loginPw}
+                  userloginPw={userloginPw}
                 />
               </div>
             </div>

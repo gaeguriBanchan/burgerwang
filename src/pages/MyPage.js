@@ -1,18 +1,23 @@
 /** @format */
-
-import React from "react";
-import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
-import PageName from "../components/base/PageName";
+import axios from 'axios';
+import React from 'react';
+import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import PageName from '../components/base/PageName';
 
 const MyPage = () => {
+  useEffect(() => {
+    axios.get('http://192.168.0.122:9898/api/member/mypage').then().catch();
+  }, []);
+
   return (
     <div>
       <Helmet>
         <title>MY킹</title>
       </Helmet>
       <div className="container max-w-6xl px-5 py-12">
-        <PageName pagename={"MY킹"} />
+        <PageName pagename={'MY킹'} />
 
         <div className="flex justify-between ">
           <div className="text-2xl">
@@ -24,7 +29,9 @@ const MyPage = () => {
               className="
             flex font-JUA text-base"
             >
-              <Link to="/infoChange" className="mr-5">정보변경 &#62;</Link>
+              <Link to="/infoChange" className="mr-5">
+                정보변경 &#62;
+              </Link>
               <Link>MY 배달지 &#62;</Link>
             </ul>
           </div>

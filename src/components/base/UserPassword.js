@@ -1,14 +1,25 @@
 /** @format */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import BlindEyesButton from './BlindEyesButton';
 
-const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
+const UserPassword = ({
+  JoinPw,
+  name,
+  joinPw,
+  userPw,
+  joinPwCheck,
+  userPwCheck,
+  newPw,
+  userNewPw,
+  newPwCheck,
+  userNewPwCheck,
+  checkpw,
+}) => {
   const [pwType, setPwType] = useState({
     type: 'password',
     visible: false,
   });
-
   const handlePwType = (e) => {
     e.preventDefault();
     setPwType(() => {
@@ -18,15 +29,7 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
       return { type: 'password', visible: false };
     });
   };
-  useEffect(() => {
-    console.log('비밀번호', joinPw);
-  }, [joinPw]);
-
-  useEffect(() => {
-    console.log('비밀번호 확인', joinPwCheck);
-  }, [joinPwCheck]);
-
-  if (name === '비밀번호') {
+  if ((JoinPw, name === '비밀번호')) {
     return (
       <div className="w-full">
         <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
@@ -46,14 +49,14 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
           />
         </div>
         {joinPw === '' ? (
-          <p className="text-base text-bgwred pt-2">{name} 을 입력해 주세요</p>
+          <p className="text-base text-bgwred pt-2">{name}를 입력해 주세요</p>
         ) : (
           <p>&nbsp;</p>
         )}
       </div>
     );
   }
-  if (name === '비밀번호 확인') {
+  if ((JoinPw, name === '비밀번호 확인')) {
     return (
       <div className="w-full">
         <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
@@ -72,11 +75,7 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
             handlePwType={handlePwType}
           />
         </div>
-        {joinPwCheck === '' ? (
-          <p className="text-base text-bgwred pt-2">{name}을 입력해 주세요</p>
-        ) : (
-          <p>&nbsp;</p>
-        )}
+        {checkpw()}
       </div>
     );
   }
@@ -90,8 +89,8 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
             type={pwType.type}
             placeholder={name}
             minLength={6}
-            value={joinPwCheck}
-            onChange={(e) => userPwCheck(e)}
+            value={joinPw}
+            onChange={(e) => userPw(e)}
           />
           <BlindEyesButton
             pwType={pwType}
@@ -100,7 +99,7 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
           />
         </div>
         {joinPw === '' ? (
-          <p className="text-base text-bgwred pt-2">{name} 를 입력해 주세요</p>
+          <p className="text-base text-bgwred pt-2">{name}를 입력해 주세요</p>
         ) : (
           <p>&nbsp;</p>
         )}
@@ -117,8 +116,8 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
             type={pwType.type}
             placeholder={name}
             minLength={6}
-            value={joinPwCheck}
-            onChange={(e) => userPwCheck(e)}
+            value={newPw}
+            onChange={(e) => userNewPw(e)}
           />
           <BlindEyesButton
             pwType={pwType}
@@ -126,8 +125,8 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
             handlePwType={handlePwType}
           />
         </div>
-        {joinPw === '' ? (
-          <p className="text-base text-bgwred pt-2">{name} 를 입력해 주세요</p>
+        {newPw === '' ? (
+          <p className="text-base text-bgwred pt-2">{name}를 입력해 주세요</p>
         ) : (
           <p>&nbsp;</p>
         )}
@@ -144,8 +143,8 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
             type={pwType.type}
             placeholder={name}
             minLength={6}
-            value={joinPwCheck}
-            onChange={(e) => userPwCheck(e)}
+            value={newPwCheck}
+            onChange={(e) => userNewPwCheck(e)}
           />
           <BlindEyesButton
             pwType={pwType}
@@ -153,8 +152,30 @@ const UserPassword = ({ name, joinPw, userPw, joinPwCheck, userPwCheck }) => {
             handlePwType={handlePwType}
           />
         </div>
-        {joinPwCheck === '' ? (
-          <p className="text-base text-bgwred pt-2">{name}을 입력해 주세요</p>
+        {checkpw()}
+      </div>
+    );
+  } else {
+    return (
+      <div className="w-full">
+        <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
+          <input
+            className="w-full outline-none"
+            required
+            type={pwType.type}
+            placeholder={name}
+            minLength={6}
+            value={joinPw}
+            onChange={(e) => userPw(e)}
+          />
+          <BlindEyesButton
+            pwType={pwType}
+            setPwType={setPwType}
+            handlePwType={handlePwType}
+          />
+        </div>
+        {joinPw === '' ? (
+          <p className="text-base text-bgwred pt-2">{name}를 입력해 주세요</p>
         ) : (
           <p>&nbsp;</p>
         )}

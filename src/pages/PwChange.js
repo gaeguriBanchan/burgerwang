@@ -9,6 +9,30 @@ import useInput from '../components/join/hook/useInput';
 
 const PwChange = () => {
   const [joinPw, userPw] = useInput('');
+  const [newPw, userNewPw] = useInput('');
+  const [newPwCheck, userNewPwCheck] = useInput('');
+
+  console.log('비번', joinPw, '새비번', newPw, '새확인', newPwCheck);
+
+  const checkpw = () => {
+    console.log(newPw, newPwCheck);
+    if (newPw !== newPwCheck) {
+      return (
+        <p className="text-base text-bgwred pt-2">
+          비밀번호가 일치하지 않습니다.
+        </p>
+      );
+    }
+    if (!newPwCheck) {
+      return (
+        <p className="text-base text-bgwred pt-2">
+          새 비밀번호 확인을 입력해 주세요
+        </p>
+      );
+    } else {
+      return <p>&nbsp;</p>;
+    }
+  };
 
   return (
     <div className="container max-w-6xl px-5 py-12">
@@ -35,8 +59,17 @@ const PwChange = () => {
               <UserInfoType name={'새 비밀번호'} />
             </div>
             <div className="w-full">
-              <UserPassword name={'새 비밀번호'} />
-              <UserPassword name={'새 비밀번호 확인'} />
+              <UserPassword
+                name={'새 비밀번호'}
+                newPw={newPw}
+                userNewPw={userNewPw}
+              />
+              <UserPassword
+                name={'새 비밀번호 확인'}
+                newPwCheck={newPwCheck}
+                userNewPwCheck={userNewPwCheck}
+                checkpw={checkpw}
+              />
             </div>
           </div>
         </div>

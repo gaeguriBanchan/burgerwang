@@ -1,6 +1,13 @@
 /** @format */
 
-const UserEmailId = ({ emailId, userEmail, joinEmail, JoinProfile }) => {
+const UserEmailId = ({
+  emailId,
+  userEmail,
+  joinEmail,
+  loginEmail,
+  userLoginEmail,
+  JoinProfile,
+}) => {
   if (JoinProfile) {
     return (
       <div className="text-2xl w-full ">
@@ -29,10 +36,10 @@ const UserEmailId = ({ emailId, userEmail, joinEmail, JoinProfile }) => {
           type="email"
           placeholder={emailId}
           required
-          value={joinEmail}
-          onChange={(e) => userEmail(e)}
+          value={loginEmail}
+          onChange={(e) => userLoginEmail(e)}
         />
-        {joinEmail === '' ? (
+        {loginEmail === '' ? (
           <p className="text-base text-bgwred pt-2">
             이메일 주소를 입력해 주세요.
           </p>
