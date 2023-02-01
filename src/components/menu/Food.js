@@ -3,17 +3,16 @@ const Food = ({ menu, selectMenuHandler }) => {
   const { cate, seq, name, count, uri, detail, price, soldout } = menu;
   return (
     <>
-      <div
-        className="max-w-110 px-2 flex flex-col"
-        onClick={() => selectMenuHandler(menu, cate, seq)}
-      >
-        <div className="relative flex justify-center">
+      <div className="max-w-110 flex flex-col" onClick={() => selectMenuHandler(menu, cate, seq)}>
+        <div className="relative  px-2 flex justify-center">
           <div className="w-full h-auto">
-            <img
-              className="flex justify-center"
-              src={`${process.env.REACT_APP_IMAGE_URL}/${cate}/${uri}`}
-              alt={name}
-            />
+            {uri && (
+              <img
+                className="w-full h-full"
+                src={`${process.env.REACT_APP_IMAGE_URL}/${cate}/${uri}`}
+                alt={name}
+              />
+            )}
             {soldout && (
               <span className="block absolute w-full h-full left-0 top-0 bg-icon-soldout bg-no-repeat bg-contain"></span>
             )}

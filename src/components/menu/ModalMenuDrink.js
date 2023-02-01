@@ -8,7 +8,7 @@ const ModalMenuDrink = ({ modalKind }) => {
   const [selectItem, setSelectItem] = useState(0);
   const { manageValue, manageCart } = useContext(MenuContext);
   const { selectedMenu } = manageValue;
-  const { addCartInfo, addToCart } = manageCart;
+  const { addCartInfo } = manageCart;
   const getDrink = async () => {
     const res = await getMenuDrink(selectedMenu);
     setDrinkList(res.list);
@@ -21,9 +21,9 @@ const ModalMenuDrink = ({ modalKind }) => {
     }
   };
   const selectDrink = () => {
-    const res = getSelectedItem();
-    addCartInfo("drink", res);
-    addToCart();
+    const isDone = true;
+    const data = getSelectedItem();
+    addCartInfo({ type: "drink", data, isDone });
   };
   useEffect(() => {
     modalKind === "drink" && getDrink();

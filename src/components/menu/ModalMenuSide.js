@@ -21,8 +21,8 @@ const ModalMenuSide = ({ modalKind, setModalKind }) => {
     }
   };
   const selectSide = () => {
-    const res = getSelectedItem();
-    addCartInfo("side", res);
+    const data = getSelectedItem();
+    addCartInfo({ type: "side", data });
     setModalKind("drink");
   };
   useEffect(() => {

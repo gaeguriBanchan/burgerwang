@@ -16,11 +16,13 @@ const ModalMenuSideItem = ({ sideData, selectItem, setSelectItem }) => {
         <span className={styles.radiocheck}></span>
         <div className="sidecon">
           <div className="px-2 h-[100px]">
-            <img
-              src={`${process.env.REACT_APP_IMAGE_URL}/sideOpt/${sideOptUri}`}
-              alt={sideOptName}
-              className="w-full h-full"
-            />
+            {sideOptUri && (
+              <img
+                src={`${process.env.REACT_APP_IMAGE_URL}/sideOpt/${sideOptUri}`}
+                alt={sideOptName}
+                className="w-full h-full"
+              />
+            )}
           </div>
           <div className="px-2 mt-4">
             <p className="text-center text-l">{sideOptName}</p>

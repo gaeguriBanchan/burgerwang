@@ -10,11 +10,13 @@ const ModalMenuListItem = ({ menuData, selectMenu }) => {
           <p className="mt-2 text-bgwred text-2xl font-black">\{convertPrice(price)}</p>
         </div>
         <div className="absolute right-4 top-[50%] w-44 h-30 translate-y-[-50%]">
-          <img
-            className="h-full"
-            src={`${process.env.REACT_APP_IMAGE_URL}/menu/${uri}`}
-            alt={name}
-          />
+          {uri && (
+            <img
+              className="h-full"
+              src={`${process.env.REACT_APP_IMAGE_URL}/menu/${uri}`}
+              alt={name}
+            />
+          )}
         </div>
       </div>
       <button
