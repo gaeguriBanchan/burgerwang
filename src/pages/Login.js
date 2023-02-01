@@ -1,24 +1,35 @@
 /** @format */
-import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
-import BlindEyesButton from '../components/base/BlindEyesButton';
-import ActiveButton from '../components/base/ActiveButton';
-import ActiveBlackButton from '../components/base/ActiveBlackButton';
-import { Link } from 'react-router-dom';
-import UserEmailId from '../components/base/UserEmailId';
-import UserPassword from '../components/base/UserPassword';
+import { Helmet } from "react-helmet-async";
+import { useState } from "react";
+import BlindEyesButton from "../components/base/BlindEyesButton";
+import ActiveButton from "../components/base/ActiveButton";
+import ActiveBlackButton from "../components/base/ActiveBlackButton";
+import { Link } from "react-router-dom";
+import UserEmailId from "../components/base/UserEmailId";
+import UserPassword from "../components/base/UserPassword";
+
+import { useDispatch } from "react-redux";
+import { loginUser } from "../reducer/userSlice";
+// 김재진 : 타이틀 출력
+import { setTitle } from "../reducer/headerSlice";
+
 const Login = () => {
+  const disptach = useDispatch();
+
+  // 김재진
+  disptach(setTitle({ title: "로그인" }));
+
   //임시로 넣어둠 나중에 분리 예정
   const [pwType, setPwType] = useState({
-    type: 'password',
+    type: "password",
     visible: false,
   });
   const handlePwType = (e) => {
     setPwType(() => {
       if (!pwType.visible) {
-        return { type: 'text', visible: true };
+        return { type: "text", visible: true };
       }
-      return { type: 'password', visible: false };
+      return { type: "password", visible: false };
     });
   };
 
@@ -39,15 +50,23 @@ const Login = () => {
 
           <div className=" px-16 py-6 text-2xl pl-14">
             <div className="pb-10">
-              <UserEmailId emailId={'이메일아이디'} />
+              <UserEmailId emailId={"이메일아이디"} />
               <UserPassword />
             </div>
             <div className="pb-6">
-              <Link to="menu">
-                <ActiveButton name={'로그인'} />
-              </Link>
+              {/* <Link to="menu"> */}
+              <button
+                name={"로그인"}
+                onClick={() => {
+                  disptach(loginUser({ email: "aaa@aaa.net" }));
+                }}
+              >
+                {" "}
+                로그인입니다.{" "}
+              </button>
+              {/* </Link> */}
               <Link to="/join">
-                <ActiveBlackButton name={'회원가입'} />
+                <ActiveBlackButton name={"회원가입"} />
               </Link>
             </div>
             <ul className="flex font-JUA">
