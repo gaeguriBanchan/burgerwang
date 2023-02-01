@@ -1,6 +1,5 @@
 /** @format */
 
-import style from '../join/Join.module.css';
 import React, { useEffect, useState } from 'react';
 
 const UserBirthDate = () => {

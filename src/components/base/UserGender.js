@@ -1,7 +1,5 @@
-/** @format */
-import style from '../join/Join.module.css';
-
 const UserGender = () => {
+  
   const userGender = (e) => {
     console.log(e.target.value);
   };
@@ -16,7 +14,7 @@ const UserGender = () => {
           value="0"
           onClick={(e) => userGender(e)}
         />
-        선택안함
+        <span className="py-4 ml-5 mr-12">선택안함</span>
       </label>
       <label htmlFor="g-m">
         <input
@@ -26,7 +24,7 @@ const UserGender = () => {
           value="1"
           onClick={(e) => userGender(e)}
         />
-        남
+        <span className="py-4 ml-5 mr-12">남</span>
       </label>
       <label htmlFor="g-w">
         <input
@@ -36,7 +34,7 @@ const UserGender = () => {
           value="2"
           onClick={(e) => userGender(e)}
         />
-        여
+        <span className="py-4 ml-5 mr-12">여</span>
       </label>
     </div>
   );

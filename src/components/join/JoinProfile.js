@@ -1,10 +1,10 @@
 /** @format */
 
-import React from "react";
-import UserEmailId from "../base/UserEmailId";
-import UserInfoType from "../base/UserInfoType";
-import UserName from "../base/UserName";
-import UserPhon from "../base/UserPhon";
+import React from 'react';
+import UserEmailId from '../base/UserEmailId';
+import UserInfoType from '../base/UserInfoType';
+import UserName from '../base/UserName';
+import UserPhon from '../base/UserPhon';
 
 const JoinProfile = ({
   joinEmail,
@@ -14,11 +14,11 @@ const JoinProfile = ({
   joinName,
   userName,
 }) => {
-
-
-
-
-
+  //   // 전화번호 자동 정규식 처리
+  // const regexPhoneNumber = (target) => {
+  //   target.value = target.value.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`)
+  // }
+  //input  oninput={regexPhoneNumber(this)}
 
   return (
     <div className="mb-10">
@@ -31,20 +31,20 @@ const JoinProfile = ({
         </p>
         <div className="px-16 py-6 text-2xl">
           <div className="flex  py-6">
-            <UserInfoType name={"이메일 아이디"} />
+            <UserInfoType name={'이메일 아이디'} />
             <UserEmailId
               userEmail={userEmail}
               joinEmail={joinEmail}
-              emailId={"이메일 아이디"}
+              emailId={'이메일 아이디'}
               JoinProfile={JoinProfile}
             />
           </div>
           <div className="flex ">
-            <UserInfoType name={"이름"} />
+            <UserInfoType name={'이름'} />
             <UserName joinName={joinName} userName={userName} />
           </div>
           <div className="flex  py-6">
-            <UserInfoType name={"휴대폰 번호"} />
+            <UserInfoType name={'휴대폰 번호'} />
             <UserPhon joinPhon={joinPhon} userPhon={userPhon} />
           </div>
         </div>

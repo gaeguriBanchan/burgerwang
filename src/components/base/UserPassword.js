@@ -10,12 +10,21 @@ const UserPassword = ({
   userPw,
   joinPwCheck,
   userPwCheck,
+  loginPw,
+  userloginPw,
   newPw,
   userNewPw,
   newPwCheck,
   userNewPwCheck,
+
   checkpw,
 }) => {
+
+
+
+
+
+
   const [pwType, setPwType] = useState({
     type: 'password',
     visible: false,
@@ -29,12 +38,13 @@ const UserPassword = ({
       return { type: 'password', visible: false };
     });
   };
-  if ((JoinPw, name === '비밀번호')) {
+  if ((JoinPw, name === '비밀번호 영문 숫자 6자리 이상')) {
     return (
       <div className="w-full">
         <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
           <input
             className="w-full outline-none"
+            
             required
             type={pwType.type}
             placeholder={name}
@@ -89,8 +99,8 @@ const UserPassword = ({
             type={pwType.type}
             placeholder={name}
             minLength={6}
-            value={joinPw}
-            onChange={(e) => userPw(e)}
+            value={loginPw}
+            onChange={(e) => userloginPw(e)}
           />
           <BlindEyesButton
             pwType={pwType}
@@ -98,7 +108,7 @@ const UserPassword = ({
             handlePwType={handlePwType}
           />
         </div>
-        {joinPw === '' ? (
+        {loginPw === '' ? (
           <p className="text-base text-bgwred pt-2">{name}를 입력해 주세요</p>
         ) : (
           <p>&nbsp;</p>
@@ -165,8 +175,8 @@ const UserPassword = ({
             type={pwType.type}
             placeholder={name}
             minLength={6}
-            value={joinPw}
-            onChange={(e) => userPw(e)}
+            value={loginPw}
+            onChange={(e) => userloginPw(e)}
           />
           <BlindEyesButton
             pwType={pwType}
@@ -174,11 +184,7 @@ const UserPassword = ({
             handlePwType={handlePwType}
           />
         </div>
-        {joinPw === '' ? (
-          <p className="text-base text-bgwred pt-2">{name}를 입력해 주세요</p>
-        ) : (
-          <p>&nbsp;</p>
-        )}
+        <p className="text-base text-bgwred pt-2">&nbsp;</p>
       </div>
     );
   }

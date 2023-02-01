@@ -14,28 +14,3 @@
   padding-left: 20px;
   background: url('../../assets/images/icon_eye_blind.png') no-repeat;
 }
-
-input[type='radio'] {
-  /* content: '';
-  display: inline-block;
-
-  vertical-align: -6px; */
-  content: '';
-  width: 24px;
-  height: 24px;
-  vertical-align: -6px;
-  background: url('../../assets/images/icon_radio_on.png') no-repeat center;
-}
-
-input[type='radio']:checked + label {
-  /* 
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  vertical-align: -6px; */
-  /* content: '';
-  width: 24px;
-  height: 24px;
-  vertical-align: -6px; */
-  background: url('../../assets/images/icon_radio_on.png') no-repeat center;
-}

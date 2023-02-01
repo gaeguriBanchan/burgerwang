@@ -2,25 +2,55 @@
 import { Helmet } from 'react-helmet-async';
 import ActiveButton from '../components/base/ActiveButton';
 import ActiveBlackButton from '../components/base/ActiveBlackButton';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import UserEmailId from '../components/base/UserEmailId';
 import UserPassword from '../components/base/UserPassword';
 import useInput from '../components/join/hook/useInput';
+import axios from 'axios';
+import { loginUser } from '../api/userApi';
 
 const Login = () => {
-  const [loginEmail, userLoginEmail, loginPw, userloginPw] = useInput('');
+  // 최금옥
+  const navigate = useNavigate();
 
-  const registFunc = (e) => {
+  const [joinEmail, userEmail] = useInput('user001@email.com');
+  const [loginPw, userloginPw] = useInput('123456');
+
+  // 로그인 항목 입력
+  const registFunc = async (e) => {
     e.preventDefault();
-    if (!loginEmail) {
+
+    if (!joinEmail) {
       return alert('이메일을 입력하세요.');
     }
     if (!loginPw) {
       return alert('비밀번호를 입력하세요.');
     }
-    // if (joinPw !== joinPwCheck) {
-    //   return alert('비밀번호가 일치하지 않습니다.');
-    // }
+    console.log('입력된 내용', joinEmail, loginPw);
+    // 최금옥
+    const params = {
+      email: joinEmail,
+      pwd: loginPw,
+    };
+    axios
+      .post('http://192.168.0.122:9898/api/member/login', { params })
+      .then((res) => {
+        // 서버에서 response(결과가 왔어요.)
+        console.log(res);
+      })
+      .catch((err) => {
+        // 서버가 반응이 없다.
+        console.log(err);
+      });
+    await loginUser(joinEmail, loginPw)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+  // 회원가입 이동
+  const linkJoin = () => {
+    // 최금옥
+    console.log('해해해');
+    navigate('/join');
   };
 
   return (
@@ -42,8 +72,9 @@ const Login = () => {
             <div className="pb-10">
               <UserEmailId
                 emailId={'이메일 아이디'}
-                loginEmail={loginEmail}
-                userLoginEmail={userLoginEmail}
+                joinEmail={joinEmail}
+                userEmail={userEmail}
+                Login={Login}
               />
               <UserPassword
                 name={'비밀번호'}
@@ -51,15 +82,15 @@ const Login = () => {
                 userloginPw={userloginPw}
               />
             </div>
-            <div className="pb-6">
-              <button onClick={(e) => registFunc(e)}>
+            <div className="flex pb-6">
+              <div onClick={registFunc}>
                 <ActiveButton children={'로그인'} />
-              </button>
-              <Link to="/join">
+              </div>
+              <div onClick={linkJoin}>
                 <ActiveBlackButton name={'회원가입'} />
-              </Link>
+              </div>
             </div>
-            <div className="flex font-JUA">
+            <div className="font-JUA">
               <Link to="/findinfoId" className="mr-4">
                 아이디 찾기
               </Link>

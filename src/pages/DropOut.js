@@ -6,8 +6,11 @@ import ActiveBlackButton from '../components/base/ActiveBlackButton';
 import ActiveButton from '../components/base/ActiveButton';
 import UserInfoType from '../components/base/UserInfoType';
 import UserPassword from '../components/base/UserPassword';
+import useInput from '../components/join/hook/useInput';
 const DropOut = () => {
   const list = ['개인정보보호', '아이디변경', '사이트이용불만', '직접입력'];
+  const [loginPw, userloginPw] = useInput('');
+
   return (
     <div>
       <Helmet>
@@ -38,12 +41,16 @@ const DropOut = () => {
           <div className="bg-white drop-shadow mb-6">
             <div className="px-16 py-6 text-2xl">
               <div className=" flex items-center pb-6">
-                <UserInfoType type={'이메일'} />
+                <UserInfoType name={'이메일'} />
                 <p className="w-full  font-black mr-2">User@email.com</p>
               </div>
-              <div className="flex  items-center text-2xl pb-6">
-                <UserInfoType type={'이름'} />
-                <UserPassword />
+              <div className="flex text-2xl pb-6">
+                <UserInfoType name={'현재 비밀번호'} />
+                <UserPassword
+                  name={'현재 비밀번호'}
+                  loginPw={loginPw}
+                  userloginPw={userloginPw}
+                />
               </div>
             </div>
           </div>
@@ -53,7 +60,7 @@ const DropOut = () => {
           </label>
         </div>
         <center>
-          <ActiveButton name={'취소'} />
+          <ActiveButton children={'취소'} />
           <ActiveBlackButton name={'변경'} />
         </center>
       </div>

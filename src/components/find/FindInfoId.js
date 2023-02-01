@@ -5,12 +5,17 @@ import { Link } from 'react-router-dom';
 import ActiveBlackButton from '../base/ActiveBlackButton';
 import PageName from '../base/PageName';
 import FindId from './FindId';
-
+import useInput from '../join/hook/useInput';
 const FindInfoId = () => {
+  const [joinName, userName] = useInput('');
+  const [joinPhon, userPhon] = useInput('');
+
+  console.log(joinName, joinPhon);
+
   return (
     <div className="container max-w-6xl px-5 py-12">
       <Helmet>
-        <title>비밀번호 찾기</title>
+        <title>아이디 찾기</title>
         <style>{'body {background:#f2ebe6;'}</style>
       </Helmet>
       <div className="container w-10/12">
@@ -30,7 +35,12 @@ const FindInfoId = () => {
             </Link>
           </li>
         </ul>
-        <FindId />
+        <FindId
+          joinName={joinName}
+          userName={userName}
+          joinPhon={joinPhon}
+          userPhon={userPhon}
+        />
       </div>
       <div className="flex justify-center pt-5">
         <ActiveBlackButton name={'아이디 찾기'} />

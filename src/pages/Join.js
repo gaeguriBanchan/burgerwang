@@ -5,13 +5,14 @@ import JoinOptional from '../components/join/JoinOptional';
 import JoinPw from '../components/join/JoinPw';
 import PageName from '../components/base/PageName';
 import useInput from '../components/join/hook/useInput';
+import axios from 'axios';
 
 const Join = () => {
-  const [joinEmail, userEmail] = useInput('');
-  const [joinName, userName] = useInput('');
-  const [joinPhon, userPhon] = useInput('');
-  const [joinPw, userPw] = useInput('');
-  const [joinPwCheck, userPwCheck] = useInput('');
+  const [joinEmail, userEmail] = useInput('aaa@aaa.net');
+  const [joinName, userName] = useInput('홍길동');
+  const [joinPhon, userPhon] = useInput('010-0000-0000');
+  const [joinPw, userPw] = useInput('1111');
+  const [joinPwCheck, userPwCheck] = useInput('1111');
 
   // 회원가입
   const registFunc = (e) => {
@@ -37,21 +38,41 @@ const Join = () => {
     if (joinPw !== joinPwCheck) {
       return alert('비밀번호가 일치하지 않습니다.');
     }
+
+    console.log(
+      '이메일',
+      joinEmail,
+      '이름',
+      joinName,
+      '폰',
+      joinPhon,
+      '비번',
+      joinPw,
+      '비번확인',
+      joinPwCheck
+    );
+    // 최금옥
+    const params = {
+      miEmail: joinEmail,
+      miName: joinName,
+      miPhone: joinPhon,
+      miGen: '',
+      miBirth: '',
+      miGrade: '',
+      miStatus: '',
+      miPwd: joinPw,
+    };
+    axios
+      .post('http://192.168.0.122:9898/api/member/join', { params })
+      .then((res) => {
+        // 서버에서 response(결과가 왔어요.)
+        console.log(res);
+      })
+      .catch((err) => {
+        // 서버가 반응이 없다.
+        console.log(err);
+      });
   };
-
-  console.log(
-    '이메일',
-    joinEmail,
-    '이름',
-    joinName,
-    '폰',
-    joinPhon,
-    '비번',
-    joinPw,
-    '비번확인',
-    joinPwCheck
-  );
-
 
   return (
     <div>

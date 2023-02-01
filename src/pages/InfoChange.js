@@ -8,9 +8,11 @@ import UserPassword from '../components/base/UserPassword';
 import ActiveBlackButton from '../components/base/ActiveBlackButton';
 import DisabledButton from '../components/base/DisabledButton';
 import useInput from '../components/join/hook/useInput';
+import { Link } from 'react-router-dom';
 
 const InfoChange = () => {
-  const [loginEmail, userLoginEmail, loginPw, userloginPw] = useInput('');
+  const [joinEmail, userEmail] = useInput('');
+  const [loginPw, userloginPw] = useInput('');
 
   return (
     <div>
@@ -31,11 +33,11 @@ const InfoChange = () => {
             </p>
             <div className="px-16 py-6 text-2xl">
               <div className="flex">
-                <UserInfoType name={'이메일 아이디'} />
+                <UserInfoType name={'이메일'} />
                 <UserEmailId
                   emailId={'이메일 아이디'}
-                  loginEmail={loginEmail}
-                  userLoginEmail={userLoginEmail}
+                  joinEmail={joinEmail}
+                  userEmail={userEmail}
                 />
               </div>
               <div className="flex text-2xl pb-6">
@@ -48,10 +50,14 @@ const InfoChange = () => {
               </div>
             </div>
           </div>
-          <center className=" pt-10">
-            <DisabledButton name={'취소'} />
-            <ActiveBlackButton name={'완료'} />
-          </center>
+          <div className=" pt-10 flex justify-center items-center">
+            <div>
+              <DisabledButton name={'취소'} />
+            </div>
+            <Link to="/infoChangeUpdate">
+              <ActiveBlackButton name={'완료'} />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

@@ -5,7 +5,7 @@ import UserInfoType from '../base/UserInfoType';
 import UserName from '../base/UserName';
 import UserPhon from '../base/UserPhon';
 
-const FindId = () => {
+const FindId = ({ joinName, userName, joinPhon, userPhon }) => {
   return (
     <div className="bg-white drop-shadow ">
       <p className="w-full bg-ededed px-16 py-6 text-xl">
@@ -14,11 +14,11 @@ const FindId = () => {
       <div className="px-16 py-6 text-2xl pl-14">
         <div className="flex">
           <UserInfoType name={'이름'} />
-          <UserName />
+          <UserName joinName={joinName} userName={userName} />
         </div>
         <div className="flex">
           <UserInfoType name={'휴대폰 번호'} />
-          <UserPhon />
+          <UserPhon joinPhon={joinPhon} userPhon={userPhon} />
         </div>
         <ul className="text-lg pt-10 pl-6" style={{ listStyle: 'disc' }}>
           <li>

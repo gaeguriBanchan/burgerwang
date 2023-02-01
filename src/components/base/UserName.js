@@ -5,7 +5,7 @@ import { useEffect } from "react";
 
 const UserName = ({ joinName, userName }) => {
   useEffect(() => {
-    console.log("비밀번호", joinName);
+    console.log("이름", joinName);
   }, [joinName]);
 
   return (

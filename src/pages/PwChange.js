@@ -8,11 +8,11 @@ import UserInfoType from '../components/base/UserInfoType';
 import useInput from '../components/join/hook/useInput';
 
 const PwChange = () => {
-  const [joinPw, userPw] = useInput('');
+  const [loginPw, userloginPw] = useInput('');
   const [newPw, userNewPw] = useInput('');
   const [newPwCheck, userNewPwCheck] = useInput('');
 
-  console.log('비번', joinPw, '새비번', newPw, '새확인', newPwCheck);
+  console.log('비번', loginPw, '새비번', newPw, '새확인', newPwCheck);
 
   const checkpw = () => {
     console.log(newPw, newPwCheck);
@@ -50,8 +50,8 @@ const PwChange = () => {
             <UserInfoType name={'현재 비밀번호'} />
             <UserPassword
               name={'현재 비밀번호'}
-              joinPw={joinPw}
-              userPw={userPw}
+              loginPw={loginPw}
+              userloginPw={userloginPw}
             />
           </div>
           <div className="flex">

@@ -2,10 +2,10 @@
 import { useEffect } from 'react';
 import React from 'react';
 
-const UserPhon = ({ userPhon, joinPhon }) => {
-  useEffect(() => {
-    console.log('회원정보', joinPhon);
-  }, [joinPhon]);
+const UserPhon = ({ userPhon, joinPhon}) => {
+
+  useEffect(() => {}, [joinPhon]);
+
 
   return (
     <div className="text-2xl w-full">

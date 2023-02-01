@@ -36,7 +36,7 @@ const JoinPw = ({ joinPw, userPw, joinPwCheck, userPwCheck, JoinPw, name }) => {
           </div>
           <div className="w-full">
             <UserPassword
-              name={'비밀번호'}
+              name={'비밀번호 영문 숫자 6자리 이상'}
               JoinPw={JoinPw}
               joinPw={joinPw}
               userPw={userPw}
