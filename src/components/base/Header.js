@@ -1,11 +1,18 @@
+/** @format */
+
 // /** @format */
 
-import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import man from "../../assets/ninggen.jpg";
+import { Outlet } from 'react-router';
+import logo from '../../assets/logo.png';
+import man from '../../assets/ninggen.jpg';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const linkMypage = () => {
+    navigate('/myPage');
+  };
+
   return (
     <div className="w-full grid grid-row-2">
       <div className="w-full p-7 bg-red-500 h-40 flex justify-between">
@@ -26,7 +33,13 @@ const Header = () => {
 
             <div>
               <p className="text-2xl">김그린 님 안녕하세요</p>
-              <span className="text-2xl">MY왕 바로가기 {">"}</span>
+              <span
+                className="text-2xl "
+                onClick={linkMypage}
+                style={{ cursor: 'pointer' }}
+              >
+                MY왕 바로가기 {'>'}
+              </span>
             </div>
           </div>
         </div>

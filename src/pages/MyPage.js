@@ -3,14 +3,17 @@ import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PageName from '../components/base/PageName';
 
 const MyPage = () => {
 
+  const a = useSelector((state) => state.user);
+  console.log(a);
 
   useEffect(() => {
-    axios.get('http://192.168.0.122:9898/api/member/mypage')
+    axios.get('http://192.168.0.122:9898/api/member/mypage/57')
     .then()
     .catch();
   }, []);
