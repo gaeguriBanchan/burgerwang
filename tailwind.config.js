@@ -34,6 +34,8 @@ module.exports = {
         "icon-search": "url('/src/assets/images/icon_search.png')",
         "icon-position": "url('/src/assets/images/icon_position.png')",
         "icon-cart": "url('/src/assets/images/icon_cart.png')",
+        "icon-position-white": "url('/src/assets/images/icon_position_white.png')",
+        "icon-store-white": "url('/src/assets/images/icon_store_white.png')",
       },
       colors: {
         background: "#f2ebe6",

@@ -23,7 +23,7 @@ const OrderDone = () => {
         <img src={logo} alt="버거왕" className="w-52" />
         <p className="mt-8 text-2xl font-black text-9a918c">주문이 완료되었습니다.</p>
         <div className="flex justify-between gap-4 mt-12">
-          <Link to="/orderList">
+          <Link to="/menu">
             <ActiveButton>메뉴로 이동하기</ActiveButton>
           </Link>
           <Link to="/orderList">

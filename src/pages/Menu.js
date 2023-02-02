@@ -10,6 +10,7 @@ import ModalCheckAddress from "../components/base/Modal/ModalCheckAddress";
 import CartButton from "../components/menu/CartButton";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import Layout from "../components/base/Layout";
 const Menu = () => {
   const [storeSeq, setStoreSeq] = useState(0);
   const [storeName, setStoreName] = useState("");
@@ -100,27 +101,29 @@ const Menu = () => {
       <Helmet>
         <title>메뉴</title>
       </Helmet>
-      <div className="container max-w-6xl px-5 m-auto">
-        <div className="flex justify-between mb-14 mt-9">
-          <h2 className="text-4xl font-black">메뉴</h2>
-          {menuList.length !== 0 && (
-            <MenuCategory
-              selectedCategory={selectedCategory}
-              changeSelectedCategory={changeSelectedCategory}
-            />
-          )}
+      <Layout>
+        <div className="container max-w-6xl px-5 m-auto">
+          <div className="flex justify-between mb-14 mt-9">
+            <h2 className="text-4xl font-black">메뉴</h2>
+            {menuList.length !== 0 && (
+              <MenuCategory
+                selectedCategory={selectedCategory}
+                changeSelectedCategory={changeSelectedCategory}
+              />
+            )}
+          </div>
+          {menuList.length !== 0 ? <MenuList menuList={menuList} /> : <MenuEmpty />}
         </div>
-        {menuList.length !== 0 ? <MenuList menuList={menuList} /> : <MenuEmpty />}
-      </div>
-      <Modal modalIsOpen={modalIsOpen}>
-        <ModalCheckAddress
-          closeModal={closeModal}
-          setStoreModal={setStoreModal}
-        ></ModalCheckAddress>
-      </Modal>
-      <Link to="/cart">
-        <CartButton />
-      </Link>
+        <Modal modalIsOpen={modalIsOpen}>
+          <ModalCheckAddress
+            closeModal={closeModal}
+            setStoreModal={setStoreModal}
+          ></ModalCheckAddress>
+        </Modal>
+        <Link to="/cart">
+          <CartButton />
+        </Link>
+      </Layout>
     </>
   );
 };

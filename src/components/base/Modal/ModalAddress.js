@@ -78,7 +78,10 @@ const ModalAddress = ({ closeModal }) => {
             </div>
             <button
               onClick={() => enterDetailAdress()}
-              className="w-full bg-e5e5e5 py-5 bg-737373 text-white text-2xl"
+              className={`w-full bg-e5e5e5 py-5 ${
+                detailAddress.length > 0 ? "bg-bgwred" : "bg-737373"
+              } text-white text-2xl`}
+              disabled={detailAddress.length > 0 ? false : true}
             >
               이 주소로 배달지 설정
             </button>

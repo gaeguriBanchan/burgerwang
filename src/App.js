@@ -24,6 +24,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />}></Route>
           <Route path="/home" element={<Home />}></Route>
+          <Route path="/menu" element={<MenuContainer />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
           <Route element={<Header />}>
             <Route path="/join" element={<Join />}></Route>
             <Route path="/login" element={<Login />}></Route>
@@ -31,10 +33,8 @@ function App() {
             <Route path="/infoChangeUpdate" element={<InfoChangeUpdate />}></Route>
             <Route path="/pwChange" element={<PwChange />}></Route>
             <Route path="/dropOut" element={<DropOut />}></Route>
-            <Route path="/menu" element={<MenuContainer />}></Route>
             <Route path="/order" element={<Order />}></Route>
             <Route path="/orderSuccess" element={<OrderDone />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
             <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
             <Route path="/mypage" element={<MyPage />}></Route>
