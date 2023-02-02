@@ -15,6 +15,7 @@ const userSlice = createSlice({
   reducers: {
     //로그인 되면 user 스토어 state 업데이트
     loginUser: (state, action) => {
+      console.log("사용자로그인했다.", action.payload);
       //action.payload로 담겨옴
       state.email = action.payload.email;
       state.name = action.payload.name;
