@@ -7,14 +7,20 @@ import UserEmailId from '../components/base/UserEmailId';
 import UserPassword from '../components/base/UserPassword';
 import useInput from '../components/join/hook/useInput';
 import axios from 'axios';
-import { loginUser } from '../api/userApi';
-
+import { loginUser } from '../reducer/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
+//
 const Login = () => {
   // 최금옥
-  const navigate = useNavigate();
 
-  const [joinEmail, userEmail] = useInput('user001@email.com');
+  const [joinEmail, userEmail] = useInput('user002@email.com');
   const [loginPw, userloginPw] = useInput('123456');
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const a = useSelector((state) => state.user);
+  console.log(a);
 
   // 로그인 항목 입력
   const registFunc = async (e) => {
@@ -27,24 +33,27 @@ const Login = () => {
       return alert('비밀번호를 입력하세요.');
     }
     console.log('입력된 내용', joinEmail, loginPw);
-    // 최금옥
-    const params = {
+
+    let params = {
       email: joinEmail,
       pwd: loginPw,
     };
+
     axios
-      .post('http://192.168.0.122:9898/api/member/login', { params })
+      .post('http://192.168.0.122:9898/api/member/login', params)
       .then((res) => {
-        // 서버에서 response(결과가 왔어요.)
+        alert('환영합니다');
+
         console.log(res);
+        dispatch(loginUser(res.data.loginUser));
+        // navigate('/menu');
+        navigate('/');
       })
       .catch((err) => {
         // 서버가 반응이 없다.
         console.log(err);
+        alert(err.data.message);
       });
-    await loginUser(joinEmail, loginPw)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
   };
   // 회원가입 이동
   const linkJoin = () => {
@@ -74,7 +83,6 @@ const Login = () => {
                 emailId={'이메일 아이디'}
                 joinEmail={joinEmail}
                 userEmail={userEmail}
-                Login={Login}
               />
               <UserPassword
                 name={'비밀번호'}

@@ -6,11 +6,44 @@ import ActiveBlackButton from '../base/ActiveBlackButton';
 import PageName from '../base/PageName';
 import FindId from './FindId';
 import useInput from '../join/hook/useInput';
+import axios from 'axios';
 const FindInfoId = () => {
   const [joinName, userName] = useInput('');
   const [joinPhon, userPhon] = useInput('');
 
-  console.log(joinName, joinPhon);
+  const findIdBt = (e) => {
+    e.preventDefault();
+    if (!joinName) {
+      window.scrollTo(0, 0);
+      return alert('이름을 입력하세요.');
+    }
+    if (!joinPhon) {
+      window.scrollTo(0, 0);
+      return alert('이름을 입력하세요.');
+    }
+
+    // console.log('이메일', joinName, '폰', joinPhon);
+    // 최금옥
+    const params = {
+      name: joinName,
+      phone: joinPhon,
+    };
+
+    axios
+      .get('http://192.168.0.122:9898/api/member/email', { params })
+      .then((res) => {
+
+        console.log(res.data.status);
+        alert(res.data.message);
+      })
+      .catch((err) => {
+        // 서버가 반응이 없다.
+        console.log(err);
+        alert('안됨');
+      });
+  };
+
+  // console.log(joinName, joinPhon);
 
   return (
     <div className="container max-w-6xl px-5 py-12">
@@ -42,7 +75,7 @@ const FindInfoId = () => {
           userPhon={userPhon}
         />
       </div>
-      <div className="flex justify-center pt-5">
+      <div className="flex justify-center pt-5" onClick={findIdBt}>
         <ActiveBlackButton name={'아이디 찾기'} />
       </div>
     </div>
