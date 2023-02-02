@@ -13,8 +13,6 @@ import { Helmet } from "react-helmet-async";
 import Layout from "../components/base/Layout";
 const Menu = () => {
   const [storeSeq, setStoreSeq] = useState(0);
-  const [storeName, setStoreName] = useState("");
-  const [deliAddress, setDeliAddress] = useState("");
   const [menuList, setMenuList] = useState([]);
   const [selectedCategory, changeSelectedCategory] = useState("1");
   const setMenu = async () => {
@@ -70,7 +68,7 @@ const Menu = () => {
     const fullAddress = `${addressRoad ? addressRoad : addressJibun} ${addressDetail}`;
     await getStore(fullAddress)
       .then((storeData) => {
-        const { status, message, store } = storeData;
+        const { status, store } = storeData;
         if (status) {
           const { seq } = store;
           setStoreSeq(seq);
@@ -102,7 +100,7 @@ const Menu = () => {
         <title>메뉴</title>
       </Helmet>
       <Layout>
-        <div className="container max-w-6xl px-5 m-auto">
+        <div className="container max-w-6xl px-5 pb-16 m-auto ">
           <div className="flex justify-between mb-14 mt-9">
             <h2 className="text-4xl font-black">메뉴</h2>
             {menuList.length !== 0 && (

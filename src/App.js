@@ -17,6 +17,7 @@ import InfoChangeUpdate from "./pages/InfoChangeUpdate";
 import FindInfoId from "./components/find/FindInfoId";
 import FindInfoPw from "./components/find/FindInfoPw";
 import OrderDone from "./pages/OrderDone";
+import MapPage from "./pages/MapPage";
 function App() {
   return (
     <>
@@ -36,19 +37,8 @@ function App() {
             <Route path="/order" element={<Order />}></Route>
             <Route path="/orderSuccess" element={<OrderDone />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
-<<<<<<<<< Temporary merge branch 1
-
-            <Route path='/mapPage' element={<MapPage/>}></Route>
-
-            <Route
-              path="/orderListDetail"
-              element={<OrderListDetail />}
-            ></Route>
-
-=========
->>>>>>>>> Temporary merge branch 2
+            <Route path="/mapPage" element={<MapPage />}></Route>
             <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
-
             <Route path="/mypage" element={<MyPage />}></Route>
             <Route path="/findinfoId" element={<FindInfoId />}></Route>
             <Route path="/findinfoPw" element={<FindInfoPw />}></Route>
