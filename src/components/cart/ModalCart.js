@@ -1,4 +1,4 @@
-import ModalHeader from "../base/ModalHeader";
+import ModalHeader from "../base/Modal/ModalHeader";
 import ModalCartIngredient from "./ModalCartIngredient";
 import ModalCartSide from "./ModalCartSide";
 import ModalCartDrink from "./ModalCartDrink";

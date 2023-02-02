@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getMenuSide } from "../../api/menuApi";
-import ModalMenuSideItem from "./ModalMenuSideItem";
 import { MenuContext } from "./context/MenuContext";
 import { useContext } from "react";
+import ModalSide from "../base/Modal/ModalSide";
 const ModalMenuSide = ({ modalKind, setModalKind }) => {
   const [sideList, setSideList] = useState([]);
   const [selectItem, setSelectItem] = useState(0);
@@ -21,8 +21,8 @@ const ModalMenuSide = ({ modalKind, setModalKind }) => {
     }
   };
   const selectSide = () => {
-    const res = getSelectedItem();
-    addCartInfo("side", res);
+    const data = getSelectedItem();
+    addCartInfo({ type: "side", data });
     setModalKind("drink");
   };
   useEffect(() => {
@@ -30,18 +30,7 @@ const ModalMenuSide = ({ modalKind, setModalKind }) => {
   }, [modalKind]);
   return (
     <>
-      <div className="max-h-[530px] overflow-auto">
-        <ul className="bg-background p-8 flex justify-between flex-wrap">
-          {sideList.map((item) => (
-            <ModalMenuSideItem
-              key={item.sideOptSeq}
-              sideData={item}
-              selectItem={selectItem}
-              setSelectItem={setSelectItem}
-            />
-          ))}
-        </ul>
-      </div>
+      <ModalSide sideList={sideList} selectItem={selectItem} setSelectItem={setSelectItem} />
       <button onClick={() => selectSide()} className="w-full px-4 py-5 bg-bgwred">
         <span className="text-white font-black text-3xl">선택</span>
       </button>

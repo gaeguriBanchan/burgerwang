@@ -3,7 +3,7 @@ import ModalMenuList from "./ModalMenuList";
 import ModalMenuIngredient from "./ModalMenuIngredient";
 import ModalMenuSide from "./ModalMenuSide";
 import ModalMenuDrink from "./ModalMenuDrink";
-import ModalHeader from "../base/ModalHeader";
+import ModalHeader from "../base/Modal/ModalHeader";
 
 const ModalMenu = ({ closeModal }) => {
   const [modalKind, setModalKind] = useState("menu");

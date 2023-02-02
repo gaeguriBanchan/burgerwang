@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeCount, removeOneCart } from "../../reducer/cartReducer";
-import convertPrice from "../../utils/convertPrice";
 import styles from "./Cart.module.css";
-import CartListItemOption from "./CartListItemOption";
-import DefaultImage from "../../assets/images/logo.png";
+import convertPrice from "../../utils/convertPrice";
 import ModalCart from "./ModalCart";
-import Modal from "../base/Modal";
+import Modal from "../base/Modal/Modal";
+import CartListItemOption from "./CartListItemOption";
 
 const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
   const dispatch = useDispatch();
   const { date, menuInfo, count, totalPrice, ingredientInfo, sideInfo, drinkInfo, drink2Info } =
     cartinfo;
+  console.log(menuInfo);
   const [orderCount, setOrderCount] = useState(count);
   const plusOrderCount = () => {
     setOrderCount(orderCount + 1);
@@ -64,13 +64,17 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
               <p className="text-3xl mt-3 font-black">{convertPrice(menuInfo.price)}원</p>
             </div>
           </label>
-          <img src={DefaultImage} alt="상품 이미지" className="h-28" />
+          {menuInfo.uri && (
+            <img
+              src={`${process.env.REACT_APP_IMAGE_URL}/menu/${menuInfo.uri}`}
+              alt={menuInfo.name}
+              className="h-28"
+            />
+          )}
         </div>
-        {!ingredientInfo && !sideInfo && !drinkInfo && !drink2Info ? (
-          ""
-        ) : (
+        {(menuInfo.menuKind === "SET" || menuInfo.type === "SET") && (
           <ul className="py-8 border-b border-ededed border-dashed">
-            {ingredientInfo && ingredientInfo.length > 0 && (
+            {ingredientInfo && (
               <CartListItemOption
                 optionname="재료추가"
                 optiontype="ingredient"
@@ -78,7 +82,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {sideInfo && sideInfo.length > 0 && (
+            {sideInfo && (
               <CartListItemOption
                 optionname="사이드"
                 optiontype="side"
@@ -86,7 +90,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {drinkInfo && drinkInfo.length > 0 && (
+            {drinkInfo && (
               <CartListItemOption
                 optionname={drink2Info ? "음료1" : "음료"}
                 optiontype="drink1"
@@ -94,7 +98,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {drink2Info && drink2Info.length > 0 && (
+            {drink2Info && (
               <CartListItemOption
                 optionname="음료2"
                 optiontype="drink2"

@@ -10,13 +10,13 @@
   width: 32px;
   height: 32px;
   transform: translateY(-50%);
-  background: url("../../assets/images/icon_checkbox_off.png");
+  background: url("../../../assets/images/icon_checkbox_off.png");
 }
 .ingredientcheck:checked + .ingredient {
   color: #000;
 }
 .ingredientcheck:checked + .ingredient::before {
-  background: url("../../assets/images/icon_checkbox_on.png");
+  background: url("../../../assets/images/icon_checkbox_on.png");
 }
 
 .radiocheck {
@@ -25,7 +25,7 @@
   top: 0;
   width: 100%;
   height: 100%;
-  background: url("../../assets/images/icon_check_red.png") no-repeat top;
+  background: url("../../../assets/images/icon_check_red.png") no-repeat top;
   visibility: hidden;
 }
 .radioradio:checked + .radiocheck {
@@ -39,5 +39,5 @@
   vertical-align: -10px;
   width: 32px;
   height: 32px;
-  background: url("../../assets/images/icon_refresh.png") no-repeat;
+  background: url("../../../assets/images/icon_refresh.png") no-repeat;
 }

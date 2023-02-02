@@ -31,6 +31,7 @@ module.exports = {
         "icon-best": "url('/src/assets/images/icon_best.png')",
         "icon-soldout": "url('/src/assets/images/icon_soldout.png')",
         "icon-refresh": "url('/src/assets/images/icon_refresh.png')",
+        "icon-search": "url('/src/assets/images/icon_search.png')",
       },
       colors: {
         background: "#f2ebe6",
@@ -42,6 +43,7 @@ module.exports = {
         512314: "#512314",
         "8d8d8d": "#8d8d8d",
         737373: "#737373",
+        "9a918c": "#9a918c",
       },
     },
     container: {

@@ -1,7 +1,8 @@
-import styles from "./Menu.module.css";
-import convertPrice from "../../utils/convertPrice";
-const ModalMenuDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
-  const { drinkOptSeq, drinkOptName, drinkOptPrice, drinkOptFile } = drinkData;
+import styles from "./SelectModal.module.css";
+import convertPrice from '../../../utils/convertPrice';
+
+const ModalDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
+  const { drinkOptSeq, drinkOptName, drinkOptPrice, drinkOptUri } = drinkData;
   return (
     <li className="relative w-1/3 h-[185px]">
       <label htmlFor={drinkOptSeq} className="w-full h-full">
@@ -15,7 +16,13 @@ const ModalMenuDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
         />
         <span className={styles.radiocheck}></span>
         <div className="px-2 h-[100px]">
-          <img src="" alt={drinkOptName} className="w-full h-full" />
+          {drinkOptUri && (
+            <img
+              src={`${process.env.REACT_APP_IMAGE_URL}/drinkOpt/${drinkOptUri}`}
+              alt={drinkOptName}
+              className="w-full h-full"
+            />
+          )}
         </div>
         <div className="px-2 mt-4">
           <p className="text-center text-l">{drinkOptName}</p>
@@ -26,4 +33,4 @@ const ModalMenuDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
   );
 };
 
-export default ModalMenuDrinkItem;
+export default ModalDrinkItem;

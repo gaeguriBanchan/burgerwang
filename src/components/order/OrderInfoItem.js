@@ -1,10 +1,10 @@
-import OrderInfoItemOption from "./OrderInfoItemOption";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { changeCount } from "../../reducer/cartReducer";
 import convertPrice from "../../utils/convertPrice";
-import Modal from "../base/Modal";
+import Modal from "../base/Modal/Modal";
 import ModalCart from "../cart/ModalCart";
+import CartListItemOption from "../cart/CartListItemOption";
 
 const OrderInfoItem = ({ order }) => {
   const dispatch = useDispatch();
@@ -44,36 +44,34 @@ const OrderInfoItem = ({ order }) => {
           )}
           <p className="text-3xl mt-3 font-black">{convertPrice(menuInfo.price)}원</p>
         </div>
-        {!ingredientInfo && !sideInfo && !drinkInfo && !drink2Info ? (
-          ""
-        ) : (
+        {(menuInfo.menuKind === "SET" || menuInfo.type === "SET") && (
           <ul className="py-8 border-b border-ededed border-dashed">
-            {ingredientInfo && ingredientInfo.length > 0 && (
-              <OrderInfoItemOption
+            {ingredientInfo && (
+              <CartListItemOption
                 optionname="재료추가"
                 optiontype="ingredient"
                 optioninfo={ingredientInfo}
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {sideInfo && sideInfo.length > 0 && (
-              <OrderInfoItemOption
+            {sideInfo && (
+              <CartListItemOption
                 optionname="사이드"
                 optiontype="side"
                 optioninfo={sideInfo}
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {drinkInfo && drinkInfo.length > 0 && (
-              <OrderInfoItemOption
+            {drinkInfo && (
+              <CartListItemOption
                 optionname={drink2Info ? "음료1" : "음료"}
                 optiontype="drink1"
                 optioninfo={drinkInfo}
                 changeOptionHandler={changeOptionHandler}
               />
             )}
-            {drink2Info && drink2Info.length > 0 && (
-              <OrderInfoItemOption
+            {drink2Info && (
+              <CartListItemOption
                 optionname="음료2"
                 optiontype="drink2"
                 optioninfo={drink2Info}

@@ -1,31 +1,56 @@
 /** @format */
-import { Helmet } from "react-helmet-async";
-import { useState } from "react";
-import BlindEyesButton from "../components/base/BlindEyesButton";
-import ActiveButton from "../components/base/ActiveButton";
-import ActiveBlackButton from "../components/base/ActiveBlackButton";
-import { Link } from "react-router-dom";
-import UserEmailId from "../components/base/UserEmailId";
-import UserPassword from "../components/base/UserPassword";
-
-import { useDispatch } from "react-redux";
-import { loginUser } from "../reducer/userSlice";
+import { Helmet } from 'react-helmet-async';
+import ActiveButton from '../components/base/ActiveButton';
+import ActiveBlackButton from '../components/base/ActiveBlackButton';
+import { Link, useNavigate } from 'react-router-dom';
+import UserEmailId from '../components/base/UserEmailId';
+import UserPassword from '../components/base/UserPassword';
+import useInput from '../components/join/hook/useInput';
+import axios from 'axios';
+import { loginUser } from '../api/userApi';
 
 const Login = () => {
-  const disptach = useDispatch();
+  // 최금옥
+  const navigate = useNavigate();
 
-  //임시로 넣어둠 나중에 분리 예정
-  const [pwType, setPwType] = useState({
-    type: "password",
-    visible: false,
-  });
-  const handlePwType = (e) => {
-    setPwType(() => {
-      if (!pwType.visible) {
-        return { type: "text", visible: true };
-      }
-      return { type: "password", visible: false };
-    });
+  const [joinEmail, userEmail] = useInput('user001@email.com');
+  const [loginPw, userloginPw] = useInput('123456');
+
+  // 로그인 항목 입력
+  const registFunc = async (e) => {
+    e.preventDefault();
+
+    if (!joinEmail) {
+      return alert('이메일을 입력하세요.');
+    }
+    if (!loginPw) {
+      return alert('비밀번호를 입력하세요.');
+    }
+    console.log('입력된 내용', joinEmail, loginPw);
+    // 최금옥
+    const params = {
+      email: joinEmail,
+      pwd: loginPw,
+    };
+    axios
+      .post('http://192.168.0.122:9898/api/member/login', { params })
+      .then((res) => {
+        // 서버에서 response(결과가 왔어요.)
+        console.log(res);
+      })
+      .catch((err) => {
+        // 서버가 반응이 없다.
+        console.log(err);
+      });
+    await loginUser(joinEmail, loginPw)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+  // 회원가입 이동
+  const linkJoin = () => {
+    // 최금옥
+    console.log('해해해');
+    navigate('/join');
   };
 
   return (
@@ -45,29 +70,34 @@ const Login = () => {
 
           <div className=" px-16 py-6 text-2xl pl-14">
             <div className="pb-10">
-              <UserEmailId emailId={"이메일아이디"} />
-              <UserPassword />
+              <UserEmailId
+                emailId={'이메일 아이디'}
+                joinEmail={joinEmail}
+                userEmail={userEmail}
+                Login={Login}
+              />
+              <UserPassword
+                name={'비밀번호'}
+                joinPw={loginPw}
+                userloginPw={userloginPw}
+              />
             </div>
-            <div className="pb-6">
-              {/* <Link to="menu"> */}
-              <button
-                name={"로그인"}
-                onClick={() => {
-                  disptach(loginUser({ email: "aaa@aaa.net" }));
-                }}
-              >
-                {" "}
-                로그인입니다.{" "}
-              </button>
-              {/* </Link> */}
-              <Link to="/join">
-                <ActiveBlackButton name={"회원가입"} />
+            <div className="flex pb-6">
+              <div onClick={registFunc}>
+                <ActiveButton children={'로그인'} />
+              </div>
+              <div onClick={linkJoin}>
+                <ActiveBlackButton name={'회원가입'} />
+              </div>
+            </div>
+            <div className="font-JUA">
+              <Link to="/findinfoId" className="mr-4">
+                아이디 찾기
+              </Link>
+              <Link to="/findinfoPw" className="ml-4">
+                비밀번호 찾기
               </Link>
             </div>
-            <ul className="flex font-JUA">
-              <li className="mr-4">아이디 찾기</li>
-              <li className="ml-4">비밀번호 찾기</li>
-            </ul>
           </div>
         </div>
       </div>

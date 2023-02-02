@@ -1,5 +1,6 @@
 import ChangeButton from "../base/ChangeButton";
 import CartListItemOptionInfo from "./CartListItemOptionInfo";
+import CartListItemOptionEmpty from "./CartListItemOptionEmpty";
 const CartListItemOption = ({ optionname, optiontype, optioninfo, changeOptionHandler }) => {
   return (
     <li className="flex justify-between items-center mb-4">
@@ -7,36 +8,52 @@ const CartListItemOption = ({ optionname, optiontype, optioninfo, changeOptionHa
         <span className="w-32 text-xl text-737373">{optionname}</span>
         <ul className="grow">
           {optiontype === "ingredient" &&
-            optioninfo.map((item) => (
-              <CartListItemOptionInfo
-                key={item.ingredirentSeq}
-                name={item.ingredientName}
-                price={item.ingredientPrice}
-              />
+            (optioninfo.length > 0 ? (
+              optioninfo.map((item) => (
+                <CartListItemOptionInfo
+                  key={item.ingredirentSeq}
+                  name={item.ingredientName}
+                  price={item.ingredientPrice}
+                />
+              ))
+            ) : (
+              <CartListItemOptionEmpty />
             ))}
           {optiontype === "side" &&
-            optioninfo.map((item) => (
-              <CartListItemOptionInfo
-                key={item.sideOptSeq}
-                name={item.sideOptName}
-                price={item.sideOptPrice}
-              />
+            (optioninfo.length > 0 ? (
+              optioninfo.map((item) => (
+                <CartListItemOptionInfo
+                  key={item.sideOptSeq}
+                  name={item.sideOptName}
+                  price={item.sideOptPrice}
+                />
+              ))
+            ) : (
+              <CartListItemOptionEmpty />
             ))}
           {optiontype === "drink1" &&
-            optioninfo.map((item) => (
-              <CartListItemOptionInfo
-                key={item.drinkOptSeq}
-                name={item.drinkOptName}
-                price={item.drinkOptPrice}
-              />
+            (optioninfo.length > 0 ? (
+              optioninfo.map((item) => (
+                <CartListItemOptionInfo
+                  key={item.drinkOptSeq}
+                  name={item.drinkOptName}
+                  price={item.drinkOptPrice}
+                />
+              ))
+            ) : (
+              <CartListItemOptionEmpty />
             ))}
           {optiontype === "drink2" &&
-            optioninfo.map((item) => (
-              <CartListItemOptionInfo
-                key={item.drinkOptSeq}
-                name={item.drinkOptName}
-                price={item.drinkOptPrice}
-              />
+            (optioninfo.length > 0 ? (
+              optioninfo.map((item) => (
+                <CartListItemOptionInfo
+                  key={item.drinkOptSeq}
+                  name={item.drinkOptName}
+                  price={item.drinkOptPrice}
+                />
+              ))
+            ) : (
+              <CartListItemOptionEmpty />
             ))}
         </ul>
       </div>

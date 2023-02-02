@@ -1,4 +1,3 @@
-// /** @format */
 
 import { Outlet, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';

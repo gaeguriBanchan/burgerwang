@@ -1,11 +1,12 @@
-import style from "../join/Join.module.css";
-import React, { useEffect, useState } from "react";
+/** @format */
+
+import React, { useEffect, useState } from 'react';
 
 const UserBirthDate = () => {
   // const [test, setTest] = useState({ value: "", defaultChecked: false });
-  const [birthYear, setBirthYear] = useState("");
-  const [birthMonth, setBirthMonth] = useState("");
-  const [birthDay, setBirthDay] = useState("");
+  const [birthYear, setBirthYear] = useState('');
+  const [birthMonth, setBirthMonth] = useState('');
+  const [birthDay, setBirthDay] = useState('');
   const [ch, setCh] = useState(false);
   const days = () => {
     let days = [];
@@ -59,22 +60,22 @@ const UserBirthDate = () => {
     setBirthDay(e.target.value);
   };
 
-  const birth = birthYear + "-" + birthMonth + "-" + birthDay;
-  console.log(birth);
+  const birth = birthYear + '-' + birthMonth + '-' + birthDay;
+  console.log('birth', birth);
 
   const chcheck = () => {
     setCh(!ch);
     console.log(ch);
   };
   useEffect(() => {
-    console.log("chcheck", ch);
+    console.log('chcheck', ch);
   }, [ch]);
 
   return (
     <div className="flex flex-col  w-full ">
       <label className="py-4">
         <input
-          className={style.radiooff}
+          className="radio"
           id="birth-none"
           type="radio"
           value=""

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TabButton from "../components/base/TabButton";
 import Food from "../components/menu/Food";
 import { getMenu } from "../api/menuApi";
-import Modal from "../components/base/Modal";
+import Modal from "../components/base/Modal/Modal";
 import ModalMenu from "../components/menu/ModalMenu";
 import { useContext } from "react";
 import { MenuContext } from "../components/menu/context/MenuContext";
@@ -10,8 +10,8 @@ const Menu = () => {
   const [menuList, setMenuList] = useState([]);
   const [selectedCategory, changeSelectedCategory] = useState("1");
   const { manageValue, manageCart } = useContext(MenuContext);
-  const { selectedMenu, setSelectedMenu, selectedMenuCate, setSelectedMenuCate } = manageValue;
-  const { addCartInfo, addToCart } = manageCart;
+  const { setSelectedMenu, selectedMenuCate, setSelectedMenuCate } = manageValue;
+  const { addCartInfo } = manageCart;
   const setMenu = async () => {
     const res = await getMenu(selectedCategory);
     const { event, burger, side, drink, dog } = res.list;
@@ -49,19 +49,19 @@ const Menu = () => {
     setModalIsOpen(false);
   };
   const selectMenuHandler = (menu, cate, seq) => {
+    let isDone = false;
     setSelectedMenuCate(cate);
     setSelectedMenu(seq);
     const { count } = menu;
     if (count > 1) {
       openModal();
     } else {
+      isDone = true;
       if (cate === "event") {
-        addCartInfo("event", menu);
-        addToCart();
+        addCartInfo({ type: "event", data: menu });
         return;
       }
-      addCartInfo("menu", menu);
-      addToCart();
+      addCartInfo({ type: "menu", data: menu, isDone });
     }
   };
   const list = menuList.map((item) => (
@@ -131,7 +131,7 @@ const Menu = () => {
             </TabButton>
           </ul>
         </div>
-        <div className="grid grid-cols-4 gap-x-9 gap-y-28 mt-20">{list}</div>
+        <div className="grid grid-cols-4 gap-x-9 gap-y-28 my-20">{list}</div>
       </div>
       <Modal modalIsOpen={modalIsOpen}>
         <ModalMenu
