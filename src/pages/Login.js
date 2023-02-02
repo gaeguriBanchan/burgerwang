@@ -10,14 +10,9 @@ import UserPassword from "../components/base/UserPassword";
 
 import { useDispatch } from "react-redux";
 import { loginUser } from "../reducer/userSlice";
-// 김재진 : 타이틀 출력
-import { setTitle } from "../reducer/headerSlice";
 
 const Login = () => {
   const disptach = useDispatch();
-
-  // 김재진
-  disptach(setTitle({ title: "로그인" }));
 
   //임시로 넣어둠 나중에 분리 예정
   const [pwType, setPwType] = useState({

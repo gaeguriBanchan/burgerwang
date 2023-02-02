@@ -22,6 +22,7 @@ import OrderListDetail from "./pages/OrderListDetail";
 import MyPage from "./pages/MyPage";
 import FindInfo from "./pages/FindInfo";
 import InfoChangeUpdate from "./pages/InfoChangeUpdate";
+import MapPage from './pages/MapPage'
 function App() {
   return (
     <>
@@ -43,6 +44,7 @@ function App() {
             <Route path="/order" element={<Order />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
+            <Route path='/mapPage' element={<MapPage/>}></Route>
             <Route
               path="/orderListDetail"
               element={<OrderListDetail />}

@@ -1,19 +1,14 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setTitle } from '../../reducer/headerSlice';
 import man from '../../assets/ninggen.jpg';
 import { useNavigate } from 'react-router';
 
 const GoMypage = () => {
-  const titleInfo = useSelector((state) => {
-    return state.headerTitle;
-  });
   // 김재진 : 타이틀 출력
   const navigate = useNavigate();
   const disptach = useDispatch();
   const goMypage = () => {
     navigate('/mypage');
-    disptach(setTitle({ title: '마이페이지' }));
   };
   const userInfo = useSelector((state) => {
     return state.user;

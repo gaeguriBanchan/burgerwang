@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 // 김재진 Home 메뉴
 const HomeLogin = () => {
@@ -8,7 +8,7 @@ const HomeLogin = () => {
         <Link to='/login'>로그인</Link>
       </span>
       <span className='bg-lime-600 text-white flex justify-center text-2xl py-1'>
-        <Link to='/'>매장위치</Link>
+        <Link to='/mapPage'>매장위치</Link>
       </span>
       <span className='bg-red-600 text-white flex justify-center text-2xl py-1'>
         <Link to='/menu'>메뉴보기</Link>
