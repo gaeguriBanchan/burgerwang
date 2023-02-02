@@ -35,7 +35,7 @@ const ModalMenuList = ({ setModalKind }) => {
     getDetailMenu();
   }, [selectedMenu, selectedMenu]);
   return (
-    <div className="max-h-[600px] overflow-auto">
+    <div className="max-h-[600px] overflow-auto overflow-x-hidden">
       <div className="relative flex items-center h-80 bg-menuselect bg-cover">
         <div className="mx-8 pr-56">
           <p className="text-white text-4xl font-black whitespace-nowrap">{menuInfo.name}</p>
