@@ -25,6 +25,7 @@ const Order = () => {
   });
   const [totalPrice, setTotalPrice] = useState(0);
   const [coupon, setCoupon] = useState(0);
+  const [disableButton, setDisableButton] = useState(false);
   const { state } = useLocation();
   useEffect(() => {
     if (!state) {
@@ -43,15 +44,15 @@ const Order = () => {
   }, [checkedCart]);
   const sendOrder = () => {
     if (deliAddress === "") {
-      alert("주소가 없습니다.");
+      alert("주소를 입력해 주세요.");
       return;
     }
     if (deliPhone === "") {
-      alert("연락처가 없습니다.");
+      alert("연락처를 입력해 주세요.");
       return;
     }
     if (storeInfo.name === "") {
-      alert("매장 정보가 없습니다.");
+      alert("매장 정보가 없습니다. 배달 가능한 주소를 입력해 주세요.");
       return;
     }
     if (totalPrice < 15000) {
@@ -81,11 +82,19 @@ const Order = () => {
     };
     putOrder(orderSheet)
       .then((res) => {
-        navigate("/menu");
-        dispatch(removeCart(state));
-        console.log(res);
+        setDisableButton(true);
+        if (res.status) {
+          navigate("/menu");
+          dispatch(removeCart(state));
+        } else {
+          alert(res.message);
+          setDisableButton(false);
+        }
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        alert("문제가 발생하였습니다. 다시 시도해주세요.");
+        setDisableButton(false);
+      });
   };
   return (
     <>
@@ -115,7 +124,9 @@ const Order = () => {
         </div>
         <div className="flex justify-end">
           <DisabledButton name="취소" />
-          <ActiveButton event={sendOrder}>결제하기</ActiveButton>
+          <ActiveButton event={sendOrder} disabled={disableButton}>
+            결제하기
+          </ActiveButton>
         </div>
       </div>
     </>

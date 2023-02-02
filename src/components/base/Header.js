@@ -2,8 +2,8 @@
 
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
-import logo from "../../assets/logo.png";
-import man from "../../assets/ninggen.jpg";
+import logo from "../../assets/images/logo.png";
+import profile from "../../assets/images/icon_profile.jpg";
 
 const Header = () => {
   return (
@@ -22,7 +22,7 @@ const Header = () => {
           Home
         </span> */}
           <div className="flex justify-between gap-5 self-center">
-            <img src={man} alt="man" className="w-16 h-16 rounded-full" />
+            <img src={profile} alt="man" className="w-16 h-16 rounded-full" />
 
             <div>
               <p className="text-2xl">김그린 님 안녕하세요</p>
