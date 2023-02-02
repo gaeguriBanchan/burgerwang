@@ -38,11 +38,8 @@ function App() {
             <Route path="/order" element={<Order />}></Route>
             <Route path="/orderSuccess" element={<OrderDone />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
-
             <Route path="/mapPage" element={<MapPage />}></Route>
-
             <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
-
             <Route path="/mypage" element={<MyPage />}></Route>
             <Route path="/findinfoId" element={<FindInfoId />}></Route>
             <Route path="/findinfoPw" element={<FindInfoPw />}></Route>

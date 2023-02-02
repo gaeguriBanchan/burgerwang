@@ -22,7 +22,7 @@ const GoMypage = () => {
           <p className="text-xl text-white">김그린 님 안녕하세요</p>
           {/* 김재진 : 마이페이지이동 */}
           <span className="text-xl text-white font-black" onClick={goMypage}>
-            MY왕 바로가기 {">"}
+            MY왕 바로가기 {">"}{" "}
           </span>
         </div>
       </div>
