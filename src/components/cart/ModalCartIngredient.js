@@ -1,10 +1,9 @@
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import { getMenuIngredient } from "../../api/menuApi";
-import ModalCartIngredientItem from "./ModalCartIngredientItem";
-import styles from "./Cart.module.css";
 import { useDispatch } from "react-redux";
 import { changeOption } from "../../reducer/cartReducer";
+import ModalIngredient from "../base/Modal/ModalIngredient";
 const ModalCartIngredient = ({ menuSeq, optiontype, optioninfo, date, closeModal }) => {
   const dispatch = useDispatch();
   const [ingredientList, setIngeidientList] = useState([]);
@@ -96,23 +95,12 @@ const ModalCartIngredient = ({ menuSeq, optiontype, optioninfo, date, closeModal
   }, [checkList]);
   return (
     <>
-      <div className="max-h-[530px] overflow-auto">
-        <button onClick={() => resetCheckList()} className="w-full px-4 py-5 bg-white">
-          <span className={"relative text-black font-black text-2xl " + styles.reset}>
-            기본 재료로 변경
-          </span>
-        </button>
-        <ul className="bg-background px-8 py-4">
-          {ingredientList.map((item) => (
-            <ModalCartIngredientItem
-              key={item.ingredirentSeq}
-              ingredientData={item}
-              changeChecked={changeChecked}
-              isChecked={isChecked}
-            />
-          ))}
-        </ul>
-      </div>
+      <ModalIngredient
+        resetCheckList={resetCheckList}
+        ingredientList={ingredientList}
+        changeChecked={changeChecked}
+        isChecked={isChecked}
+      />
       <div className="flex w-full">
         <button onClick={() => addIngredient()} className="w-full px-4 py-5 bg-bgwred">
           <span className="text-white font-black text-3xl">재료 추가</span>

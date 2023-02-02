@@ -7,38 +7,6 @@ import { Link } from 'react-router-dom';
 import PageName from '../components/base/PageName';
 
 const MyPage = () => {
-//   {
-//     "status": false,
-//     "message": "로그인 먼저 해주세요.",
-//     "code": "BAD_REQUEST"
-// }
-
-//   {
-//     "list": {
-//         "memberSeq": 12,
-//         "memberEmail": "user002@email.com",
-//         "memberName": "신입",
-//         "memberPhone": "010-6666-1111",
-//         "memberGen": 2,
-//         "memberBirth": "2000-10-11",
-//         "memberGrade": "웰컴"
-//     },
-//     "message": "회원정보 조회완료!",
-//     "code": "ACCEPTED"
-// }
-
-// async/await 사용을 원한다면, 함수 외부에 `async` 키워드를 추가하세요.
-// async function getUser() {
-//   try {
-//     const response = await axios.get('/user?ID=12345');
-//     console.log(response);
-//   } catch (error) {
-//     console.error(error);
-//   }
-
-
-
-
 
 
   useEffect(() => {

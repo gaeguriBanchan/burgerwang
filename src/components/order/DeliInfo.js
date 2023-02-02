@@ -1,7 +1,7 @@
 import ChangeButton from "../base/ChangeButton";
 import { useEffect, useState } from "react";
-import Modal from "../base/Modal";
-import ModalAddress from "../base/ModalAddress";
+import Modal from "../base/Modal/Modal";
+import ModalAddress from "../base/Modal/ModalAddress";
 import { getStore } from "../../api/commonApi";
 const DeliInfo = ({
   deliMessage,
