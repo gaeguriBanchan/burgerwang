@@ -63,10 +63,12 @@ const Join = () => {
       miPwd: joinPw,
     };
     axios
-      .post('http://192.168.0.122:9898/api/member/join', { params })
+      .put('http://192.168.0.122:9898/api/member/join', params)
       .then((res) => {
         // 서버에서 response(결과가 왔어요.)
-        console.log(res);
+        alert(res.massage);
+        console.log(res.massage);
+        console.log(res.status);
       })
       .catch((err) => {
         // 서버가 반응이 없다.

@@ -1,5 +1,10 @@
 import "./App.css";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Header from "./components/base/Header";
 import Home from "./pages/Home";
 import Join from "./pages/Join";
@@ -17,6 +22,8 @@ import InfoChangeUpdate from "./pages/InfoChangeUpdate";
 import FindInfoId from "./components/find/FindInfoId";
 import FindInfoPw from "./components/find/FindInfoPw";
 import OrderDone from "./pages/OrderDone";
+import MapPage from './pages/MapPage'
+
 function App() {
   return (
     <>
@@ -36,7 +43,16 @@ function App() {
             <Route path="/order" element={<Order />}></Route>
             <Route path="/orderSuccess" element={<OrderDone />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
-            <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
+
+
+            <Route path='/mapPage' element={<MapPage/>}></Route>
+
+            <Route
+              path="/orderListDetail"
+              element={<OrderListDetail />}
+            ></Route>
+
+
             <Route path="/mypage" element={<MyPage />}></Route>
             <Route path="/findinfoId" element={<FindInfoId />}></Route>
             <Route path="/findinfoPw" element={<FindInfoPw />}></Route>

@@ -1,11 +1,36 @@
+/** @format */
+
 // /** @format */
 
-import { Outlet } from "react-router";
-import { Link } from "react-router-dom";
-import logo from "../../assets/images/logo.png";
-import profile from "../../assets/images/icon_profile.jpg";
+import { Outlet } from 'react-router';
+import logo from '../../assets/logo.png';
+import man from '../../assets/ninggen.jpg';
+import { Link, useNavigate } from 'react-router-dom';
 
+import { Outlet, useNavigate } from 'react-router';
+import { Link } from 'react-router-dom';
+import logo from '../../assets/logo.png';
+import man from '../../assets/ninggen.jpg';
+import { useSelector, useDispatch } from 'react-redux';
+// 김재진 : 타이틀 출력
+import GoMypage from './GoMypage';
 const Header = () => {
+  const navigate = useNavigate();
+  const linkMypage = () => {
+    navigate('/myPage');
+  };
+
+  
+  // 김재진 : 타이틀 출력
+  // const navigate = useNavigate();
+  // const disptach = useDispatch();
+  // const goMypage = () => {
+  //   navigate('/mypage');
+  //   disptach(setTitle({ title: '마이페이지' }));
+  // };
+  // const userInfo = useSelector((state) => {
+  //   return state.user;
+  // });
   return (
     <div>
       <div className="w-full bg-bgwred h-40 flex items-center">
@@ -22,9 +47,12 @@ const Header = () => {
             </div>
             <div>
               <p className="text-xl text-white">김그린 님 안녕하세요</p>
-              <span className="text-xl text-white font-black">MY왕 바로가기 {">"}</span>
+              <span className="text-xl text-white font-black" onClick={linkMypage}
+                style={{ cursor: 'pointer' }}>MY왕 바로가기 {">"}</span>
             </div>
           </div>
+          {/* {userInfo.emil !== '' ? <GoMypage/>: ''} */}
+          <GoMypage />
         </div>
       </div>
       <Outlet />

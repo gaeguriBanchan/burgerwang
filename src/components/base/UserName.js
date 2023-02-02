@@ -1,12 +1,9 @@
 /** @format */
 
 import React from "react";
-import { useEffect } from "react";
+
 
 const UserName = ({ joinName, userName }) => {
-  useEffect(() => {
-    console.log("이름", joinName);
-  }, [joinName]);
 
   return (
     <div className="text-2xl w-full">

@@ -8,7 +8,7 @@ import addressReducer from "./addressReducer";
 const persistConfig = {
   key: "root",
   storage: sessionStorage,
-  whitelist: ["cart", "address"],
+  whitelist: ["cart", "address" ,"user"],
 };
 
 export const rootReducer = combineReducers({
