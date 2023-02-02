@@ -1,0 +1,139 @@
+{
+  "status": true,
+  "code": "ACCEPTED",
+  "message": "재료를 조회했습니다.",
+  "list": [
+    {
+      "ingredirentSeq": 25,
+      "ingredientName": "와퍼 패티",
+      "ingredientPrice": 3200,
+      "ingredientFile": "whopperpatty.jpg"
+    },
+    {
+      "ingredirentSeq": 26,
+      "ingredientName": "스테이크 패티",
+      "ingredientPrice": 4000,
+      "ingredientFile": "steakpatty.jpg"
+    },
+    {
+      "ingredirentSeq": 27,
+      "ingredientName": "롱베이컨 2장",
+      "ingredientPrice": 1200,
+      "ingredientFile": "bacon2.jpg"
+    },
+    {
+      "ingredirentSeq": 28,
+      "ingredientName": "롱베이컨 1장",
+      "ingredientPrice": 1200,
+      "ingredientFile": "bacon.jpg"
+    },
+    {
+      "ingredirentSeq": 29,
+      "ingredientName": "치즈 2장",
+      "ingredientPrice": 600,
+      "ingredientFile": "cheese2.jpg"
+    },
+    {
+      "ingredirentSeq": 30,
+      "ingredientName": "치즈 1장",
+      "ingredientPrice": 300,
+      "ingredientFile": "cheese.jpg"
+    },
+    {
+      "ingredirentSeq": 31,
+      "ingredientName": "올엑스트라 400원(재료,소스 양 추가)",
+      "ingredientPrice": 400,
+      "ingredientFile": "allextra400.jpg"
+    },
+    {
+      "ingredirentSeq": 32,
+      "ingredientName": "올엑스트라 300원(재료,소스 양 추가)",
+      "ingredientPrice": 400,
+      "ingredientFile": "allextra300.jpg"
+    },
+    {
+      "ingredirentSeq": 33,
+      "ingredientName": "마요네즈",
+      "ingredientPrice": 0,
+      "ingredientFile": "mayo.jpg"
+    },
+    {
+      "ingredirentSeq": 34,
+      "ingredientName": "양상추",
+      "ingredientPrice": 0,
+      "ingredientFile": "headlettuce.jpg"
+    },
+    {
+      "ingredirentSeq": 35,
+      "ingredientName": "피클",
+      "ingredientPrice": 0,
+      "ingredientFile": "pickle.jpg"
+    },
+    {
+      "ingredirentSeq": 36,
+      "ingredientName": "토마토",
+      "ingredientPrice": 0,
+      "ingredientFile": "tomato.jpg"
+    },
+    {
+      "ingredirentSeq": 37,
+      "ingredientName": "양파",
+      "ingredientPrice": 0,
+      "ingredientFile": "onion.jpg"
+    },
+    {
+      "ingredirentSeq": 38,
+      "ingredientName": "케찹",
+      "ingredientPrice": 0,
+      "ingredientFile": "ketchup.jpg"
+    },
+    {
+      "ingredirentSeq": 39,
+      "ingredientName": "기네스 소스",
+      "ingredientPrice": 0,
+      "ingredientFile": "guinness.jpg"
+    },
+    {
+      "ingredirentSeq": 40,
+      "ingredientName": "통새우추가2",
+      "ingredientPrice": 600,
+      "ingredientFile": "shrimp2.jpg"
+    },
+    {
+      "ingredirentSeq": 41,
+      "ingredientName": "통새우추가",
+      "ingredientPrice": 300,
+      "ingredientFile": "shrimp.jpg"
+    },
+    {
+      "ingredirentSeq": 42,
+      "ingredientName": "할라피뇨4 추가",
+      "ingredientPrice": 400,
+      "ingredientFile": "jalapeno4.jpg"
+    },
+    {
+      "ingredirentSeq": 43,
+      "ingredientName": "할라피뇨2 추가",
+      "ingredientPrice": 200,
+      "ingredientFile": "jalapeno2.jpg"
+    },
+    {
+      "ingredirentSeq": 48,
+      "ingredientName": "스모키머스타드 소스",
+      "ingredientPrice": 0,
+      "ingredientFile": "smokymustardsauce.jpg"
+    },
+    {
+      "ingredirentSeq": 49,
+      "ingredientName": "연습",
+      "ingredientPrice": 2,
+      "ingredientFile": "연습"
+    },
+    {
+      "ingredirentSeq": 50,
+      "ingredientName": "재료추가",
+      "ingredientPrice": 0,
+      "ingredientFile": "ingredients_1674784492626.png"
+    }
+  ]
+}
