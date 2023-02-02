@@ -9,13 +9,12 @@ import { useLocation, useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { putOrder } from "../api/orderApi";
 import { removeCart } from "../reducer/cartReducer";
+import { getStore } from "../api/commonApi";
 
 const Order = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [payment, setPayment] = useState(0);
-  const [selectedAddress, setSelectedAddress] = useState("");
-  const [detailAddress, setDetailAddress] = useState("");
   const [deliAddress, setDeliAddress] = useState("");
   const [deliMessage, setDeliMessage] = useState("");
   const [deliPhone, setDeliPhone] = useState("");
@@ -32,6 +31,25 @@ const Order = () => {
       navigate("/menu");
     }
   }, [state]);
+  const address = useSelector((state) => state.address);
+  const { addressJibun, addressRoad, addressDetail } = address;
+  const getStoreName = async () => {
+    await getStore(deliAddress)
+      .then((res) => {
+        const { seq, name } = res.store;
+        setStoreInfo({ seq, name });
+      })
+      .catch((err) => {
+        alert("배달 불가능 한 지역입니다.");
+      });
+  };
+  useEffect(() => {
+    const fullAddress = `${addressRoad ? addressRoad : addressJibun} ${addressDetail}`;
+    setDeliAddress(fullAddress);
+  }, [address]);
+  useEffect(() => {
+    deliAddress !== "" && getStoreName();
+  }, [deliAddress]);
   const { cartList } = useSelector((state) => state.cart);
   const checkedCart = state && cartList.filter((item) => state.includes(item.date));
   const updateTotalPrice = () => {
@@ -76,15 +94,16 @@ const Order = () => {
       pay: payment,
       cart: orderCartList,
       message: deliMessage,
-      address: selectedAddress,
-      detailAddress: detailAddress,
+      address: addressRoad ? addressRoad : addressJibun,
+      detailAddress: addressDetail,
       store: storeInfo.seq,
     };
+    console.log(orderSheet);
     putOrder(orderSheet)
       .then((res) => {
         setDisableButton(true);
         if (res.status) {
-          navigate("/menu");
+          navigate("/orderSuccess", { state: "isDone" });
           dispatch(removeCart(state));
         } else {
           alert(res.message);
@@ -114,15 +133,11 @@ const Order = () => {
             setDeliPhone={setDeliPhone}
             storeInfo={storeInfo}
             setStoreInfo={setStoreInfo}
-            selectedAddress={selectedAddress}
-            setSelectedAddress={setSelectedAddress}
-            detailAddress={detailAddress}
-            setDetailAddress={setDetailAddress}
           />
           <OrderInfo orderData={checkedCart} />
           <Payment totalPrice={totalPrice} payment={payment} setPayment={setPayment} />
         </div>
-        <div className="flex justify-end">
+        <div className="flex justify-end gap-4">
           <DisabledButton name="취소" />
           <ActiveButton event={sendOrder} disabled={disableButton}>
             결제하기

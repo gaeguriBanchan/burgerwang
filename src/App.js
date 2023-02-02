@@ -18,10 +18,11 @@ import Cart from "./pages/Cart";
 import OrderListPage from "./pages/OrderListPage";
 import OrderListDetail from "./pages/OrderListDetail";
 import MyPage from "./pages/MyPage";
+import InfoChangeUpdate from "./pages/InfoChangeUpdate";
+import FindInfoId from "./components/find/FindInfoId";
+import FindInfoPw from "./components/find/FindInfoPw";
+import OrderDone from "./pages/OrderDone";
 import MapPage from './pages/MapPage'
-import InfoChangeUpdate from './pages/InfoChangeUpdate';
-import FindInfoId from './components/find/FindInfoId';
-import FindInfoPw from './components/find/FindInfoPw';
 
 function App() {
   return (
@@ -30,20 +31,19 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/home" />}></Route>
           <Route path="/home" element={<Home />}></Route>
+          <Route path="/menu" element={<MenuContainer />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
           <Route element={<Header />}>
             <Route path="/join" element={<Join />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/infoChange" element={<InfoChange />}></Route>
-            <Route
-              path="/infoChangeUpdate"
-              element={<InfoChangeUpdate />}
-            ></Route>
+            <Route path="/infoChangeUpdate" element={<InfoChangeUpdate />}></Route>
             <Route path="/pwChange" element={<PwChange />}></Route>
             <Route path="/dropOut" element={<DropOut />}></Route>
-            <Route path="/menu" element={<MenuContainer />}></Route>
             <Route path="/order" element={<Order />}></Route>
-            <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/orderSuccess" element={<OrderDone />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
+
 
             <Route path='/mapPage' element={<MapPage/>}></Route>
 
@@ -52,7 +52,6 @@ function App() {
               element={<OrderListDetail />}
             ></Route>
 
-            <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
 
             <Route path="/mypage" element={<MyPage />}></Route>
             <Route path="/findinfoId" element={<FindInfoId />}></Route>

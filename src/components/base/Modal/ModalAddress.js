@@ -1,36 +1,55 @@
 /** @format */
 
-import React, { useState } from 'react';
-import ModalHeader from './ModalHeader';
-import DaumPostcode from 'react-daum-postcode';
-
-const ModalAddress = ({
-  closeModal,
-  setDeliAddress,
-  selectedAddress,
-  setSelectedAddress,
-  detailAddress,
-  setDetailAddress,
-}) => {
+import React, { useState } from "react";
+import ModalHeader from "./ModalHeader";
+import DaumPostcode from "react-daum-postcode";
+import { useDispatch } from "react-redux";
+import { getStore } from "../../../api/commonApi";
+import { modifyAdress } from "../../../reducer/addressReducer";
+const ModalAddress = ({ closeModal }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const [selectedJibunAddress, setSelectedJibunAddress] = useState('');
-  const onSearchAddress = (data) => {
+  const [selectedAddress, setSelectedAddress] = useState("");
+  const [selectedJibunAddress, setSelectedJibunAddress] = useState("");
+  const [detailAddress, setDetailAddress] = useState("");
+  const onSearchAddress = (addressData) => {
     setIsSelected(true);
-    setSelectedAddress(data.roadAddress);
-    setSelectedJibunAddress(data.jibunAddress);
+    const { roadAddress, jibunAddress } = addressData;
+    setSelectedAddress(roadAddress);
+    setSelectedJibunAddress(jibunAddress);
   };
-  const enterDetailAdress = () => {
-    setDeliAddress(selectedAddress + ' ' + detailAddress);
-    closeModal();
+  const dispatch = useDispatch();
+  const enterDetailAdress = async () => {
+    const fullAddress = `${
+      selectedAddress ? selectedAddress : selectedJibunAddress
+    } ${detailAddress}`;
+    await getStore(fullAddress)
+      .then((storeData) => {
+        const { status, message } = storeData;
+        if (status) {
+          dispatch(
+            modifyAdress({
+              addressJibun: selectedJibunAddress,
+              addressRoad: selectedAddress,
+              addressDetail: detailAddress,
+            })
+          );
+          closeModal();
+        } else {
+          alert(message);
+        }
+      })
+      .catch((err) => {
+        alert("에러가 발생하였습니다. 다시 시도해 주세요.");
+      });
   };
   return (
     <>
-      <ModalHeader title={'배달 받을 주소'} closeModal={closeModal} />
+      <ModalHeader title={"배달 받을 주소"} closeModal={closeModal} />
       <div className="max-h-[600px] overflow-visible">
         <DaumPostcode
           autoClose={false}
           onComplete={onSearchAddress}
-          style={{ maxHeight: '350px' }}
+          style={{ maxHeight: "350px" }}
         />
         {isSelected && (
           <div>
@@ -59,7 +78,10 @@ const ModalAddress = ({
             </div>
             <button
               onClick={() => enterDetailAdress()}
-              className="w-full bg-e5e5e5 py-5 bg-737373 text-white text-2xl"
+              className={`w-full bg-e5e5e5 py-5 ${
+                detailAddress.length > 0 ? "bg-bgwred" : "bg-737373"
+              } text-white text-2xl`}
+              disabled={detailAddress.length > 0 ? false : true}
             >
               이 주소로 배달지 설정
             </button>

@@ -1,5 +1,5 @@
 import convertPrice from "../../utils/convertPrice";
-const Food = ({ menu, selectMenuHandler }) => {
+const MenuItem = ({ menu, selectMenuHandler }) => {
   const { cate, seq, name, count, uri, detail, price, soldout } = menu;
   return (
     <>
@@ -41,4 +41,4 @@ const Food = ({ menu, selectMenuHandler }) => {
   );
 };
 
-export default Food;
+export default MenuItem;

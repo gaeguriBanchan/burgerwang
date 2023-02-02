@@ -1,21 +1,14 @@
-import ChangeButton from "../base/ChangeButton";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Modal from "../base/Modal/Modal";
 import ModalAddress from "../base/Modal/ModalAddress";
-import { getStore } from "../../api/commonApi";
+import ChangeButton from "../base/ChangeButton";
 const DeliInfo = ({
   deliMessage,
   setDeliMessage,
   deliAddress,
-  setDeliAddress,
-  selectedAddress,
-  setSelectedAddress,
-  detailAddress,
-  setDetailAddress,
   deliPhone,
   setDeliPhone,
   storeInfo,
-  setStoreInfo,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -24,24 +17,6 @@ const DeliInfo = ({
   const closeModal = () => {
     setModalIsOpen(false);
   };
-  const getStoreName = async () => {
-    await getStore(deliAddress)
-      .then((res) => {
-        const { seq, name } = res.store;
-        setStoreInfo({ seq, name });
-      })
-      .catch((err) => {
-        alert("배달 불가능 한 지역입니다.");
-        setDeliAddress("");
-        setStoreInfo({
-          seq: 0,
-          name: "",
-        });
-      });
-  };
-  useEffect(() => {
-    deliAddress !== "" && getStoreName();
-  }, [deliAddress]);
   return (
     <>
       <div className="w-full">
@@ -99,14 +74,7 @@ const DeliInfo = ({
         </div>
       </div>
       <Modal modalIsOpen={modalIsOpen}>
-        <ModalAddress
-          closeModal={closeModal}
-          setDeliAddress={setDeliAddress}
-          selectedAddress={selectedAddress}
-          setSelectedAddress={setSelectedAddress}
-          detailAddress={detailAddress}
-          setDetailAddress={setDetailAddress}
-        />
+        <ModalAddress closeModal={closeModal} />
       </Modal>
     </>
   );

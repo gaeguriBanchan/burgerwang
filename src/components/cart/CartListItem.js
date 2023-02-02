@@ -11,7 +11,6 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
   const dispatch = useDispatch();
   const { date, menuInfo, count, totalPrice, ingredientInfo, sideInfo, drinkInfo, drink2Info } =
     cartinfo;
-  console.log(menuInfo);
   const [orderCount, setOrderCount] = useState(count);
   const plusOrderCount = () => {
     setOrderCount(orderCount + 1);

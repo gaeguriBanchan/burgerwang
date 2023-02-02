@@ -1,17 +1,13 @@
 import apiClient from "./apiClient";
 
-export const getMenu = async (seq) => {
-  try {
-    const params = {
-      store: 3,
-      seq: parseInt(seq),
-    };
-    // const res = await apiClient.get("/apidummy/menu.json");
-    const res = await apiClient.get("/api/menu/category", { params });
-    return res.data;
-  } catch (err) {
-    return err;
-  }
+export const getMenu = async (seq, store) => {
+  const params = {
+    seq: parseInt(seq),
+    store,
+  };
+  // const res = await apiClient.get("/apidummy/menu.json");
+  const res = await apiClient.get("/api/menu/category", { params });
+  return res.data;
 };
 
 export const getMenuDetail = async (cate, seq) => {
