@@ -2,16 +2,17 @@ import React, { useEffect, useState } from "react";
 import TabButton from "../components/base/TabButton";
 import Food from "../components/menu/Food";
 import { getMenu } from "../api/menuApi";
-import Modal from "../components/base/Modal";
+import Modal from "../components/base/Modal/Modal";
 import ModalMenu from "../components/menu/ModalMenu";
 import { useContext } from "react";
 import { MenuContext } from "../components/menu/context/MenuContext";
+import { loginUser } from "../api/commonApi";
 const Menu = () => {
   const [menuList, setMenuList] = useState([]);
   const [selectedCategory, changeSelectedCategory] = useState("1");
   const { manageValue, manageCart } = useContext(MenuContext);
   const { setSelectedMenu, selectedMenuCate, setSelectedMenuCate } = manageValue;
-  const { addCartInfo, addToCart } = manageCart;
+  const { addCartInfo } = manageCart;
   const setMenu = async () => {
     const res = await getMenu(selectedCategory);
     const { event, burger, side, drink, dog } = res.list;
@@ -75,6 +76,9 @@ const Menu = () => {
   };
   return (
     <>
+      <button onClick={() => login()} className="w-30 h-20 bg-red-50">
+        로그인
+      </button>
       <div className="container max-w-6xl px-5 m-auto">
         <div className="flex justify-between mb-14 mt-9">
           <span className="text-4xl font-black">메뉴</span>

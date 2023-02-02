@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { getMenuDrink } from "../../api/menuApi";
+import ModalDrink from "../base/Modal/ModalDrink";
 import { MenuContext } from "./context/MenuContext";
-import ModalMenuDrinkItem from "./ModalMenuDrinkItem";
 
 const ModalMenuDrink = ({ modalKind }) => {
   const [drinkList, setDrinkList] = useState([]);
@@ -30,18 +30,7 @@ const ModalMenuDrink = ({ modalKind }) => {
   }, [modalKind]);
   return (
     <>
-      <div className="max-h-[530px] overflow-auto">
-        <ul className="bg-background p-8 flex justify-between flex-wrap">
-          {drinkList.map((item) => (
-            <ModalMenuDrinkItem
-              key={item.drinkOptSeq}
-              drinkData={item}
-              selectItem={selectItem}
-              setSelectItem={setSelectItem}
-            />
-          ))}
-        </ul>
-      </div>
+      <ModalDrink drinkList={drinkList} selectItem={selectItem} setSelectItem={setSelectItem} />
       <button onClick={() => selectDrink()} className="w-full px-4 py-5 bg-bgwred">
         <span className="text-white font-black text-3xl">선택</span>
       </button>

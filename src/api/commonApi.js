@@ -10,3 +10,16 @@ export const getStore = async (data) => {
     return err;
   }
 };
+
+export const loginUser = async () => {
+  try {
+    const params = {
+      email: "user001@email.com",
+      pwd: "123456",
+    };
+    const res = await apiClient.post("/api/member/login", { params });
+    return res.data;
+  } catch (err) {
+    return err;
+  }
+};

@@ -1,6 +1,7 @@
-import styles from "./Cart.module.css";
-import convertPrice from "../../utils/convertPrice";
-const ModalCartSideItem = ({ sideData, selectItem, setSelectItem }) => {
+import styles from "./SelectModal.module.css";
+import convertPrice from "../../../utils/convertPrice";
+
+const ModalSideItem = ({ sideData, selectItem, setSelectItem }) => {
   const { sideOptSeq, sideOptName, sideOptPrice, sideOptUri } = sideData;
   return (
     <li className="relative w-1/3 h-[185px] mb-8 last:mb-0">
@@ -16,11 +17,13 @@ const ModalCartSideItem = ({ sideData, selectItem, setSelectItem }) => {
         <span className={styles.radiocheck}></span>
         <div className="sidecon">
           <div className="px-2 h-[100px]">
-            <img
-              src={`${process.env.REACT_APP_IMAGE_URL}/sideOpt/${sideOptUri}`}
-              alt={sideOptName}
-              className="w-full h-full"
-            />
+            {sideOptUri && (
+              <img
+                src={`${process.env.REACT_APP_IMAGE_URL}/sideOpt/${sideOptUri}`}
+                alt={sideOptName}
+                className="w-full h-full"
+              />
+            )}
           </div>
           <div className="px-2 mt-4">
             <p className="text-center text-l">{sideOptName}</p>
@@ -32,4 +35,4 @@ const ModalCartSideItem = ({ sideData, selectItem, setSelectItem }) => {
   );
 };
 
-export default ModalCartSideItem;
+export default ModalSideItem;

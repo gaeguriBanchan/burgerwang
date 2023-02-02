@@ -5,7 +5,7 @@ import convertPrice from "../../utils/convertPrice";
 import styles from "./Cart.module.css";
 import CartListItemOption from "./CartListItemOption";
 import ModalCart from "./ModalCart";
-import Modal from "../base/Modal";
+import Modal from "../base/Modal/Modal";
 
 const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
   const dispatch = useDispatch();

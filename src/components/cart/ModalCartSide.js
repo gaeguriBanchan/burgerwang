@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { getMenuSide } from "../../api/menuApi";
-import ModalCartSideItem from "./ModalCartSideItem";
 import { useDispatch } from "react-redux";
 import { changeOption } from "../../reducer/cartReducer";
+import ModalSide from "../base/Modal/ModalSide";
 const ModalCartSide = ({ menuSeq, optiontype, optioninfo, date, closeModal }) => {
   const dispatch = useDispatch();
   const [sideList, setSideList] = useState([]);
@@ -28,18 +28,7 @@ const ModalCartSide = ({ menuSeq, optiontype, optioninfo, date, closeModal }) =>
   }, []);
   return (
     <>
-      <div className="max-h-[530px] overflow-auto">
-        <ul className="bg-background p-8 flex justify-between flex-wrap">
-          {sideList.map((item) => (
-            <ModalCartSideItem
-              key={item.sideOptSeq}
-              sideData={item}
-              selectItem={selectItem}
-              setSelectItem={setSelectItem}
-            />
-          ))}
-        </ul>
-      </div>
+      <ModalSide sideList={sideList} selectItem={selectItem} setSelectItem={setSelectItem} />
       <button onClick={() => selectSide()} className="w-full px-4 py-5 bg-bgwred">
         <span className="text-white font-black text-3xl">확인</span>
       </button>

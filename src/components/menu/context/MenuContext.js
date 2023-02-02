@@ -44,7 +44,8 @@ export const MenuContextProvider = (props) => {
   };
   const addIngredient = (data, isIFreeOver) => {
     let updatePrice = cart.totalPrice;
-    const updateData = [...data, isIFreeOver && addIngredientInfo];
+    let updateData = data;
+    isIFreeOver && (updateData = [...updateData, addIngredientInfo]);
     updateData.forEach((item) => (updatePrice += item.ingredientPrice));
     cart = {
       ...cart,

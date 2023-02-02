@@ -1,6 +1,7 @@
-import styles from "./Menu.module.css";
-import convertPrice from "../../utils/convertPrice";
-const ModalMenuDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
+import styles from "./SelectModal.module.css";
+import convertPrice from '../../../utils/convertPrice';
+
+const ModalDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
   const { drinkOptSeq, drinkOptName, drinkOptPrice, drinkOptUri } = drinkData;
   return (
     <li className="relative w-1/3 h-[185px]">
@@ -32,4 +33,4 @@ const ModalMenuDrinkItem = ({ drinkData, selectItem, setSelectItem }) => {
   );
 };
 
-export default ModalMenuDrinkItem;
+export default ModalDrinkItem;

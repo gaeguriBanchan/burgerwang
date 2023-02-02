@@ -1,6 +1,7 @@
-import convertPrice from "../../utils/convertPrice";
-import styles from "./Cart.module.css";
-const ModalCartIngredientItem = ({ ingredientData, changeChecked, isChecked }) => {
+import styles from "./SelectModal.module.css";
+import convertPrice from "../../../utils/convertPrice";
+
+const ModalIngredientItem = ({ ingredientData, changeChecked, isChecked }) => {
   const { ingredirentSeq, ingredientName, ingredientPrice, ingredientFile } = ingredientData;
   return (
     <li className="w-full flex items-center">
@@ -31,4 +32,4 @@ const ModalCartIngredientItem = ({ ingredientData, changeChecked, isChecked }) =
   );
 };
 
-export default ModalCartIngredientItem;
+export default ModalIngredientItem;

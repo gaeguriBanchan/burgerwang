@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { changeCount } from "../../reducer/cartReducer";
 import convertPrice from "../../utils/convertPrice";
-import Modal from "../base/Modal";
+import Modal from "../base/Modal/Modal";
 import ModalCart from "../cart/ModalCart";
 import CartListItemOption from "../cart/CartListItemOption";
 

@@ -2,8 +2,7 @@ import { useContext, useEffect, useRef } from "react";
 import { useState } from "react";
 import { getMenuIngredient } from "../../api/menuApi";
 import { MenuContext } from "./context/MenuContext";
-import ModalMenuIngredientItem from "./ModalMenuIngredientItem";
-import styles from "./Menu.module.css";
+import ModalIngredient from "../base/Modal/ModalIngredient";
 const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
   const [ingredientList, setIngeidientList] = useState([]);
   const [checkList, setCheckList] = useState([]);
@@ -88,23 +87,12 @@ const ModalMenuIngredient = ({ modalKind, setModalKind }) => {
   };
   return (
     <>
-      <div className="max-h-[530px] overflow-auto">
-        <button onClick={() => resetCheckList()} className="w-full px-4 py-5 bg-white">
-          <span className={"relative text-black font-black text-2xl " + styles.reset}>
-            기본 재료로 변경
-          </span>
-        </button>
-        <ul className="bg-background px-8 py-4">
-          {ingredientList.map((item) => (
-            <ModalMenuIngredientItem
-              key={item.ingredirentSeq}
-              ingredientData={item}
-              changeChecked={changeChecked}
-              isChecked={isChecked}
-            />
-          ))}
-        </ul>
-      </div>
+      <ModalIngredient
+        resetCheckList={resetCheckList}
+        ingredientList={ingredientList}
+        changeChecked={changeChecked}
+        isChecked={isChecked}
+      />
       <div className="flex w-full">
         <button onClick={() => cancelIngredient()} className="w-3/6 px-4 py-4 bg-2e2e2e">
           <span className="text-white font-black text-3xl">추가안함</span>
