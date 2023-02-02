@@ -68,12 +68,6 @@ const Menu = () => {
   const list = menuList.map((item) => (
     <Food key={item.seq} menu={item} selectMenuHandler={selectMenuHandler} />
   ));
-
-  const login = async () => {
-    await loginUser()
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
-  };
   return (
     <>
       <button onClick={() => login()} className="w-30 h-20 bg-red-50">

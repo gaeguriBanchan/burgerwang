@@ -1,27 +1,29 @@
 /** @format */
-// import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import React from 'react';
 
-const UserPhon = ({ register }) => {
-  // const [joinPhon, setJoinPhon] = useState('');
-  // const userPhon = (e) => {
-  //   setJoinPhon(e.target.value);
-  //   console.log(joinPhon);
-  // };
-  // useEffect(() => {
-  //   console.log('핸드폰', joinPhon);
-  // }, [joinPhon, setJoinPhon]);
+const UserPhon = ({ userPhon, joinPhon}) => {
+
+  useEffect(() => {}, [joinPhon]);
+
 
   return (
-    <div className="flex text-2xl w-full">
+    <div className="text-2xl w-full">
       <input
         className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
         type="tel"
         placeholder="000-0000-0000"
         required
-        // onChange={(e) => userPhon(e)}
-        {...register('phon')}
+        value={joinPhon}
+        onChange={(e) => userPhon(e)}
       />
+      {joinPhon === '' ? (
+        <p className="text-base text-bgwred pt-2">
+          휴대폰 번호를 입력해 주세요
+        </p>
+      ) : (
+        <p className="text-base text-bgwred pt-2">&nbsp;</p>
+      )}
     </div>
   );
 };

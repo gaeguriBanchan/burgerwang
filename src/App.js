@@ -1,5 +1,3 @@
-/** @format */
-
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/base/Header";
@@ -15,8 +13,9 @@ import Cart from "./pages/Cart";
 import OrderListPage from "./pages/OrderListPage";
 import OrderListDetail from "./pages/OrderListDetail";
 import MyPage from "./pages/MyPage";
-import FindInfo from "./pages/FindInfo";
-import InfoChangeUpdate from "./pages/InfoChangeUpdate";
+import InfoChangeUpdate from './pages/InfoChangeUpdate';
+import FindInfoId from './components/find/FindInfoId';
+import FindInfoPw from './components/find/FindInfoPw';
 function App() {
   return (
     <>
@@ -28,16 +27,24 @@ function App() {
             <Route path="/join" element={<Join />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/infoChange" element={<InfoChange />}></Route>
-            <Route path="/infoChangeUpdate" element={<InfoChangeUpdate />}></Route>
+            <Route
+              path="/infoChangeUpdate"
+              element={<InfoChangeUpdate />}
+            ></Route>
             <Route path="/pwChange" element={<PwChange />}></Route>
             <Route path="/dropOut" element={<DropOut />}></Route>
             <Route path="/menu" element={<MenuContainer />}></Route>
             <Route path="/order" element={<Order />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/orderList" element={<OrderListPage />}></Route>
+            <Route
+              path="/orderListDetail"
+              element={<OrderListDetail />}
+            ></Route>
             <Route path="/orderListDetail" element={<OrderListDetail />}></Route>
             <Route path="/mypage" element={<MyPage />}></Route>
-            <Route path="/findinfo" element={<FindInfo />}></Route>
+            <Route path="/findinfoId" element={<FindInfoId />}></Route>
+            <Route path="/findinfoPw" element={<FindInfoPw />}></Route>
           </Route>
           <Route path="*" element={<Navigate to="/home" />} />
         </Routes>

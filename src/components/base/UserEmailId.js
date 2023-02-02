@@ -1,32 +1,87 @@
 /** @format */
 
-// import React, { useEffect } from 'react';
-// import { useState } from 'react';
-const UserEmailId = ({ emailId, register }) => {
-  // const [joinEmail, setJoinEmail] = useState('');
-
-  // const userEmail = (e) => {
-  //   setJoinEmail(e.target.value);
-  //   console.log(joinEmail);
+const UserEmailId = ({ emailId, userEmail, joinEmail, JoinProfile, Login }) => {
+  // const emailCh = () => {
+  //   if (userEmail === '') {
+  //     return <p className="text-base text-bgwred pt-2">&nbsp;</p>;
+  //   }
   // };
 
-  // useEffect(() => {
-  //   console.log('이메일', joinEmail);
-  // }, [joinEmail, setJoinEmail]);
-
-  return (
-    <div className="flex text-2xl w-full ">
-      <input
-        className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
-        type="email"
-        placeholder={emailId}
-        {...register('email', { required: '이메일을 입력해주세요' })}
-        required
-        // value={joinEmail}
-        // onChange={(e) => userEmail(e)}
-      />
-    </div>
-  );
+  if (JoinProfile) {
+    return (
+      <div className="text-2xl w-full ">
+        <input
+          className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
+          type="email"
+          placeholder={emailId}
+          required
+          value={joinEmail}
+          onChange={(e) => userEmail(e)}
+        />
+        {joinEmail === '' ? (
+          <p className="text-base text-bgwred pt-2">
+            사용 가능한 이메일 주소를 입력해 주세요. (예: name@mail.com)
+          </p>
+        ) : (
+          <p className="text-base text-bgwred pt-2">&nbsp;</p>
+        )}
+      </div>
+    );
+  }
+  if (Login) {
+    return (
+      <div className="text-2xl w-full ">
+        <input
+          className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
+          type="email"
+          placeholder={emailId}
+          required
+          value={joinEmail}
+          onChange={(e) => userEmail(e)}
+        />
+        <p className="text-base text-bgwred pt-2">&nbsp;</p>
+      </div>
+    );
+  } else {
+    return (
+      <div className="text-2xl w-full ">
+        <input
+          className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
+          type="email"
+          placeholder={emailId}
+          required
+          value={joinEmail}
+          onChange={(e) => userEmail(e)}
+        />
+        {joinEmail === '' ? (
+          <p className="text-base text-bgwred pt-2">이메일을 입력해 주세요</p>
+        ) : (
+          <p>&nbsp;</p>
+        )}
+      </div>
+    );
+  }
+  // else {
+  //   return (
+  //     <div className="text-2xl w-full ">
+  //       <input
+  //         className="w-full bg-underline bg-repeat-x bg-bottom outline-none py-4"
+  //         type="email"
+  //         placeholder={emailId}
+  //         required
+  //         value={joinEmail}
+  //         onChange={(e) => userEmail(e)}
+  //       />
+  //       {joinEmail === '' ? (
+  //         <p className="text-base text-bgwred pt-2">
+  //           이메일 주소를 입력해 주세요.
+  //         </p>
+  //       ) : (
+  //         <p className="text-base text-bgwred pt-2">&nbsp;</p>
+  //       )}
+  //     </div>
+  //   );
+  // }
 };
 
 export default UserEmailId;

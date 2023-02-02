@@ -1,25 +1,41 @@
-/** @format */
+const UserGender = () => {
+  
+  const userGender = (e) => {
+    console.log(e.target.value);
+  };
 
-import React from 'react';
-
-const UserGender = ({ register }) => {
   return (
-    <div className="flex text-2xl w-full">
-      <div className="flex w-full ">
-        <input id="g-n" type="radio" name="gender" defaultChecked />
-        <label htmlFor="g-n" className="w-1/4 py-4  ml-5 mr-12">
-          선택안함
-        </label>
-        <input id="g-m" type="radio" name="gender" {...register('남')} />
-        <label htmlFor="g-m" className="w-1/4 py-4  ml-5 mr-12">
-          남
-        </label>
-
-        <input id="g-w" type="radio" name="gender" {...register('여')} />
-        <label htmlFor="g-w" className="w-1/4 py-4  ml-5 mr-12">
-          여
-        </label>
-      </div>
+    <div className="flex text-2xl items-center w-full">
+      <label htmlFor="g-n">
+        <input
+          id="g-n"
+          type="radio"
+          name="gender"
+          value="0"
+          onClick={(e) => userGender(e)}
+        />
+        <span className="py-4 ml-5 mr-12">선택안함</span>
+      </label>
+      <label htmlFor="g-m">
+        <input
+          id="g-m"
+          type="radio"
+          name="gender"
+          value="1"
+          onClick={(e) => userGender(e)}
+        />
+        <span className="py-4 ml-5 mr-12">남</span>
+      </label>
+      <label htmlFor="g-w">
+        <input
+          id="g-w"
+          type="radio"
+          name="gender"
+          value="2"
+          onClick={(e) => userGender(e)}
+        />
+        <span className="py-4 ml-5 mr-12">여</span>
+      </label>
     </div>
   );
 };
