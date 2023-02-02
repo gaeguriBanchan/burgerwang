@@ -1,6 +1,8 @@
 /** @format */
+
+import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
-import React from 'react';
+import React, { useEffect } from 'react';
 import PageName from '../components/base/PageName';
 import UserInfoType from '../components/base/UserInfoType';
 import UserEmailId from '../components/base/UserEmailId';
@@ -8,11 +10,51 @@ import UserPassword from '../components/base/UserPassword';
 import ActiveBlackButton from '../components/base/ActiveBlackButton';
 import DisabledButton from '../components/base/DisabledButton';
 import useInput from '../components/join/hook/useInput';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+// import { loginUser } from '../reducer/userSlice';
 
 const InfoChange = () => {
   const [joinEmail, userEmail] = useInput('');
   const [loginPw, userloginPw] = useInput('');
+
+  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  const liginData = useSelector((state) => state.user);
+
+  const registFunc = async (e) => {
+    e.preventDefault();
+
+    if (!joinEmail) {
+      return alert('이메일을 입력하세요.');
+    }
+    if (!loginPw) {
+      return alert('비밀번호를 입력하세요.');
+    }
+    console.log('입력된 내용', joinEmail, loginPw);
+
+    let params = {
+      email: joinEmail,
+      pwd: loginPw,
+    };
+    const seq = liginData.seq;
+    console.log(liginData);
+    axios
+      .get(`http://192.168.0.122:9898/api/member/update/${seq}`, params)
+      .then((res) => {
+        console.log(res);
+        console.log(res.data.status);
+        navigate('/infoChangeUpdate');
+        // dispatch(loginUser(res.data.loginUser));
+      })
+      .catch((err) => {
+        console.log(err);
+        // alert(err.response.data.message);
+      });
+  };
+
+  // to="/infoChangeUpdate"
 
   return (
     <div>
@@ -54,9 +96,9 @@ const InfoChange = () => {
             <div>
               <DisabledButton name={'취소'} />
             </div>
-            <Link to="/infoChangeUpdate">
-              <ActiveBlackButton name={'완료'} />
-            </Link>
+            <div onClick={registFunc}>
+              <ActiveBlackButton>완료</ActiveBlackButton>
+            </div>
           </div>
         </div>
       </div>

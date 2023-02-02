@@ -1,23 +1,38 @@
+/** @format */
 
 import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import PageName from '../components/base/PageName';
 
-
 const MyPage = () => {
-
-  const a = useSelector((state) => state.user);
-  console.log(a);
+  const navigate = useNavigate();
+  const liginData = useSelector((state) => state.user);
 
   useEffect(() => {
-    axios.get('http://192.168.0.122:9898/api/member/mypage/57')
-    .then()
-    .catch();
-  }, []);
+    const seq = liginData.seq;
+
+    console.log(liginData);
+    console.log(liginData.seq);
+    axios
+      .get(`http://192.168.0.122:9898/api/member/mypage/${seq}`)
+      .then((res) => {
+        console.log(res);
+        // alert(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert(err.response.data.message);
+        navigate('/');
+        
+      });
+  }, [])
+
+  
+  const name = liginData.name;
 
   return (
     <div>
@@ -30,7 +45,7 @@ const MyPage = () => {
         <div className="flex justify-between ">
           <div className="text-2xl">
             <span className="font-JUA">
-              <em className="not-italic font-black">김그린</em> &nbsp;님!&nbsp;
+              <em className="not-italic font-black">{name}</em> &nbsp;님!&nbsp;
             </span>
             <span>반갑습니다</span>
             <ul

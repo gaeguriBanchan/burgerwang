@@ -19,8 +19,8 @@ const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const a = useSelector((state) => state.user);
-  console.log(a);
+  const liginData = useSelector((state) => state.user);
+  console.log(liginData);
 
   // 로그인 항목 입력
   const registFunc = async (e) => {
@@ -41,24 +41,29 @@ const Login = () => {
 
     axios
       .post('http://192.168.0.122:9898/api/member/login', params)
-      .then((res) => {
-        alert('환영합니다');
+      .then(
+        (res) => {
+          alert(res.data.message);
+          console.log(res);
+          console.log(res.data.status);
 
-        console.log(res);
-        dispatch(loginUser(res.data.loginUser));
-        // navigate('/menu');
-        navigate('/');
-      })
+          dispatch(loginUser(res.data.loginUser));
+          navigate('/');
+        }
+   
+      )
       .catch((err) => {
         // 서버가 반응이 없다.
         console.log(err);
-        alert(err.data.message);
+        alert(err.response.data.message);
+        // console.log(err.request);
+        // console.log(err.request.responseText.message);
+        // alert(err.request.responseText.message);
       });
   };
   // 회원가입 이동
   const linkJoin = () => {
     // 최금옥
-    console.log('해해해');
     navigate('/join');
   };
 
@@ -95,7 +100,7 @@ const Login = () => {
                 <ActiveButton children={'로그인'} />
               </div>
               <div onClick={linkJoin}>
-                <ActiveBlackButton name={'회원가입'} />
+                <ActiveBlackButton>회원가입</ActiveBlackButton>
               </div>
             </div>
             <div className="font-JUA">
