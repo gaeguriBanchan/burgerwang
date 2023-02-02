@@ -108,7 +108,7 @@ const Order = () => {
             selectedAddress={selectedAddress}
             setSelectedAddress={setSelectedAddress}
             detailAddress={detailAddress}
-            setDetailAddress={detailAddress}
+            setDetailAddress={setDetailAddress}
           />
           <OrderInfo orderData={checkedCart} />
           <Payment totalPrice={totalPrice} payment={payment} setPayment={setPayment} />

@@ -49,24 +49,30 @@ const Menu = () => {
     setModalIsOpen(false);
   };
   const selectMenuHandler = (menu, cate, seq) => {
+    let isDone = false;
     setSelectedMenuCate(cate);
     setSelectedMenu(seq);
     const { count } = menu;
     if (count > 1) {
       openModal();
     } else {
+      isDone = true;
       if (cate === "event") {
-        addCartInfo("event", menu);
-        addToCart();
+        addCartInfo({ type: "event", data: menu });
         return;
       }
-      addCartInfo("menu", menu);
-      addToCart();
+      addCartInfo({ type: "menu", data: menu, isDone });
     }
   };
   const list = menuList.map((item) => (
     <Food key={item.seq} menu={item} selectMenuHandler={selectMenuHandler} />
   ));
+
+  const login = async () => {
+    await loginUser()
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   return (
     <>
       <div className="container max-w-6xl px-5 m-auto">

@@ -105,7 +105,7 @@ const DeliInfo = ({
           selectedAddress={selectedAddress}
           setSelectedAddress={setSelectedAddress}
           detailAddress={detailAddress}
-          setDetailAddress={detailAddress}
+          setDetailAddress={setDetailAddress}
         />
       </Modal>
     </>

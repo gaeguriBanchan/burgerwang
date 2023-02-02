@@ -4,7 +4,6 @@ import { changeCount, removeOneCart } from "../../reducer/cartReducer";
 import convertPrice from "../../utils/convertPrice";
 import styles from "./Cart.module.css";
 import CartListItemOption from "./CartListItemOption";
-import DefaultImage from "../../assets/images/logo.png";
 import ModalCart from "./ModalCart";
 import Modal from "../base/Modal";
 
@@ -64,7 +63,13 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
               <p className="text-3xl mt-3 font-black">{convertPrice(menuInfo.price)}원</p>
             </div>
           </label>
-          <img src={DefaultImage} alt="상품 이미지" className="h-28" />
+          {menuInfo.uri && (
+            <img
+              src={`${process.env.REACT_APP_IMAGE_URL}/menu/${menuInfo.uri}`}
+              alt="상품 이미지"
+              className="h-28"
+            />
+          )}
         </div>
         {(menuInfo.menuKind === "SET" || menuInfo.type === "SET") && (
           <ul className="py-8 border-b border-ededed border-dashed">

@@ -18,45 +18,69 @@ const cartReducer = createSlice({
       state.cartList = state.cartList.filter((item) => action.payload !== item.date);
     },
     changeCount: (state, action) => {
-      const num = state.cartList.findIndex((item) => item.date === action.payload.date);
-      state.cartList[num].count = action.payload.orderCount;
+      const date = state.cartList.findIndex((item) => item.date === action.payload.date);
+      state.cartList[date].count = action.payload.orderCount;
     },
     changeOption: (state, action) => {
-      const num = state.cartList.findIndex((item) => item.date === action.payload.date);
-      if (action.payload.optiontype === "ingredient") {
+      const targetDate = state.cartList.findIndex((item) => item.date === action.payload.date);
+      const selectedCart = state.cartList[targetDate];
+      const modifyTargetOption = action.payload.optiontype;
+      const modifyData = action.payload.res;
+      const isIFreeOver = action.payload.isIFreeOver;
+      const calculateTotal = (currentPrice, updatePrice) => {
+        selectedCart.totalPrice = selectedCart.totalPrice - currentPrice + updatePrice;
+      };
+      const addIngredientInfo = {
+        ingredirentSeq: 84,
+        ingredientName: "재료 추가",
+        ingredientPrice: 400,
+      };
+      if (modifyTargetOption === "ingredient") {
+        const hasIngredientInfo = () => {
+          const seq = selectedCart.ingredientInfo.findIndex(
+            (item) => item.ingredirentSeq === addIngredientInfo.ingredirentSeq
+          );
+          return !!seq;
+        };
         let currentPrice = 0;
         let updatePrice = 0;
-        state.cartList[num].ingredientInfo.forEach(
-          (item) => (currentPrice += item.ingredientPrice)
-        );
-        action.payload.res.forEach((item) => (updatePrice += item.ingredientPrice));
-        state.cartList[num].totalPrice =
-          state.cartList[num].totalPrice - currentPrice + updatePrice;
-        state.cartList[num].ingredientInfo = action.payload.res;
+        let updateInfo = modifyData;
+        if (isIFreeOver) {
+          if (hasIngredientInfo()) {
+            updateInfo = [...updateInfo, addIngredientInfo];
+          }
+        } else {
+          if (hasIngredientInfo()) {
+            updateInfo = updateInfo.filter(
+              (item) => item.ingredirentSeq !== addIngredientInfo.ingredirentSeq
+            );
+          }
+        }
+        selectedCart.ingredientInfo.forEach((item) => (currentPrice += item.ingredientPrice));
+        updateInfo.forEach((item) => (updatePrice += item.ingredientPrice));
+        calculateTotal(currentPrice, updatePrice);
+        selectedCart.ingredientInfo = updateInfo;
       }
-      if (action.payload.optiontype === "side") {
+      if (modifyTargetOption === "side") {
         let currentPrice =
-          state.cartList[num].sideInfo > 0 ? state.cartList[num].sideInfo[0].sideOptPrice : 0;
-        let updatePrice = action.payload.res.sideOptPrice;
-        state.cartList[num].totalPrice =
-          state.cartList[num].totalPrice - currentPrice + updatePrice;
-        state.cartList[num].sideInfo = [action.payload.res];
+          selectedCart.sideInfo.length > 0 ? selectedCart.sideInfo[0].sideOptPrice : 0;
+        let updatePrice = modifyData.sideOptPrice;
+        calculateTotal(currentPrice, updatePrice);
+        selectedCart.sideInfo = [modifyData];
       }
-      if (action.payload.optiontype === "drink1") {
+      if (modifyTargetOption === "drink1") {
         let currentPrice =
-          state.cartList[num].drinkInfo > 0 ? state.cartList[num].drinkInfo[0].drinkOptPrice : 0;
-        let updatePrice = action.payload.res.drinkOptPrice;
-        state.cartList[num].totalPrice =
-          state.cartList[num].totalPrice - currentPrice + updatePrice;
-        state.cartList[num].drinkInfo = [action.payload.res];
+          selectedCart.drinkInfo.length > 0 ? selectedCart.drinkInfo[0].drinkOptPrice : 0;
+        let updatePrice = modifyData.drinkOptPrice;
+        calculateTotal(currentPrice, updatePrice);
+        selectedCart.drinkInfo = [modifyData];
       }
-      if (action.payload.optiontype === "drink2") {
+      if (modifyTargetOption === "drink2") {
         let currentPrice =
-          state.cartList[num].drink2Info > 0 ? state.cartList[num].drink2Info[0].drinkOptPrice : 0;
-        let updatePrice = action.payload.res.drinkOptPrice;
-        state.cartList[num].totalPrice =
-          state.cartList[num].totalPrice - currentPrice + updatePrice;
-        state.cartList[num].drink2Info = [action.payload.res];
+          selectedCart.drink2Info.length > 0 ? selectedCart.drink2Info[0].drinkOptPrice : 0;
+        let updatePrice = modifyData.drinkOptPrice;
+        calculateTotal(currentPrice, updatePrice);
+        selectedCart.drink2Info = [modifyData];
       }
     },
   },
