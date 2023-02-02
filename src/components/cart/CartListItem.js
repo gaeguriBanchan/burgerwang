@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { changeCount, removeOneCart } from "../../reducer/cartReducer";
-import convertPrice from "../../utils/convertPrice";
 import styles from "./Cart.module.css";
-import CartListItemOption from "./CartListItemOption";
+import convertPrice from "../../utils/convertPrice";
 import ModalCart from "./ModalCart";
 import Modal from "../base/Modal/Modal";
+import CartListItemOption from "./CartListItemOption";
 
 const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
   const dispatch = useDispatch();
   const { date, menuInfo, count, totalPrice, ingredientInfo, sideInfo, drinkInfo, drink2Info } =
     cartinfo;
+  console.log(menuInfo);
   const [orderCount, setOrderCount] = useState(count);
   const plusOrderCount = () => {
     setOrderCount(orderCount + 1);
@@ -66,7 +67,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
           {menuInfo.uri && (
             <img
               src={`${process.env.REACT_APP_IMAGE_URL}/menu/${menuInfo.uri}`}
-              alt="상품 이미지"
+              alt={menuInfo.name}
               className="h-28"
             />
           )}

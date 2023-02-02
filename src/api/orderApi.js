@@ -1,10 +1,9 @@
 import apiClient from "./apiClient";
 
 export const putOrder = async (data) => {
-  console.log(data);
   try {
     const res = await apiClient.put("/order", data);
-    return res;
+    return res.data;
   } catch (err) {
     return err;
   }
