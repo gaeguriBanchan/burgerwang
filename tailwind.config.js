@@ -32,6 +32,8 @@ module.exports = {
         "icon-soldout": "url('/src/assets/images/icon_soldout.png')",
         "icon-refresh": "url('/src/assets/images/icon_refresh.png')",
         "icon-search": "url('/src/assets/images/icon_search.png')",
+        "icon-position": "url('/src/assets/images/icon_position.png')",
+        "icon-cart": "url('/src/assets/images/icon_cart.png')",
       },
       colors: {
         background: "#f2ebe6",

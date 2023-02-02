@@ -35,9 +35,9 @@ const CartContainer = ({ cartList }) => {
           <li>주문서를 작성하기 전에 선택하신 상품명, 수량 및 가격이 정확한지 확인해주세요.</li>
           <li> 해당매장의 주문배달 최소금액은 15,000원 입니다.</li>
         </ul>
-        <div>
+        <div className="flex gap-4">
           <Link to="/menu">
-            <ActiveBlackButton name="메뉴 추가" />
+            <ActiveBlackButton>메뉴 추가</ActiveBlackButton>
           </Link>
           <ActiveButton event={navigateToOrder}>주문하기</ActiveButton>
         </div>

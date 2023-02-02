@@ -7,7 +7,7 @@ const CartEmpty = () => {
       <img src={logo} alt="버거왕" className="w-52" />
       <p className="mt-8 text-2xl font-black text-9a918c">카트에 담긴 메뉴가 없습니다.</p>
       <Link to="/menu" className="mt-8">
-        <ActiveBlackButton name="메뉴 추가" />
+        <ActiveBlackButton>메뉴 추가</ActiveBlackButton>
       </Link>
     </div>
   );
