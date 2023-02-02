@@ -1,29 +1,3 @@
-/** @format */
-
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
-import Header from './components/base/Header';
-import Home from './pages/Home';
-import Join from './pages/Join';
-import Login from './pages/Login';
-import InfoChange from './pages/InfoChange';
-import PwChange from './pages/PwChange';
-import DropOut from './pages/DropOut';
-import Menu from './pages/Menu';
-import Order from './pages/Order';
-import Cart from './pages/Cart';
-import OrderListPage from './pages/OrderListPage';
-import OrderListDetail from './pages/OrderListDetail';
-import MyPage from './pages/MyPage';
-import InfoChangeUpdate from './pages/InfoChangeUpdate';
-import FindInfoId from './components/find/FindInfoId';
-import FindInfoPw from './components/find/FindInfoPw';
-
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/base/Header";
@@ -39,8 +13,9 @@ import Cart from "./pages/Cart";
 import OrderListPage from "./pages/OrderListPage";
 import OrderListDetail from "./pages/OrderListDetail";
 import MyPage from "./pages/MyPage";
-import FindInfo from "./pages/FindInfo";
-import InfoChangeUpdate from "./pages/InfoChangeUpdate";
+import InfoChangeUpdate from './pages/InfoChangeUpdate';
+import FindInfoId from './components/find/FindInfoId';
+import FindInfoPw from './components/find/FindInfoPw';
 function App() {
   return (
     <>
@@ -58,7 +33,6 @@ function App() {
             ></Route>
             <Route path="/pwChange" element={<PwChange />}></Route>
             <Route path="/dropOut" element={<DropOut />}></Route>
-            <Route path="/menu" element={<Menu />}></Route>
             <Route path="/menu" element={<MenuContainer />}></Route>
             <Route path="/order" element={<Order />}></Route>
             <Route path="/cart" element={<Cart />}></Route>

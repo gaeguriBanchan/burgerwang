@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import ModalHeader from "./ModalHeader";
-import DaumPostcode from "react-daum-postcode";
+/** @format */
+
+import React, { useState } from 'react';
+import ModalHeader from './ModalHeader';
+import DaumPostcode from 'react-daum-postcode';
 
 const ModalAddress = ({
   closeModal,
@@ -11,24 +13,24 @@ const ModalAddress = ({
   setDetailAddress,
 }) => {
   const [isSelected, setIsSelected] = useState(false);
-  const [selectedJibunAddress, setSelectedJibunAddress] = useState("");
+  const [selectedJibunAddress, setSelectedJibunAddress] = useState('');
   const onSearchAddress = (data) => {
     setIsSelected(true);
     setSelectedAddress(data.roadAddress);
     setSelectedJibunAddress(data.jibunAddress);
   };
   const enterDetailAdress = () => {
-    setDeliAddress(selectedAddress + " " + detailAddress);
+    setDeliAddress(selectedAddress + ' ' + detailAddress);
     closeModal();
   };
   return (
     <>
-      <ModalHeader title={"배달 받을 주소"} closeModal={closeModal} />
+      <ModalHeader title={'배달 받을 주소'} closeModal={closeModal} />
       <div className="max-h-[600px] overflow-visible">
         <DaumPostcode
           autoClose={false}
           onComplete={onSearchAddress}
-          style={{ maxHeight: "350px" }}
+          style={{ maxHeight: '350px' }}
         />
         {isSelected && (
           <div>
