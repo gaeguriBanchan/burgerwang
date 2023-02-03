@@ -10,6 +10,9 @@ import useInput from '../components/join/hook/useInput';
 const DropOut = () => {
   const list = ['개인정보보호', '아이디변경', '사이트이용불만', '직접입력'];
   const [loginPw, userloginPw] = useInput('');
+  const [out, userOut] = useInput('');
+
+  console.log(out);
 
   return (
     <div>
@@ -23,7 +26,10 @@ const DropOut = () => {
             <span className="font-JUA text-2xl">탈퇴 사유</span>
           </h3>
           <div className="bg-white drop-shadow px-16 py-10 text-2xl mb-10">
-            <select className="w-full bg-underline bg-repeat-x bg-bottom outline-none pb-5">
+            <select
+              className="w-full bg-underline bg-repeat-x bg-bottom outline-none pb-5"
+              onChange={userOut}
+            >
               <option value="" select="true">
                 탈퇴사유를 선택해주세요
               </option>
@@ -61,7 +67,7 @@ const DropOut = () => {
         </div>
         <center>
           <ActiveButton children={'취소'} />
-          <ActiveBlackButton name={'변경'} />
+          <ActiveBlackButton>변경 </ActiveBlackButton>
         </center>
       </div>
     </div>

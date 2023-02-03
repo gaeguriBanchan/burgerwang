@@ -115,7 +115,7 @@ const Home = () => {
           className='m-auto h-3/5 w-9/12'
           width='560'
           height=''
-          src='https://www.youtube.com/embed/Ugc6oiYNSE8'
+          src='https://www.youtube.com/embed/Ugc6oiYNSE8?autoplay=1&mute=1'
           title='YouTube video player'
           frameborder='0'
           allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
