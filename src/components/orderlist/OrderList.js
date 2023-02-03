@@ -1,7 +1,8 @@
 import OrderListItem from "./OrderListItem";
 import useGetOrderList from "./hooks/useGetOrderList";
 const OrderList = () => {
-  const orderList = useGetOrderList();
+  const memberId = 56;
+  const {orderList} = useGetOrderList(memberId);
   return (
     <ul className="pt-5">
       {orderList &&

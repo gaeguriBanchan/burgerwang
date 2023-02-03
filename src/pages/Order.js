@@ -66,7 +66,7 @@ const Order = () => {
         menu: item.menuInfo.seq,
         ...(item.sideInfo && { sideOpt: item.sideInfo[0].sideOptSeq }),
         ...(item.drinkInfo && { drinkOpt: item.drinkInfo[0].drinkOptSeq }),
-        ...(item.drinkInfo2 && { drinkOpt2: item.drinkInfo2[0].drinkOptSeq }),
+        ...(item.drink2Info && { drinkOpt2: item.drink2Info[0].drinkOptSeq }),
         ...(item.ingredientInfo && {
           ingredient: item.ingredientInfo.map((item) => item.ingredirentSeq),
         }),
