@@ -62,6 +62,8 @@ const InfoChangeUpdate = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        alert(res.data.message);
+        navigate('/mypage');
       })
 
       .catch((err) => {

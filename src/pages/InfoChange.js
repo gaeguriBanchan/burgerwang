@@ -47,7 +47,7 @@ const InfoChange = () => {
         }
 
         console.log(res);
-        alert(res.data.message);
+        alert('인증 완료되었습니다.');
       })
       .catch((err) => {
         console.log(err);
