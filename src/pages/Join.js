@@ -73,6 +73,7 @@ const Join = () => {
       .catch((err) => {
         // 서버가 반응이 없다.
         console.log(err);
+        alert(err.response.data.message);
       });
   };
 

@@ -1,16 +1,18 @@
-import { createSlice } from "@reduxjs/toolkit";
+/** @format */
+
+import { createSlice } from '@reduxjs/toolkit';
 
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: {
-    email: "",
-    name: "",
-    phon: "",
-    gen: "",
-    birth: "",
-    grade: "",
-    status: "",
-    pwd: "",
+    email: '',
+    name: '',
+    phon: '',
+    gen: '',
+    birth: '',
+    grade: '',
+    status: '',
+    pwd: '',
   },
   reducers: {
     //로그인 되면 user 스토어 state 업데이트
@@ -24,16 +26,17 @@ const userSlice = createSlice({
       state.grade = action.payload.grade;
       state.status = action.payload.status;
       state.pwd = action.payload.pwd;
+      state.seq = action.payload.seq;
     },
     clearUser: (state, action) => {
-      state.email = "";
-      state.name = "";
-      state.phon = "";
-      state.gen = "";
-      state.birth = "";
-      state.grade = "";
-      state.status = "";
-      state.pwd = "";
+      state.email = '';
+      state.name = '';
+      state.phon = '';
+      state.gen = '';
+      state.birth = '';
+      state.grade = '';
+      state.status = '';
+      state.pwd = '';
     },
   },
 });
