@@ -10,13 +10,13 @@ import PageName from '../components/base/PageName';
 
 const MyPage = () => {
   const navigate = useNavigate();
-  const liginData = useSelector((state) => state.user);
+  const loginData = useSelector((state) => state.user);
 
   useEffect(() => {
-    const seq = liginData.seq;
+    const seq = loginData.seq;
 
-    console.log(liginData);
-    console.log(liginData.seq);
+    console.log(loginData);
+    console.log(loginData.seq);
     axios
       .get(`http://192.168.0.122:9898/api/member/mypage/${seq}`)
       .then((res) => {
@@ -27,12 +27,10 @@ const MyPage = () => {
         console.log(err);
         alert(err.response.data.message);
         navigate('/');
-        
       });
-  }, [])
+  }, []);
 
-  
-  const name = liginData.name;
+  const name = loginData.name;
 
   return (
     <div>

@@ -13,14 +13,14 @@ import { useDispatch, useSelector } from 'react-redux';
 const Login = () => {
   // 최금옥
 
-  const [joinEmail, userEmail] = useInput('user002@email.com');
+  const [joinEmail, userEmail] = useInput('aaa1@aaa1.net');
   const [loginPw, userloginPw] = useInput('123456');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const liginData = useSelector((state) => state.user);
-  console.log(liginData);
+  const loginData = useSelector((state) => state.user);
+  console.log(loginData);
 
   // 로그인 항목 입력
   const registFunc = async (e) => {
@@ -41,17 +41,14 @@ const Login = () => {
 
     axios
       .post('http://192.168.0.122:9898/api/member/login', params)
-      .then(
-        (res) => {
-          alert(res.data.message);
-          console.log(res);
-          console.log(res.data.status);
+      .then((res) => {
+        alert(res.data.message);
+        console.log(res);
+        console.log(res.data);
 
-          dispatch(loginUser(res.data.loginUser));
-          navigate('/');
-        }
-   
-      )
+        dispatch(loginUser(res.data.loginUser));
+        navigate('/');
+      })
       .catch((err) => {
         // 서버가 반응이 없다.
         console.log(err);

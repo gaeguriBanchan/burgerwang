@@ -6,13 +6,22 @@ import JoinPw from '../components/join/JoinPw';
 import PageName from '../components/base/PageName';
 import useInput from '../components/join/hook/useInput';
 import axios from 'axios';
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
 
 const Join = () => {
+  const [userGen, setUserGen] = useState('');
   const [joinEmail, userEmail] = useInput('aaa@aaa.net');
   const [joinName, userName] = useInput('홍길동');
   const [joinPhon, userPhon] = useInput('010-0000-0000');
   const [joinPw, userPw] = useInput('1111');
   const [joinPwCheck, userPwCheck] = useInput('1111');
+
+  const navigate = useNavigate();
+
+  const userGender = (e) => {
+    setUserGen(e.target.value);
+  };
 
   // 회원가입
   const registFunc = (e) => {
@@ -49,14 +58,16 @@ const Join = () => {
       '비번',
       joinPw,
       '비번확인',
-      joinPwCheck
+      joinPwCheck,
+      '성별',
+      userGen
     );
     // 최금옥
     const params = {
       miEmail: joinEmail,
       miName: joinName,
       miPhone: joinPhon,
-      miGen: '',
+      miGen: userGen,
       miBirth: '',
       miGrade: '',
       miStatus: '',
@@ -66,9 +77,10 @@ const Join = () => {
       .put('http://192.168.0.122:9898/api/member/join', params)
       .then((res) => {
         // 서버에서 response(결과가 왔어요.)
-        alert(res.massage);
         console.log(res.massage);
         console.log(res.status);
+        alert(res.data.message);
+        navigate('/login');
       })
       .catch((err) => {
         // 서버가 반응이 없다.
@@ -94,7 +106,7 @@ const Join = () => {
             joinPhon={joinPhon}
             userPhon={userPhon}
           />
-          <JoinOptional />
+          <JoinOptional userGender={userGender} userGen={userGen} />
           <JoinPw
             JoinPw={JoinPw}
             joinPw={joinPw}

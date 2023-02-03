@@ -2,7 +2,7 @@
 
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
-import React, { useEffect } from 'react';
+import React from 'react';
 import PageName from '../components/base/PageName';
 import UserInfoType from '../components/base/UserInfoType';
 import UserEmailId from '../components/base/UserEmailId';
@@ -11,7 +11,7 @@ import ActiveBlackButton from '../components/base/ActiveBlackButton';
 import DisabledButton from '../components/base/DisabledButton';
 import useInput from '../components/join/hook/useInput';
 import { useNavigate } from 'react-router-dom';
-import {  useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 // import { loginUser } from '../reducer/userSlice';
 
 const InfoChange = () => {
@@ -21,7 +21,7 @@ const InfoChange = () => {
   const navigate = useNavigate();
   // const dispatch = useDispatch();
 
-  const liginData = useSelector((state) => state.user);
+  const loginData = useSelector((state) => state.user);
 
   const registFunc = async (e) => {
     e.preventDefault();
@@ -38,19 +38,20 @@ const InfoChange = () => {
       email: joinEmail,
       pwd: loginPw,
     };
-    const seq = liginData.seq;
-    console.log(liginData);
+
     axios
-      .get(`http://192.168.0.122:9898/api/member/update/${seq}`, params)
+      .post('http://192.168.0.122:9898/api/member/login', params)
       .then((res) => {
+        if (res.data.loginUser.email === joinEmail) {
+          navigate('/infoChangeUpdate');
+        }
+
         console.log(res);
-        console.log(res.data.status);
-        navigate('/infoChangeUpdate');
-        // dispatch(loginUser(res.data.loginUser));
+        alert(res.data.message);
       })
       .catch((err) => {
         console.log(err);
-        // alert(err.response.data.message);
+        alert(err.response.data.message);
       });
   };
 

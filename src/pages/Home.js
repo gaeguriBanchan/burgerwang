@@ -27,7 +27,7 @@ const Home = () => {
   // 김재진 : 로그인 데모 테스트를 위한 기능 추후 삭제
   const disptach = useDispatch();
   const demoLogin = () => {
-    disptach(loginUser({ email: 'aaa@aaa.net' }));
+    disptach(loginUser({ email: 'aaa@aaa.net', phon:'010' }));
   };
   const demoLogOut = () => {
     disptach(clearUser());
