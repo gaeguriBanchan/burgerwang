@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MapPage = () => {
   const { kakao } = window;
@@ -61,26 +61,31 @@ const MapPage = () => {
       long: 128.563524,
     },
   ];
+  const navigate = useNavigate();
+  const goMenu = () => {
+    navigate('/menu');
+  };
+
   useEffect(() => {
     // // 마커를 클릭하면 장소명을 표출할 인포윈도우 입니다
     // const infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
     //지도 생성 및 객체 리턴
     const map = new kakao.maps.Map(mapContainer.current, mapOption);
 
-    for (var i = 0; i < position.length; i++) {
+    for (let i = 0; i < position.length; i++) {
       // 마커가 표시될 위치입니다
-      var markerPosition = position[i].latlng;
+      const markerPosition = position[i].latlng;
       // 마커를 생성합니다
-      var marker = new kakao.maps.Marker({
+      const marker = new kakao.maps.Marker({
         position: markerPosition,
       });
       // 마커가 지도 위에 표시되도록 설정합니다
       marker.setMap(map);
       // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-      var iwContent = `<div style="padding:5px;">${position[i].title} <br><a href="https://map.kakao.com/link/to/${position[i].title},${position[i].lat}, ${position[i].long}" style="color:blue" target="_blank">길찾기</a></div>`,
-        iwPosition = position[i].latlng; //인포윈도우 표시 위치입니다
+      const iwContent = `<div style="padding:5px;">${position[i].title} <br><a href="https://map.kakao.com/link/to/${position[i].title},${position[i].lat}, ${position[i].long}" style="color:blue" target="_blank">길찾기</a></div>`;
+      const iwPosition = position[i].latlng; //인포윈도우 표시 위치입니다
       // 인포윈도우를 생성합니다
-      var infowindow = new kakao.maps.InfoWindow({
+      const infowindow = new kakao.maps.InfoWindow({
         position: iwPosition,
         content: iwContent,
       });
@@ -90,11 +95,18 @@ const MapPage = () => {
     map.relayout();
   }, []);
   return (
-    <div className='m-auto'>
+    <div>
+      <div className='bg-black text-center'>
+        <span className='bg-black text-3xl text-white cursor-pointer'
+        onClick={goMenu}>
+          주문하러 가기
+        </span>
+      </div>
       <div
+        className='w-full h-9oo'
         id='map'
         ref={mapContainer}
-        style={{ width: 1700, height: 935 }}
+        style={{ height: 895 }}
       ></div>
     </div>
   );
