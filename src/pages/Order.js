@@ -9,6 +9,7 @@ import DisabledButton from "../components/base/DisabledButton";
 import DeliInfo from "../components/order/DeliInfo";
 import OrderInfo from "../components/order/OrderInfo";
 import Payment from "../components/order/Payment";
+import Coupon from "../components/order/Coupon";
 
 const Order = () => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const Order = () => {
   const [deliMessage, setDeliMessage] = useState("");
   const [deliPhone, setDeliPhone] = useState("");
   const [totalPrice, setTotalPrice] = useState(0);
-  // const [coupon, setCoupon] = useState(0);
+  const [selectedCoupon, setSelectedCoupon] = useState({ couponSeq: 0, couponPrice: 0 });
   const [disableButton, setDisableButton] = useState(false);
   const { state } = useLocation();
   useEffect(() => {
@@ -38,6 +39,7 @@ const Order = () => {
   const updateTotalPrice = () => {
     let totalPrice = 0;
     checkedCart && checkedCart.forEach((item) => (totalPrice += item.totalPrice * item.count));
+    totalPrice -= selectedCoupon.couponPrice;
     setTotalPrice(totalPrice);
   };
   useEffect(() => {
@@ -80,6 +82,8 @@ const Order = () => {
       address: addressRoad ? addressRoad : addressJibun,
       detailAddress: addressDetail,
       store: storeSeq,
+      // member:""
+      ...(selectedCoupon.couponSeq !== 0 && { couponSeq: selectedCoupon.couponSeq }),
     };
     console.log(orderSheet);
     putOrder(orderSheet)
@@ -117,6 +121,7 @@ const Order = () => {
             storeName={storeName}
           />
           <OrderInfo orderData={checkedCart} />
+          <Coupon selectedCoupon={selectedCoupon} setSelectedCoupon={setSelectedCoupon} />
           <Payment totalPrice={totalPrice} payment={payment} setPayment={setPayment} />
         </div>
         <div className="flex justify-end gap-4">

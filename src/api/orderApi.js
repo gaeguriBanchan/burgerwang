@@ -9,6 +9,11 @@ export const putOrder = async (data) => {
   }
 };
 
+export const getCoupon = async (memberId) => {
+  const res = await apiClient.get(`/api/member/coupon/${memberId}`);
+  return res.data;
+};
+
 export const getPayment = async (data) => {
   try {
     const res = await apiClient.get(`/order/payment/${data}`);
