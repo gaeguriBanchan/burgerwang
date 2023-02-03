@@ -17,8 +17,8 @@ const FindInfoPw = () => {
   const a = useSelector((state) => state.user);
   console.log(a);
 
-  const [joinName, userName] = useInput('윤민식');
-  const [joinEmail, userEmail] = useInput('user002@email.com');
+  const [joinName, userName] = useInput('');
+  const [joinEmail, userEmail] = useInput('');
 
   const dispatch = useDispatch();
 
@@ -109,7 +109,7 @@ const FindInfoPw = () => {
         </div>
       </div>
       <div className="flex justify-center pt-5" onClick={registFunc}>
-        <ActiveBlackButton name={'비밀번호 찾기'} />
+        <ActiveBlackButton>비밀번호 찾기</ActiveBlackButton>
       </div>
     </div>
   );

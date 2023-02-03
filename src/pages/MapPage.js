@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -96,15 +98,17 @@ const MapPage = () => {
   }, []);
   return (
     <div>
-      <div className='bg-black text-center'>
-        <span className='bg-black text-3xl text-white cursor-pointer'
-        onClick={goMenu}>
+      <div className="bg-black text-center">
+        <span
+          className="bg-black text-3xl text-white cursor-pointer"
+          onClick={goMenu}
+        >
           주문하러 가기
         </span>
       </div>
       <div
-        className='w-full h-9oo'
-        id='map'
+        className="w-full h-9oo"
+        id="map"
         ref={mapContainer}
         style={{ height: 895 }}
       ></div>

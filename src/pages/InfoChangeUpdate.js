@@ -52,7 +52,7 @@ const InfoChangeUpdate = () => {
 
     let params = {
       pwd: loginPw,
-      chagePwd: newPw,
+      changePwd: newPw,
       phone: joinPhon,
       gen: userGen,
     };
@@ -67,8 +67,8 @@ const InfoChangeUpdate = () => {
       })
 
       .catch((err) => {
-        console.log(err);
-        alert('다시 시도해 주세요');
+        alert(err.response.data.message);
+        // alert('다시 시도해 주세요');
       });
 
     // 최금옥
@@ -80,6 +80,7 @@ const InfoChangeUpdate = () => {
   const chBt = () => {
     setEdit(!edit);
   };
+
   const linkMypage = () => {
     // 최금옥
     navigate('/mypage');
@@ -92,7 +93,9 @@ const InfoChangeUpdate = () => {
     '새확인',
     newPwCheck,
     '성',
-    userGen
+    userGen,
+    '전화번호',
+    joinPhon
   );
   return (
     <div>
@@ -131,7 +134,7 @@ const InfoChangeUpdate = () => {
                       <input
                         className="w-full outline-none py-4"
                         type="tel"
-                        placeholder="000-0000-0000"
+                        placeholder={ph}
                         required
                         value={joinPhon}
                         onChange={(e) => userPhon(e)}

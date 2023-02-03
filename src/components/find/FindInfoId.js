@@ -76,7 +76,7 @@ const FindInfoId = () => {
         />
       </div>
       <div className="flex justify-center pt-5" onClick={findIdBt}>
-        <ActiveBlackButton name={'아이디 찾기'} />
+        <ActiveBlackButton>아이디 찾기</ActiveBlackButton>
       </div>
     </div>
   );

@@ -11,11 +11,11 @@ import { useNavigate } from 'react-router';
 
 const Join = () => {
   const [userGen, setUserGen] = useState('');
-  const [joinEmail, userEmail] = useInput('aaa@aaa.net');
-  const [joinName, userName] = useInput('홍길동');
-  const [joinPhon, userPhon] = useInput('010-0000-0000');
-  const [joinPw, userPw] = useInput('1111');
-  const [joinPwCheck, userPwCheck] = useInput('1111');
+  const [joinEmail, userEmail] = useInput('');
+  const [joinName, userName] = useInput('');
+  const [joinPhon, userPhon] = useInput('');
+  const [joinPw, userPw] = useInput('');
+  const [joinPwCheck, userPwCheck] = useInput('');
 
   const navigate = useNavigate();
 

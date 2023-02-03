@@ -13,8 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 const Login = () => {
   // 최금옥
 
-  const [joinEmail, userEmail] = useInput('aaa1@aaa1.net');
-  const [loginPw, userloginPw] = useInput('123456');
+  const [joinEmail, userEmail] = useInput('');
+  const [loginPw, userloginPw] = useInput('');
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ const Login = () => {
         console.log(res.data);
 
         dispatch(loginUser(res.data.loginUser));
-        navigate('/');
+        // navigate('/');
       })
       .catch((err) => {
         // 서버가 반응이 없다.
@@ -85,6 +85,7 @@ const Login = () => {
                 emailId={'이메일 아이디'}
                 joinEmail={joinEmail}
                 userEmail={userEmail}
+                Login={Login}
               />
               <UserPassword
                 name={'비밀번호'}
