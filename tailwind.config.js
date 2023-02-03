@@ -48,6 +48,8 @@ module.exports = {
         "8d8d8d": "#8d8d8d",
         737373: "#737373",
         "9a918c": "#9a918c",
+        "coupon-on": "#fbf5ee",
+        "coupon-off": "#e8ddcb",
       },
     },
     container: {

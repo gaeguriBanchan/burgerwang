@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import { getOrderList } from "../../../api/orderApi";
 
-const useGetOrderList = () => {
+const useGetOrderList = (memberId) => {
   const [orderList, setOrderList] = useState([]);
   const fetchData = async () => {
-    const res = await getOrderList();
-    setOrderList(res.list);
+    await getOrderList(memberId).then((orderListData) => {
+      const { list } = orderListData;
+      setOrderList(list);
+    });
   };
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [memberId]);
 
-  return orderList;
+  return { orderList };
 };
 
 export default useGetOrderList;

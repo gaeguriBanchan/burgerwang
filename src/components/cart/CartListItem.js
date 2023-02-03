@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { changeCount, removeOneCart } from "../../reducer/cartReducer";
+import { decreaseCount, increaseCount, removeOneCart } from "../../reducer/cartReducer";
 import styles from "./Cart.module.css";
 import convertPrice from "../../utils/convertPrice";
 import ModalCart from "./ModalCart";
@@ -11,18 +11,6 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
   const dispatch = useDispatch();
   const { date, menuInfo, count, totalPrice, ingredientInfo, sideInfo, drinkInfo, drink2Info } =
     cartinfo;
-  const [orderCount, setOrderCount] = useState(count);
-  const plusOrderCount = () => {
-    setOrderCount(orderCount + 1);
-  };
-  const minusOrderCount = () => {
-    if (orderCount > 1) {
-      setOrderCount(orderCount - 1);
-    }
-  };
-  useEffect(() => {
-    dispatch(changeCount({ date, orderCount }));
-  }, [orderCount]);
   const removeCart = () => {
     dispatch(removeOneCart(date));
   };
@@ -112,7 +100,7 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
             <span className="w-32 text-xl font-black">수량</span>
             <div className="drop-shadow-md">
               <button
-                onClick={() => minusOrderCount()}
+                onClick={() => dispatch(decreaseCount({ date }))}
                 className="w-10 h-10 text-xl font-black bg-d9d9d9 rounded-l"
               >
                 -
@@ -120,11 +108,11 @@ const CartListItem = ({ cartinfo, isChecked, changeChecked }) => {
               <input
                 type="text"
                 className="w-12 h-10 text-xl font-black text-center bg-white outline-none"
-                value={orderCount}
+                value={count}
                 readOnly
               />
               <button
-                onClick={() => plusOrderCount()}
+                onClick={() => dispatch(increaseCount({ date }))}
                 className="w-10 h-10 text-xl font-black bg-d9d9d9 rounded-r"
               >
                 +

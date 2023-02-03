@@ -1,5 +1,3 @@
-/** @format */
-
 import axios from 'axios';
 import React from 'react';
 import { useEffect } from 'react';
@@ -38,7 +36,7 @@ const MyPage = () => {
         <title>MY킹</title>
       </Helmet>
       <div className="container max-w-6xl px-5 py-12">
-        <PageName pagename={'MY킹'} />
+        <PageName pagename={"MY킹"} />
 
         <div className="flex justify-between ">
           <div className="text-2xl">
@@ -64,9 +62,11 @@ const MyPage = () => {
             <li className="mb-4 px-16 flex items-center bg-icon-coupon bg-no-repeat bg-contain  bg-left">
               <span>나의쿠폰</span>
             </li>
-            <li className="mb-4 px-16 flex items-center bg-icon-order bg-no-repeat bg-contain  bg-left">
-              <span>주문이력</span>
-            </li>
+            <Link to={"/orderList"}>
+              <li className="mb-4 px-16 flex items-center bg-icon-order bg-no-repeat bg-contain  bg-left">
+                <span>주문이력</span>
+              </li>
+            </Link>
           </ul>
         </div>
       </div>

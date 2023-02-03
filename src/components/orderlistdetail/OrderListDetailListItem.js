@@ -1,20 +1,22 @@
 import DefaultImage from "../../assets/images/logo.png";
+import convertPrice from "../../utils/convertPrice";
 const OrderListDetailListItem = ({ order }) => {
-  const { orderMenuName, price, composition, count } = order;
+  const { orderMenuName, menuEx, price, composition, count } = order;
+  console.log(order);
   return (
     <li className="px-16 bg-white">
-      <div className="py-8 flex justify-between border-b border-ededed border-dashed">
+      <div className="relative py-8 flex justify-between border-b border-ededed border-dashed">
         <div className="flex justify-between items-center grow mr-12">
-          <div className="w-48 h-32 flex justify-center items-center">
-            <img src={DefaultImage} alt="상품 이미지" className="h-28" />
+          <div className="absolute w-28 h-28">
+            <img src={DefaultImage} alt={orderMenuName} className="w-full h-full" />
           </div>
-          <div className="grow ml-12">
+          <div className="px-40">
             <p className="text-2xl font-black">{orderMenuName}</p>
-            <p className="text-2xl mt-1 font-black">{price}</p>
-            <p className="text-xl mt-3 text-8d8d8d font-black">{composition}</p>
+            <p className="text-2xl font-black">{convertPrice(price)}원</p>
+            <p className="text-xl mt-4 text-8d8d8d font-black">{menuEx}</p>
           </div>
         </div>
-        <div>
+        <div className="absolute right-0 top-8">
           <span className="px-3 py-2 bg-ededed">수량 {count}개</span>
         </div>
       </div>

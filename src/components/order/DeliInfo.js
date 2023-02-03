@@ -8,7 +8,7 @@ const DeliInfo = ({
   deliAddress,
   deliPhone,
   setDeliPhone,
-  storeInfo,
+  storeName,
 }) => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
@@ -49,7 +49,7 @@ const DeliInfo = ({
                 <input
                   type="text"
                   className="grow px-4 h-16 bg-f7f7f7 text-xl text-bgwred outline-none"
-                  value={storeInfo.name}
+                  value={storeName}
                   placeholder="매장 정보가 없습니다."
                   readOnly
                 />
@@ -62,7 +62,7 @@ const DeliInfo = ({
                   className="grow h-16 text-xl bg-underline bg-repeat-x bg-bottom outline-none"
                   type="text"
                   placeholder="요청사항을 입력하세요"
-                  value={deliMessage || ""}
+                  value={deliMessage}
                   onChange={(e) => setDeliMessage(e.target.value)}
                 />
               </div>

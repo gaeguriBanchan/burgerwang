@@ -6,6 +6,7 @@ import DaumPostcode from "react-daum-postcode";
 import { useDispatch } from "react-redux";
 import { getStore } from "../../../api/commonApi";
 import { modifyAdress } from "../../../reducer/addressReducer";
+import { modifyStoreInfo } from "../../../reducer/storeInfoReducer";
 const ModalAddress = ({ closeModal }) => {
   const [isSelected, setIsSelected] = useState(false);
   const [selectedAddress, setSelectedAddress] = useState("");
@@ -24,8 +25,9 @@ const ModalAddress = ({ closeModal }) => {
     } ${detailAddress}`;
     await getStore(fullAddress)
       .then((storeData) => {
-        const { status, message } = storeData;
+        const { status, message, store } = storeData;
         if (status) {
+          const { seq, name } = store;
           dispatch(
             modifyAdress({
               addressJibun: selectedJibunAddress,
@@ -33,6 +35,7 @@ const ModalAddress = ({ closeModal }) => {
               addressDetail: detailAddress,
             })
           );
+          dispatch(modifyStoreInfo({ storeSeq: seq, storeName: name }));
           closeModal();
         } else {
           alert(message);

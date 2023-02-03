@@ -9,6 +9,11 @@ export const putOrder = async (data) => {
   }
 };
 
+export const getCoupon = async (memberId) => {
+  const res = await apiClient.get(`/api/member/coupon/${memberId}`);
+  return res.data;
+};
+
 export const getPayment = async (data) => {
   try {
     const res = await apiClient.get(`/order/payment/${data}`);
@@ -18,25 +23,15 @@ export const getPayment = async (data) => {
   }
 };
 
-export const getOrderList = async () => {
-  try {
-    // const res = await apiClient.get("/order/list");
-    const res = await apiClient.get("/apidummy/orderlist.json");
-    return res.data;
-  } catch (err) {
-    return err;
-  }
+export const getOrderList = async (data) => {
+  const res = await apiClient.get(`/order/list/${data}`);
+  // const res = await apiClient.get("/apidummy/orderlist.json");
+  return res.data;
 };
 
-export const getOrderListDetail = async (id) => {
-  try {
-    // const params = {
-    //   seq: id,
-    // };
-    // const res = await apiClient.get("/order/detail/{params}");
-    const res = await apiClient.get("/apidummy/orderdetail.json");
-    return res.data;
-  } catch (err) {
-    return err;
-  }
+export const getOrderListDetail = async (data) => {
+  const { seq, member } = data;
+  const res = await apiClient.get(`/order/detail/${seq}/${member}`);
+  // const res = await apiClient.get("/apidummy/orderdetail.json");
+  return res.data;
 };
