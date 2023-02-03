@@ -1,8 +1,6 @@
-const UserGender = () => {
+const UserGender = ({userGender}) => {
   
-  const userGender = (e) => {
-    console.log(e.target.value);
-  };
+
 
   return (
     <div className="flex text-2xl items-center w-full">

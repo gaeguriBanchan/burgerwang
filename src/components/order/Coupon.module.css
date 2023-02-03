@@ -1,0 +1,11 @@
+.coupon {
+  position: relative;
+  padding: 12px 40px;
+  background: #fbf5ee;
+}
+.couponCheck:checked + .coupon {
+  background: #e8ddcb;
+}
+.couponCheck:checked + .coupon .couponText {
+  color: #e22219;
+}

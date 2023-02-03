@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { createContext, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addCartList } from "../../../reducer/cartReducer";

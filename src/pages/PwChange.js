@@ -1,18 +1,20 @@
-/** @format */
-
-import { Helmet } from 'react-helmet-async';
 import UserPassword from '../components/base/UserPassword';
-import ActiveBlackButton from '../components/base/ActiveBlackButton';
-import ActiveButton from '../components/base/ActiveButton';
 import UserInfoType from '../components/base/UserInfoType';
-import useInput from '../components/join/hook/useInput';
+// import useInput from '../components/join/hook/useInput';
 import { useEffect } from 'react';
 import axios from 'axios';
 
-const PwChange = () => {
-  const [loginPw, userloginPw] = useInput('');
-  const [newPw, userNewPw] = useInput('');
-  const [newPwCheck, userNewPwCheck] = useInput('');
+const PwChange = ({  joinPw,
+  userPw,
+  joinPwCheck,
+  userPwCheck,
+  loginPw,
+  userloginPw,
+  newPw,
+  userNewPw,
+  newPwCheck,
+  userNewPwCheck}) => {
+
 
   const checkpw = () => {
     console.log(newPw, newPwCheck);
@@ -34,27 +36,27 @@ const PwChange = () => {
     }
   };
 
-  const registFunc = async (e) => {
-    e.preventDefault();
-    console.log('비번', loginPw, '새비번', newPw, '새확인', newPwCheck);
-    if (!loginPw) {
-      return alert('비밀번호를 입력하세요.');
-    }
-    if (!newPw) {
-      return alert('새 비밀번호를 입력하세요.');
-    }
-    if (!newPwCheck) {
-      return alert('새 비밀번호 확인을 입력하세요.');
-    }
-    if (newPw !== newPwCheck) {
-      return alert('비밀번호가 일치하지 않습니다.');
-    }
-    if (loginPw === newPw) {
-      return alert('현재 비밀번호는 새 비밀번호로 설정 할 수 없습니다.');
-    }
-    console.log('입력된 내용', loginPw, newPw, newPwCheck);
-    // 최금옥
-  };
+  // const registFunc = async (e) => {
+  //   e.preventDefault();
+  //   console.log('비번', loginPw, '새비번', newPw, '새확인', newPwCheck);
+  //   if (!loginPw) {
+  //     return alert('비밀번호를 입력하세요.');
+  //   }
+  //   if (!newPw) {
+  //     return alert('새 비밀번호를 입력하세요.');
+  //   }
+  //   if (!newPwCheck) {
+  //     return alert('새 비밀번호 확인을 입력하세요.');
+  //   }
+  //   if (newPw !== newPwCheck) {
+  //     return alert('비밀번호가 일치하지 않습니다.');
+  //   }
+  //   if (loginPw === newPw) {
+  //     return alert('현재 비밀번호는 새 비밀번호로 설정 할 수 없습니다.');
+  //   }
+  //   console.log('입력된 내용', loginPw, newPw, newPwCheck);
+  //   // 최금옥
+  // };
 
   useEffect(() => {
     axios

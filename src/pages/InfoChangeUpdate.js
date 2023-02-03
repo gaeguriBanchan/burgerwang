@@ -2,62 +2,96 @@
 
 import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
-import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { loginUser, upDataUser } from '../reducer/userSlice';
+import { useDispatch, useSelector } from 'react-redux';
 import PageName from '../components/base/PageName';
 import UserInfoType from '../components/base/UserInfoType';
 import ChangeButton from '../components/base/ChangeButton';
 import JoinOptional from '../components/join/JoinOptional';
-import { Link, useNavigate } from 'react-router-dom';
 import useInput from '../components/join/hook/useInput';
-import { useSelector } from 'react-redux';
 import PwChange from './PwChange';
 import ActiveBlackButton from '../components/base/ActiveBlackButton';
 import ActiveButton from '../components/base/ActiveButton';
 
 const InfoChangeUpdate = () => {
-  // const [use, userEmail] = useInput('');
-  // const [loginPw, userloginPw] = useInput('');
+  const [loginPw, userloginPw] = useInput('');
+  const [newPw, userNewPw] = useInput('');
+  const [newPwCheck, userNewPwCheck] = useInput('');
+  const [joinPhon, userPhon] = useInput('');
+  const [userGen, setUserGen] = useState('');
+  const [ph, SetPh] = useState('');
+
+  const [edit, setEdit] = useState(true);
+
+  const userGender = (e) => {
+    setUserGen(e.target.value);
+  };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const liginData = useSelector((state) => state.user);
+  const loginData = useSelector((state) => state.user);
+
+  const seq = loginData.seq;
+
+  axios
+    .get(`http://192.168.0.122:9898/api/member/mypage/${seq}`, seq)
+    .then((res) => {
+      console.log(res);
+      SetPh(res.data.list.memberPhone);
+    })
+    .catch((err) => {
+      console.log(err);
+      alert(err.response.data.message);
+    });
 
   const registFunc = async (e) => {
     e.preventDefault();
 
     let params = {
-      email: 'user002@email.com',
-      pwd: 123456,
-      chagePwd: 123456,
-      phone: '010-1010-4425',
-      gen: 1,
+      pwd: loginPw,
+      chagePwd: newPw,
+      phone: joinPhon,
+      gen: userGen,
     };
-    const seq = liginData.seq;
-    // console.log(liginData);
+
     axios
-      .get(`http://192.168.0.122:9898/api/member/update/${seq}`, params)
+      .post(`http://192.168.0.122:9898/api/member/update/${seq}`, params)
       .then((res) => {
         console.log(res);
-        console.log(res.data.status);
-        navigate('/infoChangeUpdate');
-        // dispatch(loginUser(res.data.loginUser));
+        console.log(res.data);
       })
+
       .catch((err) => {
         console.log(err);
-        // alert(err.response.data.message);
+        alert('다시 시도해 주세요');
       });
+
+    // 최금옥
   };
-  const email = liginData.email;
-  const name = liginData.name;
-  const phone = liginData.phone;
+  const email = loginData.email;
+  const name = loginData.name;
+  // console.log(loginData);
 
-  console.log(liginData);
-
+  const chBt = () => {
+    setEdit(!edit);
+  };
   const linkMypage = () => {
     // 최금옥
     navigate('/mypage');
   };
-
+  console.log(
+    '비번',
+    loginPw,
+    '새비번',
+    newPw,
+    '새확인',
+    newPwCheck,
+    '성',
+    userGen
+  );
   return (
     <div>
       <Helmet>
@@ -80,19 +114,41 @@ const InfoChangeUpdate = () => {
                 <UserInfoType name={'이름'} />
                 <p className="w-full font-black mr-2">{name}</p>
               </div>
-              <div className="flex  items-center text-2xl pb-6">
+              <div className="flex items-center text-2xl pb-6">
                 <UserInfoType name={'핸드폰'} />
-                <div className="flex items-center w-full font-black">
-                  <p className=" mr-4">{phone}</p>
-                  <div>
-                    <ChangeButton name={'변경'} />
-                  </div>
+                <div className="flex justify-between items-center w-full font-black">
+                  {edit ? (
+                    <>
+                      <p className=" mr-4">{ph}</p>
+                      <div className="left-0">
+                        <ChangeButton name={'변경'} event={chBt} />
+                      </div>
+                    </>
+                  ) : (
+                    <label>
+                      <input
+                        className="w-full outline-none py-4"
+                        type="tel"
+                        placeholder="000-0000-0000"
+                        required
+                        value={joinPhon}
+                        onChange={(e) => userPhon(e)}
+                      ></input>
+                    </label>
+                  )}
                 </div>
               </div>
             </div>
           </div>
-          <JoinOptional />
-          <PwChange />
+          <JoinOptional userGender={userGender} />
+          <PwChange
+            loginPw={loginPw}
+            userloginPw={userloginPw}
+            newPw={newPw}
+            userNewPw={userNewPw}
+            newPwCheck={newPwCheck}
+            userNewPwCheck={userNewPwCheck}
+          />
         </div>
       </div>
       <div

@@ -17,9 +17,13 @@ const cartReducer = createSlice({
     removeOneCart: (state, action) => {
       state.cartList = state.cartList.filter((item) => action.payload !== item.date);
     },
-    changeCount: (state, action) => {
+    increaseCount: (state, action) => {
       const date = state.cartList.findIndex((item) => item.date === action.payload.date);
-      state.cartList[date].count = action.payload.orderCount;
+      state.cartList[date].count++;
+    },
+    decreaseCount: (state, action) => {
+      const date = state.cartList.findIndex((item) => item.date === action.payload.date);
+      state.cartList[date].count--;
     },
     changeOption: (state, action) => {
       const targetDate = state.cartList.findIndex((item) => item.date === action.payload.date);
@@ -86,6 +90,12 @@ const cartReducer = createSlice({
   },
 });
 
-export const { addCartList, removeCart, removeOneCart, changeCount, changeOption } =
-  cartReducer.actions;
+export const {
+  addCartList,
+  removeCart,
+  removeOneCart,
+  increaseCount,
+  decreaseCount,
+  changeOption,
+} = cartReducer.actions;
 export default cartReducer;

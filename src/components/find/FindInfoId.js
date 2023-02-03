@@ -30,9 +30,8 @@ const FindInfoId = () => {
     };
 
     axios
-      .get('http://192.168.0.122:9898/api/member/email', { params })
+      .get('http://192.168.0.122:9898/api/member/email/ ', params)
       .then((res) => {
-
         console.log(res.data.status);
         alert(res.data.message);
       })
@@ -43,6 +42,7 @@ const FindInfoId = () => {
       });
   };
 
+  console.log(joinName, joinPhon);
   // console.log(joinName, joinPhon);
 
   return (

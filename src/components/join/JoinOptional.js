@@ -5,7 +5,7 @@ import UserBirthDate from '../base/UserBirthDate';
 import UserGender from '../base/UserGender';
 import UserInfoType from '../base/UserInfoType';
 
-const JoinOptional = () => {
+const JoinOptional = ({userGender}) => {
   return (
     <div className="mb-10">
       <h3 className="mb-4 pl-12 flex items-center bg-icon-check bg-no-repeat bg-left">
@@ -14,11 +14,11 @@ const JoinOptional = () => {
       <div className="bg-white drop-shadow  px-16 py-6 text-2xl">
         <div className="flex   pt-6">
           <UserInfoType name={'성별'} />
-          <UserGender />
+          <UserGender userGender ={userGender} />
         </div>
         <div className="flex  pb-6">
           <UserInfoType name={'생년월일'} />
-          <UserBirthDate />
+          <UserBirthDate  />
         </div>
       </div>
     </div>

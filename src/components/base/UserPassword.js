@@ -19,12 +19,6 @@ const UserPassword = ({
 
   checkpw,
 }) => {
-
-
-
-
-
-
   const [pwType, setPwType] = useState({
     type: 'password',
     visible: false,
@@ -44,7 +38,6 @@ const UserPassword = ({
         <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
           <input
             className="w-full outline-none"
-            
             required
             type={pwType.type}
             placeholder={name}
@@ -165,7 +158,8 @@ const UserPassword = ({
         {checkpw()}
       </div>
     );
-  } else {
+  }
+  if (name === '비밀번호') {
     return (
       <div className="w-full">
         <div className="flex justify-between bg-underline bg-repeat-x bg-bottom outline-none py-4">
