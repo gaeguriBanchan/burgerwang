@@ -50,7 +50,7 @@ const Login = () => {
           dispatch(loginUser(res.data.loginUser));
           navigate('/');
         }
-   
+  
       )
       .catch((err) => {
         // 서버가 반응이 없다.
