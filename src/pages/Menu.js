@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from "react";
-import MenuCategory from "../components/menu/MenuCategory";
-import MenuList from "../components/menu/MenuList";
-import { getMenu } from "../api/menuApi";
-import MenuEmpty from "../components/menu/MenuEmpty";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getStore } from "../api/commonApi";
+import { getMenu } from "../api/menuApi";
+import Layout from "../components/base/Layout";
+import MenuEmpty from "../components/menu/MenuEmpty";
+import MenuList from "../components/menu/MenuList";
+import MenuCategory from "../components/menu/MenuCategory";
 import Modal from "../components/base/Modal/Modal";
 import ModalCheckAddress from "../components/base/Modal/ModalCheckAddress";
 import CartButton from "../components/menu/CartButton";
-import { Link } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
-import Layout from "../components/base/Layout";
 const Menu = () => {
-  const [storeSeq, setStoreSeq] = useState(0);
   const [menuList, setMenuList] = useState([]);
   const [selectedCategory, changeSelectedCategory] = useState("1");
+  const { storeSeq } = useSelector((state) => state.storeInfo);
   const setMenu = async () => {
-    if (storeSeq !== 0) {
+    if (storeSeq) {
       await getMenu(selectedCategory, storeSeq)
         .then((menu) => {
           const { event, burger, side, drink, dog } = menu.list;
@@ -52,47 +51,15 @@ const Menu = () => {
   useEffect(() => {
     setMenu();
   }, [selectedCategory, storeSeq]);
-  const address = useSelector((state) => state.address);
-  const { addressJibun, addressRoad, addressDetail } = address;
   useEffect(() => {
-    Object.keys(address).length === 0 ? openModal() : setStore();
-  }, [address]);
+    !storeSeq && openModal();
+  }, [storeSeq]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
   };
   const closeModal = () => {
     setModalIsOpen(false);
-  };
-  const setStore = async () => {
-    const fullAddress = `${addressRoad ? addressRoad : addressJibun} ${addressDetail}`;
-    await getStore(fullAddress)
-      .then((storeData) => {
-        const { status, store } = storeData;
-        if (status) {
-          const { seq } = store;
-          setStoreSeq(seq);
-        }
-      })
-      .catch();
-  };
-  const setStoreModal = async ({ addressJibun, addressRoad, addressDetail }) => {
-    const fullAddress = `${addressRoad ? addressRoad : addressJibun} ${addressDetail}`;
-    await getStore(fullAddress)
-      .then((storeData) => {
-        const { status, message, store } = storeData;
-        if (status) {
-          const { seq } = store;
-          setStoreSeq(seq);
-          closeModal();
-        } else {
-          alert(`${message} 다른 주소를 선택해 주세요.`);
-        }
-      })
-      .catch((err) => {
-        alert("에러가 발생하였습니다. 다시 시도해 주세요.");
-        console.log(err);
-      });
   };
   return (
     <>
@@ -113,10 +80,7 @@ const Menu = () => {
           {menuList.length !== 0 ? <MenuList menuList={menuList} /> : <MenuEmpty />}
         </div>
         <Modal modalIsOpen={modalIsOpen}>
-          <ModalCheckAddress
-            closeModal={closeModal}
-            setStoreModal={setStoreModal}
-          ></ModalCheckAddress>
+          <ModalCheckAddress closeModal={closeModal} />
         </Modal>
         <Link to="/cart">
           <CartButton />

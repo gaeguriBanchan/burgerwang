@@ -1,23 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 import Modal from "./Modal/Modal";
 import ModalAddress from "./Modal/ModalAddress";
-import { getStore } from "../../api/commonApi";
 
 const DeliInfoLine = () => {
-  const [storeName, setStoreName] = useState("");
   const address = useSelector((state) => state.address);
+  const { storeName } = useSelector((state) => state.storeInfo);
   const { addressJibun, addressRoad, addressDetail } = address;
   const fullAddress = `${addressRoad ? addressRoad : addressJibun} ${addressDetail}`;
-  const getStoreName = async () => {
-    await getStore(fullAddress).then((res) => {
-      const { name } = res.store;
-      setStoreName(name);
-    });
-  };
-  useEffect(() => {
-    getStoreName();
-  }, [address]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const openModal = () => {
     setModalIsOpen(true);
