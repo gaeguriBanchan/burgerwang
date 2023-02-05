@@ -14,11 +14,7 @@ const JoinProfile = ({
   joinName,
   userName,
 }) => {
-  //   // 전화번호 자동 정규식 처리
-  // const regexPhoneNumber = (target) => {
-  //   target.value = target.value.replace(/[^0-9]/g, '').replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`)
-  // }
-  //input  oninput={regexPhoneNumber(this)}
+
 
   return (
     <div className="mb-10">

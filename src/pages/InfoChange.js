@@ -1,22 +1,22 @@
 /** @format */
 
-import axios from 'axios';
-import { Helmet } from 'react-helmet-async';
-import React from 'react';
-import PageName from '../components/base/PageName';
-import UserInfoType from '../components/base/UserInfoType';
-import UserEmailId from '../components/base/UserEmailId';
-import UserPassword from '../components/base/UserPassword';
-import ActiveBlackButton from '../components/base/ActiveBlackButton';
-import DisabledButton from '../components/base/DisabledButton';
-import useInput from '../components/join/hook/useInput';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import axios from "axios";
+import { Helmet } from "react-helmet-async";
+import React from "react";
+import PageName from "../components/base/PageName";
+import UserInfoType from "../components/base/UserInfoType";
+import UserEmailId from "../components/base/UserEmailId";
+import UserPassword from "../components/base/UserPassword";
+import ActiveBlackButton from "../components/base/ActiveBlackButton";
+import DisabledButton from "../components/base/DisabledButton";
+import useInput from "../components/join/hook/useInput";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 // import { loginUser } from '../reducer/userSlice';
 
 const InfoChange = () => {
-  const [joinEmail, userEmail] = useInput('');
-  const [loginPw, userloginPw] = useInput('');
+  const [joinEmail, userEmail] = useInput("");
+  const [loginPw, userloginPw] = useInput("");
 
   const navigate = useNavigate();
   // const dispatch = useDispatch();
@@ -27,12 +27,12 @@ const InfoChange = () => {
     e.preventDefault();
 
     if (!joinEmail) {
-      return alert('이메일을 입력하세요.');
+      return alert("이메일을 입력하세요.");
     }
     if (!loginPw) {
-      return alert('비밀번호를 입력하세요.');
+      return alert("비밀번호를 입력하세요.");
     }
-    console.log('입력된 내용', joinEmail, loginPw);
+    console.log("입력된 내용", joinEmail, loginPw);
 
     let params = {
       email: joinEmail,
@@ -40,19 +40,23 @@ const InfoChange = () => {
     };
 
     axios
-      .post('http://192.168.0.122:9898/api/member/login', params)
+      .post("http://192.168.0.122:9898/api/member/login", params)
       .then((res) => {
         if (res.data.loginUser.email === joinEmail) {
-          navigate('/infoChangeUpdate');
+          navigate("/infoChangeUpdate");
         }
 
         console.log(res);
-        alert('인증 완료되었습니다.');
+        alert("인증 완료되었습니다.");
       })
       .catch((err) => {
         console.log(err);
         alert(err.response.data.message);
       });
+  };
+
+  const goMypage = () => {
+    navigate("/myPage");
   };
 
   // to="/infoChangeUpdate"
@@ -61,11 +65,11 @@ const InfoChange = () => {
     <div>
       <Helmet>
         <title>회원정보 변경</title>
-        <style>{'body {background:#f2ebe6;'}</style>
+        <style>{"body {background:#f2ebe6;"}</style>
       </Helmet>
       <div className="container max-w-6xl px-5 py-12">
         <div className="container w-9/12">
-          <PageName pagename={'회원정보 변경'} />
+          <PageName pagename={"회원정보 변경"} />
           <h3 className="mb-4 pl-12 flex items-center bg-icon-person bg-no-repeat bg-left">
             <span className="font-JUA text-2xl">기본정보</span>
           </h3>
@@ -76,17 +80,17 @@ const InfoChange = () => {
             </p>
             <div className="px-16 py-6 text-2xl">
               <div className="flex">
-                <UserInfoType name={'이메일'} />
+                <UserInfoType name={"이메일"} />
                 <UserEmailId
-                  emailId={'이메일 아이디'}
+                  emailId={"이메일 아이디"}
                   joinEmail={joinEmail}
                   userEmail={userEmail}
                 />
               </div>
               <div className="flex text-2xl pb-6">
-                <UserInfoType name={'현재 비밀번호'} />
+                <UserInfoType name={"현재 비밀번호"} />
                 <UserPassword
-                  name={'현재 비밀번호'}
+                  name={"현재 비밀번호"}
                   loginPw={loginPw}
                   userloginPw={userloginPw}
                 />
@@ -94,8 +98,8 @@ const InfoChange = () => {
             </div>
           </div>
           <div className=" pt-10 flex justify-center items-center">
-            <div>
-              <DisabledButton name={'취소'} />
+            <div onClick={goMypage}>
+              <DisabledButton name={"취소"} />
             </div>
             <div onClick={registFunc}>
               <ActiveBlackButton>완료</ActiveBlackButton>

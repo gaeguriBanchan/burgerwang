@@ -41,14 +41,12 @@ const FindInfoPw = () => {
     axios
       .get('http://192.168.0.122:9898/api/member/pwd', params)
       .then((res) => {
-        console.log(res.data.data.message);
-
-        alert(res.data.data.message);
+        console.log(res.data.message);
+        alert(res.data.message);
       })
       .catch((err) => {
-        // 서버가 반응이 없다.
         console.log(err);
-        alert('안됨');
+        alert(err.response.data.message);
       });
   };
   console.log('입력값', joinName, joinEmail);
@@ -77,7 +75,7 @@ const FindInfoPw = () => {
         </ul>
         <div className="bg-white drop-shadow ">
           <p className="w-full bg-ededed px-16 py-6 text-xl">
-            회원님의 정보(이메일)로 비밀번호 재설정을 위한 경로를 보내드립니다.
+            가입시 입력한 회원님의 정보(이메일)를 입력해 주세요
           </p>
           <div className="px-16 py-6 text-2xl pl-14">
             <div className="flex">
@@ -95,8 +93,7 @@ const FindInfoPw = () => {
             </div>
             <ul className="text-lg pt-10 pl-6" style={{ listStyle: 'disc' }}>
               <li>
-                가입 시 입력한 이메일로 비밀번호 재설정을 위한 경로가 발송
-                됩니다.
+                가입 시 입력한 이메일을 입력하시면 비밀번호를 알려드립니다.
               </li>
               <li>
                 네이버, 카카오톡, 삼성앱카드, 애플아이디로 가입하신 회원님께서는

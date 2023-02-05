@@ -5,7 +5,7 @@ import UserPassword from '../base/UserPassword';
 
 const JoinPw = ({ joinPw, userPw, joinPwCheck, userPwCheck, JoinPw, name }) => {
   const checkpw = () => {
-    console.log(joinPw, joinPwCheck);
+
     if (joinPw !== joinPwCheck) {
       return (
         <p className="text-base text-bgwred pt-2">

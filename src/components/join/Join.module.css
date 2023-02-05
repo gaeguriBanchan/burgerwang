@@ -5,12 +5,29 @@
   width: 30px;
   height: 30px;
   padding-left: 20px;
-  background: url('../../assets/images/icon_eye.png') no-repeat;
+  background: url("../../assets/images/icon_eye.png") no-repeat;
 }
 .showbt {
   display: block;
   width: 30px;
   height: 30px;
   padding-left: 20px;
-  background: url('../../assets/images/icon_eye_blind.png') no-repeat;
+  background: url("../../assets/images/icon_eye_blind.png") no-repeat;
 }
+
+.inputradio {
+  display: none;
+}
+.labelradio::before {
+  content: "";
+  display: inline-flex;
+  width: 26px;
+  height: 26px;
+  vertical-align: -6px;
+  background: url(../../assets/images/icon_radio_off.png) no-repeat center;
+  margin-right: 10px;
+}
+.inputradio:checked + .labelradio::before {
+  background: url(../../assets/images/icon_radio_on.png) no-repeat center;
+}
+
