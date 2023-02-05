@@ -8,8 +8,9 @@ const UserBirthDate = ({
   birthMonthValue,
   birthDay,
   birthDayValue,
+  chcheck,
+  ch,
 }) => {
-  const [checked, setChecked] = useState(false);
 
   const days = () => {
     let days = [];
@@ -46,8 +47,6 @@ const UserBirthDate = ({
     ));
   };
 
-
-
   return (
     <div className="flex flex-col  w-full ">
       <label className="py-4">
@@ -56,8 +55,9 @@ const UserBirthDate = ({
           id="birth-none"
           type="radio"
           value=""
-          checked={checked}
           name="birth"
+          checked={ch}
+          onChange={() => chcheck()}
         />
         <span name="birth" className={style.labelradio}>
           선택안함

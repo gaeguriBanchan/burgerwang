@@ -27,13 +27,18 @@ const DropOut = () => {
   const tL = (e) => {
     setTotalLength(e.target.value);
   };
+
+  const chcheck = (e) => {
+    setCheckBt(!checkBt);
+  };
   useEffect(() => {
-    console.log(totalLength);
-  }, [totalLength]);
-
-
+    console.log(totalLength, checkBt);
+  }, [totalLength, checkBt]);
 
   const outBt = () => {
+    if (!checkBt) {
+      return alert("탈퇴 동의를 체크해주세요");
+    }
     const seq = loginData.seq;
     // console.log(loginData);
     // console.log(loginData.seq);
@@ -121,6 +126,8 @@ const DropOut = () => {
               className={style.inputcheckbox}
               htmlFor="out"
               type="checkbox"
+              checked={checkBt}
+              onChange={(e) => chcheck(e)}
             />
             <span className={style.labelcheckbox}>버거왕을 탈퇴를 합니다.</span>
           </label>

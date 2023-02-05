@@ -6,7 +6,7 @@ import JoinPw from "../components/join/JoinPw";
 import PageName from "../components/base/PageName";
 import useInput from "../components/join/hook/useInput";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import Swal from "sweetalert2";
 
@@ -16,18 +16,34 @@ const Join = () => {
   const [joinPhon, userPhon] = useInput("");
   const [joinPw, userPw] = useInput("");
   const [joinPwCheck, userPwCheck] = useInput("");
-  
+
   const [joinGen, setJoinGen] = useState("");
-  const [birthYear, birthYearValue] = useInput("");
+  const [birthYear, setBirthYear] = useState("");
   const [birthMonth, birthMonthValue] = useInput("");
   const [birthDay, birthDayValue] = useInput("");
-
+  const [ch, setCh] = useState(false);
   const birth = birthYear + "-" + birthMonth + "-" + birthDay;
   console.log("birth", birth);
 
   const userGen = (e) => {
     setJoinGen(e.target.value);
   };
+  const birthYearValue = (e) => {
+    setBirthYear(e.target.value);
+    if (!birthYearValue) {
+      setCh(true);
+    } else {
+      setCh(false);
+    }
+  };
+
+  const chcheck = () => {
+    setCh(!ch);
+    console.log(ch);
+  };
+  useEffect(() => {
+    console.log("chcheck", ch);
+  }, [ch]);
 
   const navigate = useNavigate();
 
@@ -126,6 +142,8 @@ const Join = () => {
             birthMonthValue={birthMonthValue}
             birthDay={birthDay}
             birthDayValue={birthDayValue}
+            chcheck={chcheck}
+            ch={ch}
           />
           <JoinPw
             JoinPw={JoinPw}

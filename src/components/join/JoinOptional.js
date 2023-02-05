@@ -13,6 +13,8 @@ const JoinOptional = ({
   birthMonthValue,
   birthDay,
   birthDayValue,
+  chcheck,
+  ch
 }) => {
   return (
     <div className="mb-10">
@@ -33,6 +35,8 @@ const JoinOptional = ({
             birthMonthValue={birthMonthValue}
             birthDay={birthDay}
             birthDayValue={birthDayValue}
+            chcheck={chcheck}
+            ch={ch}
           />
         </div>
       </div>

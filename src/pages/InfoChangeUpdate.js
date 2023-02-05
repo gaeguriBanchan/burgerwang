@@ -14,6 +14,7 @@ import useInput from "../components/join/hook/useInput";
 import PwChange from "./PwChange";
 import ActiveBlackButton from "../components/base/ActiveBlackButton";
 import ActiveButton from "../components/base/ActiveButton";
+import { useEffect } from "react";
 
 const InfoChangeUpdate = () => {
   const [loginPw, userloginPw] = useInput("");
@@ -24,16 +25,31 @@ const InfoChangeUpdate = () => {
   const [ph, SetPh] = useState("");
 
   const [joinGen, setJoinGen] = useState("");
-  const [birthYear, birthYearValue] = useInput("");
+  const [birthYear, setBirthYear] = useState("");
   const [birthMonth, birthMonthValue] = useInput("");
   const [birthDay, birthDayValue] = useInput("");
-
+  const [ch, setCh] = useState(false);
   const [edit, setEdit] = useState(true);
 
   const userGen = (e) => {
     setJoinGen(e.target.value);
   };
+  const birthYearValue = (e) => {
+    setBirthYear(e.target.value);
+    if (!birthYearValue) {
+      setCh(true);
+    } else {
+      setCh(false);
+    }
+  };
 
+  const chcheck = () => {
+    setCh(!ch);
+    console.log(ch);
+  };
+  useEffect(() => {
+    console.log("chcheck", ch);
+  }, [ch]);
   const birth = birthYear + "-" + birthMonth + "-" + birthDay;
   console.log("birth", birth);
 
@@ -166,6 +182,8 @@ const InfoChangeUpdate = () => {
             birthMonthValue={birthMonthValue}
             birthDay={birthDay}
             birthDayValue={birthDayValue}
+            chcheck={chcheck}
+            ch={ch}
           />
           <PwChange
             loginPw={loginPw}
