@@ -1,20 +1,22 @@
-import style from "./DropOut.module.css";
+/** @format */
 
-import React, { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
-import ActiveBlackButton from "../components/base/ActiveBlackButton";
-import ActiveButton from "../components/base/ActiveButton";
-import UserInfoType from "../components/base/UserInfoType";
-import { loginUser, clearUser } from "../reducer/userSlice";
-import useInput from "../components/join/hook/useInput";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router";
-import axios from "axios";
+import style from './DropOut.module.css';
+
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import ActiveBlackButton from '../components/base/ActiveBlackButton';
+import ActiveButton from '../components/base/ActiveButton';
+import UserInfoType from '../components/base/UserInfoType';
+import { loginUser, clearUser } from '../reducer/userSlice';
+import useInput from '../components/join/hook/useInput';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
+import axios from 'axios';
 const DropOut = () => {
-  const list = ["개인정보보호", "아이디변경", "사이트이용불만", "직접입력"];
-  const [out, userOut] = useInput("");
+  const list = ['개인정보보호', '아이디변경', '사이트이용불만', '직접입력'];
+  const [out, userOut] = useInput('');
 
-  const [totalLength, setTotalLength] = useState("");
+  const [totalLength, setTotalLength] = useState('');
   const [checkBt, setCheckBt] = useState(false);
 
   const navigate = useNavigate();
@@ -37,7 +39,7 @@ const DropOut = () => {
 
   const outBt = () => {
     if (!checkBt) {
-      return alert("탈퇴 동의를 체크해주세요");
+      return alert('탈퇴 동의를 체크해주세요');
     }
     const seq = loginData.seq;
     // console.log(loginData);
@@ -51,7 +53,7 @@ const DropOut = () => {
         console.log(res);
         alert(res.data.message);
         disptach(clearUser());
-        navigate("/");
+        navigate('/');
       })
       .catch((err) => {
         console.log(err);
@@ -63,7 +65,7 @@ const DropOut = () => {
     <div>
       <Helmet>
         <title>회원 탈퇴</title>
-        <style>{"body {background:#f2ebe6;"}</style>
+        <style>{'body {background:#f2ebe6;'}</style>
       </Helmet>
       <div className="container max-w-6xl px-5">
         <div className="container w-9/12 pt-12">
@@ -85,7 +87,7 @@ const DropOut = () => {
               ))}
             </select>
 
-            {out === "직접입력" ? (
+            {out === '직접입력' ? (
               <label>
                 <input
                   className="mt-5 overflow-y-scroll"
@@ -115,7 +117,7 @@ const DropOut = () => {
           <div className="bg-white drop-shadow mb-6">
             <div className="px-16 py-6 text-2xl">
               <div className=" flex items-center">
-                <UserInfoType name={"이메일"} />
+                <UserInfoType name={'이메일'} />
                 <p className="w-full  font-black mr-2">{email}</p>
               </div>
             </div>
@@ -129,10 +131,10 @@ const DropOut = () => {
               checked={checkBt}
               onChange={(e) => chcheck(e)}
             />
-            <span className={style.labelcheckbox}>버거왕을 탈퇴를 합니다.</span>
+            <span className={style.labelcheckbox}>버거왕을 탈퇴합니다.</span>
           </label>
           <div className="flex justify-center">
-            <ActiveButton children={"취소"} />
+            <ActiveButton children={'취소'} />
             <div onClick={outBt}>
               <ActiveBlackButton> 확인 </ActiveBlackButton>
             </div>

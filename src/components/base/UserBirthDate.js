@@ -1,5 +1,7 @@
-import style from "../join/Join.module.css";
-import React, { useEffect, useState } from "react";
+/** @format */
+
+import style from '../join/Join.module.css';
+import React, { useEffect, useState } from 'react';
 
 const UserBirthDate = ({
   birthYear,
@@ -11,14 +13,14 @@ const UserBirthDate = ({
   chcheck,
   ch,
 }) => {
-
   const days = () => {
     let days = [];
     for (let i = 1; i < 32; i += 1) {
       days.push(i);
     }
+
     return days.map((item) => (
-      <option key={item} value={item}>
+      <option key={item} value={item < 10 ? '0' + item : item}>
         {item}일
       </option>
     ));
@@ -30,7 +32,7 @@ const UserBirthDate = ({
     }
 
     return month.map((item) => (
-      <option key={item} value={item}>
+      <option key={item} value={item < 10 ? '0' + item : item}>
         {item}월
       </option>
     ));
