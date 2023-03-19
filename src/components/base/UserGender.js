@@ -1,38 +1,41 @@
-const UserGender = ({userGender}) => {
-  
+import style from "../join/Join.module.css";
 
-
+const UserGender = ({ userGen }) => {
   return (
-    <div className="flex text-2xl items-center w-full">
-      <label htmlFor="g-n">
+    <div className="flex w-full py-4">
+      <label htmlFor="g-n" className="w-1/3 top-0">
         <input
+          className={style.inputradio}
           id="g-n"
           type="radio"
           name="gender"
           value="0"
-          onClick={(e) => userGender(e)}
+          onClick={(e) => userGen(e)}
         />
-        <span className="py-4 ml-5 mr-12">선택안함</span>
+        <span className={style.labelradio}>선택안함</span>
       </label>
-      <label htmlFor="g-m">
+
+      <label htmlFor="g-m" className="w-1/3">
         <input
+          className={style.inputradio}
           id="g-m"
           type="radio"
           name="gender"
           value="1"
-          onClick={(e) => userGender(e)}
+          onClick={(e) => userGen(e)}
         />
-        <span className="py-4 ml-5 mr-12">남</span>
+        <span className={style.labelradio}>남</span>
       </label>
-      <label htmlFor="g-w">
+      <label htmlFor="g-w" className="w-1/3">
         <input
+          className={style.inputradio}
           id="g-w"
           type="radio"
           name="gender"
           value="2"
-          onClick={(e) => userGender(e)}
+          onClick={(e) => userGen(e)}
         />
-        <span className="py-4 ml-5 mr-12">여</span>
+        <span className={style.labelradio}>여</span>
       </label>
     </div>
   );

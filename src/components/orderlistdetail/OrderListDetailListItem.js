@@ -2,7 +2,6 @@ import DefaultImage from "../../assets/images/logo.png";
 import convertPrice from "../../utils/convertPrice";
 const OrderListDetailListItem = ({ order }) => {
   const { orderMenuName, menuEx, price, composition, count } = order;
-  console.log(order);
   return (
     <li className="px-16 bg-white">
       <div className="relative py-8 flex justify-between border-b border-ededed border-dashed">

@@ -1,0 +1,40 @@
+.inputcheckbox {
+  display: none;
+}
+.labelcheckbox::before {
+  content: "";
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  vertical-align: -6px;
+  background: url(../assets/images/icon_checkbox_off.png) no-repeat center;
+  margin-right: 10px;
+}
+.inputcheckbox:checked + .labelcheckbox::before {
+  background: url(../assets/images/icon_checkbox_on.png) no-repeat center;
+}
+
+label > span {
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 32px;
+  
+}
+label > p {
+  padding-top: 10px;
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 20px;
+  color: #8d8d8d;
+}
+
+
+input[type="textarea"] {
+  width: 100%;
+  padding: 30px 27px;
+  outline: none;
+  color: #000;
+  background: #f8f8f8;
+  border: none;
+  border-radius: 0;
+}

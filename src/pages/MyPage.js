@@ -1,10 +1,10 @@
-import axios from 'axios';
-import React from 'react';
-import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
-import PageName from '../components/base/PageName';
+import axios from "axios";
+import React from "react";
+import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import PageName from "../components/base/PageName";
 
 const MyPage = () => {
   const navigate = useNavigate();
@@ -24,12 +24,14 @@ const MyPage = () => {
       .catch((err) => {
         console.log(err);
         alert(err.response.data.message);
-        navigate('/');
+        navigate("/");
       });
   }, []);
-
   const name = loginData.name;
 
+  const goOrderList = () => {
+    navigate("/orderList");
+  };
   return (
     <div>
       <Helmet>
@@ -62,11 +64,12 @@ const MyPage = () => {
             <li className="mb-4 px-16 flex items-center bg-icon-coupon bg-no-repeat bg-contain  bg-left">
               <span>나의쿠폰</span>
             </li>
-            <Link to={"/orderList"}>
-              <li className="mb-4 px-16 flex items-center bg-icon-order bg-no-repeat bg-contain  bg-left">
-                <span>주문이력</span>
-              </li>
-            </Link>
+            <li
+              className="mb-4 px-16 flex items-center bg-icon-order bg-no-repeat bg-contain  bg-left"
+              onClick={goOrderList}
+            >
+              <span>주문이력</span>
+            </li>
           </ul>
         </div>
       </div>

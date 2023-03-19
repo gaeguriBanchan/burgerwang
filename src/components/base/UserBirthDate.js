@@ -1,21 +1,27 @@
 /** @format */
 
+import style from '../join/Join.module.css';
 import React, { useEffect, useState } from 'react';
 
-const UserBirthDate = () => {
-  // const [test, setTest] = useState({ value: "", defaultChecked: false });
-  const [birthYear, setBirthYear] = useState('');
-  const [birthMonth, setBirthMonth] = useState('');
-  const [birthDay, setBirthDay] = useState('');
-  const [ch, setCh] = useState(false);
+const UserBirthDate = ({
+  birthYear,
+  birthYearValue,
+  birthMonth,
+  birthMonthValue,
+  birthDay,
+  birthDayValue,
+  chcheck,
+  ch,
+}) => {
   const days = () => {
     let days = [];
     for (let i = 1; i < 32; i += 1) {
       days.push(i);
     }
+
     return days.map((item) => (
-      <option key={item} value={item}>
-        {item}
+      <option key={item} value={item < 10 ? '0' + item : item}>
+        {item}일
       </option>
     ));
   };
@@ -26,8 +32,8 @@ const UserBirthDate = () => {
     }
 
     return month.map((item) => (
-      <option key={item} value={item}>
-        {item}
+      <option key={item} value={item < 10 ? '0' + item : item}>
+        {item}월
       </option>
     ));
   };
@@ -38,52 +44,24 @@ const UserBirthDate = () => {
     }
     return year.map((item) => (
       <option key={item} value={item}>
-        {item}
+        {item}년
       </option>
     ));
   };
-
-  const birthYearValue = (e) => {
-    setBirthYear(e.target.value);
-    if (!birthYearValue) {
-      setCh(true);
-    } else {
-      setCh(false);
-    }
-  };
-
-  const birthMonthValue = (e) => {
-    setBirthMonth(e.target.value);
-  };
-
-  const birthDayValue = (e) => {
-    setBirthDay(e.target.value);
-  };
-
-  const birth = birthYear + '-' + birthMonth + '-' + birthDay;
-  console.log('birth', birth);
-
-  const chcheck = () => {
-    setCh(!ch);
-    console.log(ch);
-  };
-  useEffect(() => {
-    console.log('chcheck', ch);
-  }, [ch]);
 
   return (
     <div className="flex flex-col  w-full ">
       <label className="py-4">
         <input
-          className="radio"
+          className={style.inputradio}
           id="birth-none"
           type="radio"
           value=""
-          name="none"
+          name="birth"
           checked={ch}
           onChange={() => chcheck()}
         />
-        <span name="birth" className="py-4 ml-5 mr-12">
+        <span name="birth" className={style.labelradio}>
           선택안함
         </span>
       </label>

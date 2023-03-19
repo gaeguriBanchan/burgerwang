@@ -6,22 +6,62 @@ import JoinPw from '../components/join/JoinPw';
 import PageName from '../components/base/PageName';
 import useInput from '../components/join/hook/useInput';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Join = () => {
-  const [userGen, setUserGen] = useState('');
-  const [joinEmail, userEmail] = useInput('aaa@aaa.net');
-  const [joinName, userName] = useInput('홍길동');
-  const [joinPhon, userPhon] = useInput('010-0000-0000');
-  const [joinPw, userPw] = useInput('1111');
-  const [joinPwCheck, userPwCheck] = useInput('1111');
+  const [joinEmail, userEmail] = useInput('');
+  const [joinName, userName] = useInput('');
+  const [joinPhon, userPhon] = useInput('');
+  const [joinPw, userPw] = useInput('');
+  const [joinPwCheck, userPwCheck] = useInput('');
+
+  const [joinGen, setJoinGen] = useState('');
+  let [birthYear, setBirthYear] = useState('');
+  let [birthMonth, birthMonthValue] = useInput('');
+  let [birthDay, birthDayValue] = useInput('');
+  const [ch, setCh] = useState(false);
+  console.log('year', birthYear);
+  console.log(birthMonth);
+  console.log(birthDay);
+
+  let birth = birthYear + '-' + birthMonth + '-' + birthDay;
+  if (birthYear === '') {
+    birth = null;
+    console.log('aaa');
+  }
+  if (birthMonth === '') {
+    birth = null;
+    console.log('vvv');
+  }
+  if (birthDay === '') {
+    birth = null;
+    console.log('ccc');
+  }
+  console.log('birth', birth);
+
+  const userGen = (e) => {
+    setJoinGen(e.target.value);
+  };
+  const birthYearValue = (e) => {
+    setBirthYear(e.target.value);
+    if (!birthYearValue) {
+      setCh(true);
+    } else {
+      setCh(false);
+    }
+  };
+
+  const chcheck = () => {
+    setCh(!ch);
+    console.log(ch);
+  };
+  useEffect(() => {
+    console.log('chcheck', ch);
+  }, [ch]);
 
   const navigate = useNavigate();
-
-  const userGender = (e) => {
-    setUserGen(e.target.value);
-  };
 
   // 회원가입
   const registFunc = (e) => {
@@ -29,6 +69,12 @@ const Join = () => {
     if (!joinEmail) {
       window.scrollTo(0, 0);
       return alert('이메일을 입력하세요.');
+    }
+    if (joinEmail) {
+      let input = joinEmail;
+      let email_format =
+        /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+      if (!email_format.test(input)) alert('잘못된 이메일 형식입니다');
     }
     if (!joinName) {
       window.scrollTo(0, 0);
@@ -60,30 +106,28 @@ const Join = () => {
       '비번확인',
       joinPwCheck,
       '성별',
-      userGen
+      joinGen,
+      '생년월일',
+      birth
     );
     // 최금옥
     const params = {
       miEmail: joinEmail,
       miName: joinName,
       miPhone: joinPhon,
-      miGen: userGen,
-      miBirth: '',
-      miGrade: '',
-      miStatus: '',
+      miGen: joinGen,
+      miBirth: birth,
+      miGrade: '1',
+      miStatus: '1',
       miPwd: joinPw,
     };
     axios
       .put('http://192.168.0.122:9898/api/member/join', params)
       .then((res) => {
-        // 서버에서 response(결과가 왔어요.)
-        console.log(res.massage);
-        console.log(res.status);
         alert(res.data.message);
         navigate('/login');
       })
       .catch((err) => {
-        // 서버가 반응이 없다.
         console.log(err);
         alert(err.response.data.message);
       });
@@ -106,7 +150,17 @@ const Join = () => {
             joinPhon={joinPhon}
             userPhon={userPhon}
           />
-          <JoinOptional userGender={userGender} userGen={userGen} />
+          <JoinOptional
+            userGen={userGen}
+            birthYear={birthYear}
+            birthYearValue={birthYearValue}
+            birthMonth={birthMonth}
+            birthMonthValue={birthMonthValue}
+            birthDay={birthDay}
+            birthDayValue={birthDayValue}
+            chcheck={chcheck}
+            ch={ch}
+          />
           <JoinPw
             JoinPw={JoinPw}
             joinPw={joinPw}

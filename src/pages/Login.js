@@ -1,20 +1,20 @@
 /** @format */
-import { Helmet } from 'react-helmet-async';
-import ActiveButton from '../components/base/ActiveButton';
-import ActiveBlackButton from '../components/base/ActiveBlackButton';
-import { Link, useNavigate } from 'react-router-dom';
-import UserEmailId from '../components/base/UserEmailId';
-import UserPassword from '../components/base/UserPassword';
-import useInput from '../components/join/hook/useInput';
-import axios from 'axios';
-import { loginUser } from '../reducer/userSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from "react-helmet-async";
+import ActiveButton from "../components/base/ActiveButton";
+import ActiveBlackButton from "../components/base/ActiveBlackButton";
+import { Link, useNavigate } from "react-router-dom";
+import UserEmailId from "../components/base/UserEmailId";
+import UserPassword from "../components/base/UserPassword";
+import useInput from "../components/join/hook/useInput";
+import axios from "axios";
+import { loginUser } from "../reducer/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 //
 const Login = () => {
   // 최금옥
 
-  const [joinEmail, userEmail] = useInput('aaa1@aaa1.net');
-  const [loginPw, userloginPw] = useInput('123456');
+  const [joinEmail, userEmail] = useInput("");
+  const [loginPw, userloginPw] = useInput("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,12 +27,12 @@ const Login = () => {
     e.preventDefault();
 
     if (!joinEmail) {
-      return alert('이메일을 입력하세요.');
+      return alert("이메일을 입력하세요.");
     }
     if (!loginPw) {
-      return alert('비밀번호를 입력하세요.');
+      return alert("비밀번호를 입력하세요.");
     }
-    console.log('입력된 내용', joinEmail, loginPw);
+    console.log("입력된 내용", joinEmail, loginPw);
 
     let params = {
       email: joinEmail,
@@ -40,7 +40,7 @@ const Login = () => {
     };
 
     axios
-      .post('http://192.168.0.122:9898/api/member/login', params)
+      .post("http://192.168.0.122:9898/api/member/login", params)
       .then((res) => {
         alert(res.data.message);
         console.log(res);
@@ -51,17 +51,14 @@ const Login = () => {
       })
       .catch((err) => {
         // 서버가 반응이 없다.
-        console.log(err);
+        // console.log(err);
         alert(err.response.data.message);
-        // console.log(err.request);
-        // console.log(err.request.responseText.message);
-        // alert(err.request.responseText.message);
       });
   };
   // 회원가입 이동
   const linkJoin = () => {
     // 최금옥
-    navigate('/join');
+    navigate("/join");
   };
 
   return (
@@ -82,19 +79,20 @@ const Login = () => {
           <div className=" px-16 py-6 text-2xl pl-14">
             <div className="pb-10">
               <UserEmailId
-                emailId={'이메일 아이디'}
+                emailId={"이메일 아이디"}
                 joinEmail={joinEmail}
                 userEmail={userEmail}
+                Login={Login}
               />
               <UserPassword
-                name={'비밀번호'}
+                name={"비밀번호"}
                 joinPw={loginPw}
                 userloginPw={userloginPw}
               />
             </div>
             <div className="flex pb-6">
               <div onClick={registFunc}>
-                <ActiveButton children={'로그인'} />
+                <ActiveButton children={"로그인"} />
               </div>
               <div onClick={linkJoin}>
                 <ActiveBlackButton>회원가입</ActiveBlackButton>

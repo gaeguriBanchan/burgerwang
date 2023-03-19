@@ -26,6 +26,7 @@ module.exports = {
         "icon-eye": "url('/src/assets/images/icon_eye.png')",
         "icon-eye-blind": "url('/src/assets/images/icon_eye_blind.png')",
         "icon-out": "url('/src/assets/images/icon_out.png')",
+        "icon-out2": "url('/src/assets/images/icon_out2.png')",
         "icon-close": "url('/src/assets/images/icon_close.png')",
         "icon-new": "url('/src/assets/images/icon_new.png')",
         "icon-best": "url('/src/assets/images/icon_best.png')",
